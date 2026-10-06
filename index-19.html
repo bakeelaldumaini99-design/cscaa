@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة الشرق الأوسط | CSCA • رياضيات • فيزياء • كيمياء</title>
+<meta name="description" content="منصة تفاعلية متخصصة للتحضير لاختبار CSCA في الرياضيات والفيزياء والكيمياء">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+:root{
+ --bg:#07111f;--panel:#0d1b2e;--panel2:#10243d;--text:#f4f8ff;--muted:#9fb0c6;
+ --line:#1d3552;--cyan:#35d7ff;--violet:#9b7cff;--green:#45e6a2;--orange:#ffb454;--red:#ff657a;
+ --shadow:0 20px 60px rgba(0,0,0,.28);--radius:22px;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:
+ radial-gradient(circle at 10% 0%,rgba(53,215,255,.12),transparent 28rem),
+ radial-gradient(circle at 90% 5%,rgba(155,124,255,.12),transparent 30rem),
+ var(--bg);color:var(--text);font-family:Cairo,Arial,sans-serif;line-height:1.8}
+button,select{font:inherit}.container{width:min(1180px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(7,17,31,.84);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:900;font-size:1.1rem;display:flex;align-items:center;gap:10px}.brandMark{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center;color:#07111f;font-weight:900}
+nav{display:flex;gap:5px;flex-wrap:wrap}nav button{background:transparent;border:0;color:var(--muted);padding:8px 13px;border-radius:11px;cursor:pointer}nav button:hover,nav button.active{background:var(--panel2);color:#fff}
+.hero{padding:72px 0 48px;position:relative;overflow:hidden}.heroGrid{display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;padding:7px 12px;border:1px solid var(--line);border-radius:99px;background:rgba(16,36,61,.7);color:var(--cyan);font-size:.82rem;font-weight:700}
+h1{font-size:clamp(2.3rem,6vw,5.2rem);line-height:1.05;margin:20px 0 16px;letter-spacing:-2px}h1 span{background:linear-gradient(90deg,var(--cyan),var(--violet),var(--green));-webkit-background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:1.08rem;max-width:720px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.btn{border:1px solid var(--line);border-radius:13px;padding:11px 17px;background:var(--panel);color:#fff;cursor:pointer;font-weight:800}.btn.primary{border:0;background:linear-gradient(135deg,var(--cyan),#4b9cff);color:#04101c}.btn.violet{background:linear-gradient(135deg,#745cff,#ad8cff);border:0}.btn:hover{transform:translateY(-1px)}
+.orbit{height:340px;position:relative;display:grid;place-items:center}.orb{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#fff,#b8f5ff 10%,#35d7ff 36%,#194d79 70%,#0b1828);box-shadow:0 0 70px rgba(53,215,255,.32);font-size:3rem;font-weight:900;color:#061323}
+.ring{position:absolute;border:1px solid rgba(53,215,255,.3);border-radius:50%;animation:spin 12s linear infinite}.r1{width:250px;height:110px;transform:rotate(25deg)}.r2{width:310px;height:160px;transform:rotate(-35deg);border-color:rgba(155,124,255,.3);animation-duration:18s}.r3{width:370px;height:210px;transform:rotate(70deg);border-color:rgba(69,230,162,.22);animation-duration:25s}
+@keyframes spin{to{transform:rotate(360deg)}}.dot{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 20px var(--green)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0 45px}.stat{padding:18px;border:1px solid var(--line);border-radius:18px;background:rgba(13,27,46,.72);box-shadow:var(--shadow)}.stat strong{display:block;font-size:1.65rem}.stat small{color:var(--muted)}
+.section{padding:28px 0 65px}.sectionHead{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:18px}.sectionHead h2{margin:0;font-size:1.8rem}.sectionHead p{margin:0;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.subject{position:relative;overflow:hidden;padding:24px;border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#091729);border-radius:var(--radius);min-height:220px;cursor:pointer;transition:.2s}.subject:hover{transform:translateY(-4px);border-color:#315579}.subject .icon{font-size:2.4rem}.subject h3{font-size:1.35rem;margin:5px 0}.subject p{color:var(--muted);font-size:.9rem}.subject .bar{height:5px;border-radius:99px;position:absolute;left:24px;right:24px;bottom:22px;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.math .bar{background:linear-gradient(90deg,#35d7ff,#5aa8ff)}.physics .bar{background:linear-gradient(90deg,#9b7cff,#ff66d8)}.chem .bar{background:linear-gradient(90deg,#45e6a2,#b6f542)}
+.modules{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.module{border:1px solid var(--line);background:var(--panel);padding:15px;border-radius:17px}.module b{display:block}.module span{color:var(--muted);font-size:.82rem}
+.lab{display:grid;grid-template-columns:1fr 1fr;gap:18px}.visual{min-height:330px;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(160deg,#0b1c31,#081320);padding:18px;position:relative;overflow:hidden}.visual h3{margin:0 0 4px}.visual small{color:var(--muted)}
+canvas{width:100%;height:230px;display:block}.formula{border:1px solid var(--line);background:#081523;border-radius:15px;padding:10px;margin-top:8px;text-align:center;font-size:1.15rem}
+.quizPanel{border:1px solid var(--line);background:linear-gradient(160deg,#0d1b2e,#091626);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px}.filters{display:flex;gap:8px;flex-wrap:wrap}.filters select{background:var(--panel2);color:#fff;border:1px solid var(--line);border-radius:11px;padding:9px}
+.q{border:1px solid var(--line);background:#0a1829;border-radius:18px;padding:18px;margin:13px 0}.q.correct{border-color:rgba(69,230,162,.55)}.q.wrong{border-color:rgba(255,101,122,.55)}.tag{display:inline-block;color:var(--cyan);font-size:.75rem;font-weight:800;margin-bottom:5px}.q h4{margin:0 0 12px;font-size:1.04rem}.options{display:grid;gap:8px}.option{text-align:right;border:1px solid var(--line);background:#0d2035;color:#eaf3ff;border-radius:11px;padding:10px 12px;cursor:pointer}.option:hover{border-color:#40688f}.option.selected{border-color:var(--cyan);background:rgba(53,215,255,.1)}.option.good{border-color:var(--green);background:rgba(69,230,162,.12)}.option.bad{border-color:var(--red);background:rgba(255,101,122,.12)}
+.result{padding:18px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,rgba(53,215,255,.1),rgba(155,124,255,.1));margin-top:16px}.score{font-size:2.5rem;font-weight:900}
+.timer{font-family:"Space Grotesk",sans-serif;font-size:1.15rem;color:var(--orange);font-weight:800}
+.progress{height:8px;background:#13273f;border-radius:99px;overflow:hidden;margin:10px 0 18px}.progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--violet));transition:.3s}
+.syllabus{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.syllabusCard{padding:22px;border:1px solid var(--line);border-radius:20px;background:var(--panel)}.syllabusCard h3{margin-top:0}.syllabusCard ul{margin:10px 0 0;padding-right:20px;color:var(--muted)}.syllabusCard li{margin:5px 0}
+.notice{border-right:4px solid var(--orange);background:rgba(255,180,84,.07);padding:13px 16px;border-radius:12px;color:#d9e4f3}
+.guideGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.guideCard{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#091729);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
+.guideCard summary{cursor:pointer;list-style:none;padding:17px 20px;font-weight:900;font-size:1.02rem;background:linear-gradient(90deg,rgba(53,215,255,.07),rgba(155,124,255,.08));display:flex;align-items:center;justify-content:space-between;gap:12px}
+.guideCard summary::-webkit-details-marker{display:none}
+.guideCard summary::after{content:"＋";color:var(--cyan);font-size:1.25rem}
+.guideCard[open] summary::after{content:"−"}
+.guideBody{padding:17px 20px;color:var(--muted);border-top:1px solid var(--line)}
+.guideBody h4{color:#fff;margin:0 0 8px}.guideBody ul{margin:8px 0;padding-right:20px}.guideBody li{margin:6px 0}
+.guideTags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.guideTag{border:1px solid var(--line);background:#0b1c31;border-radius:999px;padding:5px 10px;font-size:.82rem;color:#dcecff}
+.guideWarn{border-right:4px solid var(--orange);background:rgba(255,180,84,.07);padding:14px 16px;border-radius:13px;margin-top:16px;color:#e2edf9}
+.academyTools{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.subjectTab{border:1px solid var(--line);background:var(--panel);color:#dcecff;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:800}.subjectTab.active{background:linear-gradient(135deg,rgba(53,215,255,.18),rgba(155,124,255,.18));border-color:#3a648d;color:#fff}
+.lessonWrap{display:grid;gap:18px}.lessonCard{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:linear-gradient(160deg,var(--panel),#091729);box-shadow:var(--shadow)}.lessonHead{padding:18px 20px;background:linear-gradient(90deg,rgba(53,215,255,.09),rgba(155,124,255,.09));border-bottom:1px solid var(--line)}.lessonHead .num{color:var(--cyan);font-weight:900;margin-left:7px}.lessonHead h3{margin:0;font-size:1.25rem}.lessonBody{padding:20px}.lessonBody h4{margin:0 0 8px;color:#fff}.lessonBody p,.lessonBody li{color:var(--muted)}.lessonBody ul{margin:8px 0 18px;padding-right:20px}.lessonBody li{margin:5px 0}.formulaBox{border:1px solid var(--line);background:#081523;border-radius:14px;padding:12px 14px;margin:10px 0 18px;overflow:auto}.mistakes{border-right:4px solid var(--red);background:rgba(255,101,122,.06);border-radius:12px;padding:12px 15px;margin-bottom:18px}.practiceTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:8px 0}.practiceTitle span{color:var(--muted);font-size:.84rem}
+.modelsGrid{display:grid;gap:18px}.modelCard{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#091729);border-radius:20px;padding:18px}.modelCard h3{margin:0}.modelMeta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}.modelMeta span{border:1px solid var(--line);background:#0b1c31;color:#dcecff;border-radius:999px;padding:5px 10px;font-size:.8rem}.pageGallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.pageGallery img,.guideGallery img{width:100%;display:block;border:1px solid var(--line);border-radius:14px;background:#081320;cursor:zoom-in}.sourceNote{margin-top:10px;color:var(--muted);font-size:.85rem}.guideGallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}.viewer{position:fixed;inset:0;background:rgba(0,0,0,.84);z-index:100;display:none;align-items:center;justify-content:center;padding:18px}.viewer.show{display:flex}.viewer img{max-width:96vw;max-height:94vh;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.55)}.viewer button{position:absolute;top:18px;left:18px;background:#111d2b;color:#fff;border:1px solid #3b526e;width:42px;height:42px;border-radius:50%;font-size:1.2rem;cursor:pointer}.sourcePill{display:inline-flex;align-items:center;gap:7px;background:rgba(69,230,162,.07);border:1px solid rgba(69,230,162,.25);color:#c9ffe8;padding:6px 10px;border-radius:999px;font-size:.82rem}
+@media(max-width:900px){.pageGallery,.guideGallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pageGallery,.guideGallery{grid-template-columns:1fr}}
+
+
+footer{border-top:1px solid var(--line);padding:30px 0 45px;color:var(--muted);text-align:center}.hide{display:none!important}
+@media(max-width:900px){.heroGrid,.lab{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.modules{grid-template-columns:repeat(2,1fr)}.syllabus{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}nav{display:none}.orbit{height:280px}}
+@media(max-width:520px){h1{letter-spacing:-1px}.modules{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}.nav{height:62px}.hero{padding-top:45px}}
+
+.lang-en{direction:ltr;font-family:Inter,Arial,sans-serif}.lang-en body{text-align:left}.lang-en nav{direction:ltr}.lang-en .heroGrid{direction:ltr}.lang-en .guideBody ul,.lang-en .lessonBody ul{padding-left:22px;padding-right:0}.lang-en .lessonHead .num{margin-left:0;margin-right:7px}.lang-en .option{text-align:left}.lang-en .guideWarn{border-right:0;border-left:4px solid var(--orange)}
+
+/* ===== Subject Academy Dashboard ===== */
+.academyHero{border:1px solid var(--line);border-radius:28px;padding:30px;background:radial-gradient(circle at 90% 10%,rgba(53,215,255,.18),transparent 28%),linear-gradient(135deg,#0d2440,#0a1526);box-shadow:var(--shadow);overflow:hidden;position:relative}
+.academyHeroGrid{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:center}.academyKicker{color:var(--cyan);font-weight:900;font-size:.85rem;letter-spacing:.04em}.academyHero h1{font-size:clamp(2rem,4vw,3.6rem);margin:8px 0;letter-spacing:-1px}.academyHero p{color:var(--muted);max-width:760px}.academyBadges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.academyBadge{padding:6px 11px;border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;color:#dcecff;font-size:.8rem}.academyOrb{min-height:210px;display:grid;place-items:center}.academyOrb .bigSigma{width:170px;height:170px;border-radius:50%;display:grid;place-items:center;font-size:4rem;font-weight:900;background:radial-gradient(circle at 30% 25%,#fff,#b9f6ff 10%,#35d7ff 35%,#194d79 70%,#0b1828);box-shadow:0 0 80px rgba(53,215,255,.28)}
+.quickGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin:18px 0}.quickCard{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:17px;min-height:112px}.quickCard .qIcon{font-size:1.5rem}.quickCard strong{display:block;font-size:1.5rem;color:#fff}.quickCard small{color:var(--muted)}
+.studyGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}.studyPanel{border:1px solid var(--line);background:linear-gradient(160deg,var(--panel),#091729);border-radius:22px;padding:20px}.studyPanel h3{margin:0 0 4px}.studyPanel>p{color:var(--muted);margin-top:0}.focusItem{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);background:#0a1829;padding:11px 12px;border-radius:13px;margin:9px 0}.focusItem span{color:var(--muted);font-size:.8rem}.meter{height:7px;background:#13273f;border-radius:99px;overflow:hidden;margin-top:7px}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:99px}
+.roadmap{position:relative;margin:20px 0 28px;padding-right:28px}.roadmap:before{content:"";position:absolute;right:9px;top:12px;bottom:12px;width:2px;background:linear-gradient(var(--cyan),var(--violet),var(--green))}.roadStep{position:relative;margin:14px 0}.roadDot{position:absolute;right:-28px;top:19px;width:20px;height:20px;border-radius:50%;border:4px solid var(--bg);background:var(--cyan);box-shadow:0 0 0 1px var(--cyan)}.roadCard{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow)}.roadTop{display:flex;justify-content:space-between;align-items:start;gap:12px}.roadTop h3{margin:0;font-size:1.15rem}.weight{color:var(--green);font-weight:900;font-size:.78rem;background:rgba(69,230,162,.08);border:1px solid rgba(69,230,162,.2);padding:4px 8px;border-radius:999px;white-space:nowrap}.roadMeta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:.8rem;margin:7px 0}.topicChips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.topicChip{border:1px solid var(--line);background:#0b1c31;border-radius:999px;padding:5px 9px;color:#dcecff;font-size:.75rem}
+.outlineBox{border:1px solid var(--line);background:var(--panel);border-radius:22px;overflow:hidden;margin-top:22px}.outlineHead{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px}.outlineHead h3{margin:0}.outlineActions{display:flex;gap:7px}.outlineRow{border-bottom:1px solid var(--line)}.outlineRow:last-child{border-bottom:0}.outlineRow summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-weight:900}.outlineRow summary::-webkit-details-marker{display:none}.outlineRow summary:before{content:'›';color:var(--cyan);font-size:1.25rem;transition:.2s}.outlineRow[open] summary:before{transform:rotate(90deg)}.outlineBody{padding:0 20px 18px;color:var(--muted)}.topicLine{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:12px;margin:7px 0;background:#0a1829}.topicLine b{color:#fff}.topicLine span{color:var(--cyan);font-size:.78rem}
+.lessonFilters{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.lessonSearch{flex:1;min-width:220px;background:var(--panel);color:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 13px}.filterBtn{background:var(--panel);color:#dcecff;border:1px solid var(--line);border-radius:11px;padding:9px 12px;cursor:pointer;font-weight:800}.filterBtn.active{background:linear-gradient(135deg,rgba(53,215,255,.18),rgba(155,124,255,.18));color:#fff;border-color:#3a648d}
+.lessonCard .lessonHead{display:flex;align-items:center;justify-content:space-between;gap:14px}.lessonHead .lessonInfo{color:var(--muted);font-size:.78rem;font-weight:600}.lessonBody .stepBox{border:1px solid var(--line);background:#0a1829;border-radius:14px;padding:12px 14px;margin:9px 0}.stepBox b{color:var(--cyan)}
+@media(max-width:900px){.academyHeroGrid{grid-template-columns:1fr}.academyOrb{display:none}.quickGrid{grid-template-columns:repeat(2,1fr)}.studyGrid{grid-template-columns:1fr}.roadmap{padding-right:24px}.roadDot{right:-24px}}
+@media(max-width:520px){.quickGrid{grid-template-columns:1fr 1fr}.roadTop{display:block}.weight{display:inline-block;margin-top:8px}.topicLine{grid-template-columns:1fr}.academyHero{padding:22px}.academyHero h1{font-size:2rem}}
+</style>
+</head>
+<body>
+<header><div class="container nav">
+  <div class="brand"><div class="brandMark">C</div><div><span id="brandAr">منصة الشرق الأوسط</span><span id="brandEn" style="color:var(--cyan);display:none">Middle East Platform</span></div></div>
+  <nav>
+    <button class="active" data-view="home" data-ar="الرئيسية" data-en="Home">الرئيسية</button>
+    <button data-view="syllabus" data-ar="المقرر" data-en="Syllabus">المقرر</button>
+    <button data-view="guide" data-ar="دليل CSCA" data-en="CSCA Guide">دليل CSCA</button>
+    <button data-view="academy" data-ar="الدروس" data-en="Lessons">الدروس</button>
+    <button data-view="models" data-ar="النماذج" data-en="Exam Models">النماذج</button>
+    <button data-view="bank" data-ar="بنك الأسئلة" data-en="Question Bank">بنك الأسئلة</button>
+    <button data-view="mock" data-ar="اختبار 48 سؤالًا" data-en="48-Question Mock">اختبار 48 سؤالًا</button>
+    <button id="langBtn" class="btn" onclick="toggleLanguage()">EN</button>
+  </nav>
+</div></header>
+
+<section id="home" class="view">
+<div class="hero"><div class="container heroGrid">
+  <div>
+    <span class="eyebrow" id="heroEyebrow">CSCA • STEM • 2025 SYLLABUS</span>
+    <h1 id="heroTitle">استعد لـ <span>CSCA</span><br>بذكاء، لا بالحفظ فقط.</h1>
+    <p id="heroText">منصة مركّزة بالكامل على الرياضيات والفيزياء والكيمياء، تجمع المقرر، القوانين، الرسومات التفاعلية، بنك الأسئلة، والاختبار التجريبي في واجهة واحدة.</p>
+    <div class="actions"><button id="startLessons" class="btn primary" onclick="go('academy')">ابدأ الدروس</button><button id="practiceNow" class="btn violet" onclick="go('bank')">تدرب الآن</button><button id="originalModels" class="btn" onclick="go('models')">نماذج الاختبارات الأصلية</button></div>
+  </div>
+  <div class="orbit"><div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div><div class="dot" style="top:30px;right:65px"></div><div class="orb">∑</div></div>
+</div></div>
+<div class="container">
+  <div class="stats">
+    <div class="stat"><strong>3</strong><small data-stat="subjects">مواد CSCA</small></div>
+    <div class="stat"><strong>48</strong><small data-stat="questions">سؤالًا / مادة</small></div>
+    <div class="stat"><strong>60</strong><small data-stat="minutes">دقيقة / اختبار</small></div>
+    <div class="stat"><strong>100</strong><small data-stat="score">درجة</small></div>
+  </div>
+  <section class="section">
+    <div class="sectionHead"><div><h2 id="materialsTitle">مختبر المواد</h2><p id="materialsText">اختر المادة وابدأ من المحور الذي تحتاجه.</p></div></div>
+    <div class="cards">
+      <div class="subject math" onclick="openAcademy('الرياضيات')"><div class="icon">📐</div><h3>الرياضيات</h3><p>المجموعات والمتباينات • الدوال • الهندسة والجبر • الاحتمالات والإحصاء.</p><div class="bar"></div></div>
+      <div class="subject physics" onclick="openAcademy('الفيزياء')"><div class="icon">⚡</div><h3>الفيزياء</h3><p>الميكانيكا • الكهرومغناطيسية • الديناميكا الحرارية • البصريات • الفيزياء الحديثة.</p><div class="bar"></div></div>
+      <div class="subject chem" onclick="openAcademy('الكيمياء')"><div class="icon">🧪</div><h3>الكيمياء</h3><p>المفاهيم والحسابات • خواص المواد والتفاعلات • النظريات • التجارب والتطبيقات.</p><div class="bar"></div></div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="sectionHead"><div><h2 id="visualTitle">رسومات تفاعلية</h2><p id="visualText">حوّل القانون إلى صورة قبل أن تحفظه.</p></div></div>
+    <div class="lab">
+      <div class="visual"><h3>📈 الحركة بعجلة ثابتة</h3><small>غيّر الزمن وشاهد تغيّر السرعة والمسافة.</small><canvas id="motionCanvas"></canvas><div class="formula">\(v=v_0+at\qquad x=x_0+v_0t+\frac12at^2\)</div></div>
+      <div class="visual"><h3>⚡ قانون أوم</h3><small>حرّك الجهد والمقاومة وشاهد التيار.</small><input id="vRange" type="range" min="1" max="24" value="12" style="width:100%"><input id="rRange" type="range" min="1" max="12" value="6" style="width:100%"><canvas id="ohmCanvas"></canvas><div class="formula">\(I=\frac{V}{R}\)</div></div>
+    </div>
+  </section>
+</div>
+</section>
+
+<section id="syllabus" class="view hide"><div class="container section">
+  <div class="sectionHead"><div><h2>المقرر الرسمي داخل المنصة</h2><p>المحتوى أدناه مبني على محاور منهج CSCA المنشورة رسميًا.</p></div></div>
+  <div class="notice">كل مادة: 48 سؤال اختيار من متعدد، 60 دقيقة، 100 درجة.</div>
+  <div style="height:15px"></div>
+  <div class="syllabus" id="syllabusGrid"></div>
+</div></section>
+
+
+<section id="guide" class="view hide"><div class="container section">
+  <div class="sectionHead">
+    <div>
+      <h2>دليل CSCA — معلومات عامة</h2>
+      <p>ملخص عملي للمعلومات العامة الظاهرة في المصادر التي شاركتها عن الاختبار.</p>
+    </div>
+  </div>
+
+  <div class="notice">
+    <b>تنبيه:</b> المواعيد والرسوم ومراكز الاختبار ومتطلبات الجامعات قد تتغير. استخدم هذا القسم للفهم والتحضير، وتحقق من بيانات الدورة التي ستسجل لها قبل الدفع.
+  </div>
+
+  <div class="guideGrid" style="margin-top:16px">
+
+    <details class="guideCard" open>
+      <summary>ما هو اختبار CSCA؟</summary>
+      <div class="guideBody">
+        <p><b>CSCA</b> هو اختبار كفاءة أكاديمية مخصص للطلاب الدوليين الراغبين في التقديم إلى الجامعات الصينية، ويهدف إلى قياس المستوى الأكاديمي في المواد الأساسية المطلوبة للقبول.</p>
+        <div class="guideTags"><span class="guideTag">الطلاب الدوليون</span><span class="guideTag">الجامعات الصينية</span><span class="guideTag">تقييم أكاديمي</span></div>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>أهمية الاختبار وأهدافه</summary>
+      <div class="guideBody">
+        <ul>
+          <li>توفير معيار موحد لتقييم المستوى الأكاديمي للمتقدمين.</li>
+          <li>دعم عملية القبول الجامعي وتحسين جودة التقييم الأكاديمي.</li>
+          <li>يُستخدم ضمن إطار مبادرة «الدراسة في الصين» وفق المعلومات المعروضة في المصدر.</li>
+          <li>ذُكر أن الاختبار أصبح جزءًا من متطلبات القبول لبعض فئات المتقدمين ابتداءً من 2026.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>من يحتاج إلى أداء CSCA؟</summary>
+      <div class="guideBody">
+        <h4>من الفئات المذكورة:</h4>
+        <ul>
+          <li>المتقدمون لمنح الحكومة الصينية (CSC) لمرحلة البكالوريوس.</li>
+          <li>الطلاب الراغبون في الالتحاق ببرامج البكالوريوس في الجامعات الصينية.</li>
+          <li>الطلاب الموجودون داخل الصين والراغبون في التقديم لأول مرة أو تحويل قبولهم إلى جامعة أخرى، وفق متطلبات الجهة/الجامعة.</li>
+        </ul>
+        <h4 style="margin-top:14px">فئات ذُكرت كغير مطالبة:</h4>
+        <ul>
+          <li>المتقدمون لدراسة اللغة الصينية فقط، إذا لم يكن الاختبار مطلوبًا من الجامعة.</li>
+          <li>بعض برامج التبادل الثنائي.</li>
+          <li>برامج الدراسات العليا مثل الماجستير والدكتوراه.</li>
+          <li>بعض حالات المنح الجزئية أو الدراسة على الحساب الشخصي بحسب متطلبات الجامعة.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>ما المواد الداخلة في الاختبار؟</summary>
+      <div class="guideBody">
+        <ul>
+          <li><b>الرياضيات:</b> الدوال الخطية والتربيعية والأسية واللوغاريتمية، التمثيل البياني، المجال والمدى، العلاقات المثلثية الأساسية، قوانين الجيب وجيب التمام، الهندسة، الدائرة والمماس، القطوع المخروطية، الاحتمالات والإحصاء.</li>
+          <li><b>الفيزياء:</b> الحركة والقوى، قوانين نيوتن، الطاقة والزخم، الكهرباء والمغناطيسية، الدوائر الكهربائية، الموجات والضوء، الحرارة وانتقالها.</li>
+          <li><b>الكيمياء:</b> بنية الذرة، المستويات الإلكترونية، حسابات المولات والكتلة المولية، الروابط الكيميائية، المعادلات والتفاعلات، الأحماض والقواعد وpH، الأكسدة والاختزال، والكيمياء العضوية الأساسية.</li>
+        </ul>
+        <div class="guideTags"><span class="guideTag">رياضيات</span><span class="guideTag">فيزياء</span><span class="guideTag">كيمياء</span></div>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>تفاصيل وهيكلة الاختبار</summary>
+      <div class="guideBody">
+        <ul>
+          <li>توجد نسخة باللغة الإنجليزية، وذُكرت نسخة باللغة الصينية لبعض المواد وفق الاختيار المتاح.</li>
+          <li><b>النسخة الإنجليزية:</b> 48 سؤالًا لكل مادة وفق المعلومات المعروضة.</li>
+          <li><b>النسخة الصينية:</b> 80 سؤالًا لكل مادة وفق المعلومات المعروضة.</li>
+          <li><b>الدرجة:</b> 100 درجة لكل مادة.</li>
+          <li><b>المدة:</b> 60 دقيقة للمواد باللغة الإنجليزية، و90 دقيقة للنسخة الصينية وفق المصدر.</li>
+          <li>الاختبار إلكتروني مع مراقبة عن بُعد (Online Proctored Exam) بحسب المعلومات المعروضة.</li>
+          <li>يتم تصحيح الإجابات إلكترونيًا وحساب الدرجة النهائية لكل مادة بشكل مستقل.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>المواعيد وأماكن عقد الاختبار</summary>
+      <div class="guideBody">
+        <ul>
+          <li>الاختبار متاح عن بُعد (Online) للطلاب حول العالم وفق المعلومات المعروضة.</li>
+          <li>توجد كذلك مراكز اختبار معتمدة في بعض الدول، وقد تُضاف دول أو مراكز أخرى لاحقًا.</li>
+          <li>من أمثلة المواعيد المذكورة في المصدر: ديسمبر 2025، يناير 2026، مارس 2026، أبريل 2026، ويونيو 2026.</li>
+          <li>عند التسجيل يختار الطالب تاريخ الاختبار المناسب من المواعيد المتاحة.</li>
+          <li>توقيت الاختبار يتبع التوقيت المحدد للدورة؛ ذُكر توقيت بكين <b>UTC+8</b> في المصدر.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>رسوم الاختبار وطرق الدفع</summary>
+      <div class="guideBody">
+        <p>الرسوم الظاهرة في المصدر الذي شاركته:</p>
+        <ul>
+          <li>مادة واحدة: <b>450 يوان صيني (CNY)</b> ≈ 63 دولارًا أمريكيًا.</li>
+          <li>مادتان أو أكثر: <b>700 يوان صيني (CNY)</b> ≈ 98 دولارًا أمريكيًا.</li>
+        </ul>
+        <p>طرق الدفع المذكورة: Visa، MasterCard، UnionPay، Alipay، WeChat Pay.</p>
+        <p><b>مهم:</b> هذه الأرقام مرجعية من المادة المصورة وقد تتغير حسب الدورة أو تحديث الجهة المنظمة.</p>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>خطوات التسجيل في CSCA</summary>
+      <div class="guideBody">
+        <ol style="margin:8px 0;padding-right:22px">
+          <li>الدخول إلى الموقع الرسمي المخصص للتسجيل.</li>
+          <li>اختيار Sign Up / Register وإنشاء الحساب.</li>
+          <li>إدخال البريد الإلكتروني وتعيين كلمة المرور والبيانات المطلوبة.</li>
+          <li>تفعيل الحساب من رسالة البريد الإلكتروني.</li>
+          <li>تسجيل الدخول وإدخال البيانات الشخصية وفق الوثائق الرسمية.</li>
+          <li>اختيار تاريخ الاختبار والمركز/Online والمواد ولغة الاختبار المتاحة.</li>
+          <li>مراجعة البيانات ثم إتمام الدفع.</li>
+          <li>بعد نجاح الدفع والتسجيل، إصدار/تحميل Admission Ticket عند إتاحته.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>الاستعداد ليوم الاختبار وقواعد المراقبة</summary>
+      <div class="guideBody">
+        <ul>
+          <li>تجهيز وثيقة الهوية الأصلية وأن تكون البيانات مطابقة للتسجيل.</li>
+          <li>التأكد من جاهزية الجهاز والكاميرا والميكروفون والاتصال بالإنترنت.</li>
+          <li>الدخول قبل الموعد بوقت كافٍ واتباع تعليمات المراقبة.</li>
+          <li>الجلوس في بيئة هادئة ومناسبة للاختبار.</li>
+          <li>لا يُسمح باستخدام شاشات إضافية أو تبديل الشاشة بطريقة مخالفة للتعليمات.</li>
+          <li>لا يُسمح باستخدام سماعات رأس سلكية أو لاسلكية وفق القواعد الظاهرة في المصدر.</li>
+          <li>لا يُسمح باستخدام برامج أو أدوات غير مصرح بها، ولا أوراق أو ملاحظات خارج المسموح.</li>
+          <li>يجب تشغيل الكاميرا والميكروفون طوال الاختبار وفق نظام المراقبة.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>المخالفات والعقوبات</summary>
+      <div class="guideBody">
+        <ul>
+          <li><b>مخالفات بسيطة:</b> قد تؤدي إلى إلغاء نتيجة الاختبار وفق القاعدة المذكورة.</li>
+          <li><b>مخالفات متوسطة:</b> ذُكر منع دخول الاختبار لمدة سنتين.</li>
+          <li><b>مخالفات جسيمة:</b> ذُكر إلغاء جميع النتائج والمنع الدائم من الاختبار.</li>
+        </ul>
+        <p>تُطبَّق العقوبة وفق نوع المخالفة واللائحة المعتمدة للدورة.</p>
+      </div>
+    </details>
+
+    <details class="guideCard">
+      <summary>النتائج وصلاحية الشهادة</summary>
+      <div class="guideBody">
+        <ul>
+          <li>تظهر النتيجة بعد تصحيح الإجابات إلكترونيًا وفق نظام الاختبار.</li>
+          <li>الدرجة النهائية تُحسب لكل مادة بصورة مستقلة.</li>
+          <li>ذُكرت صلاحية نتيجة CSCA لمدة <b>سنتين من تاريخ الإصدار</b> في المصدر الذي شاركته.</li>
+          <li>قد تستخدم النتيجة ضمن متطلبات القبول الأكاديمي في الجامعات الصينية حسب البرنامج والجامعة.</li>
+        </ul>
+      </div>
+    </details>
+
+  </div>
+
+
+  <div style="height:12px"></div>
+  <details class="guideCard">
+    <summary>المعلومات التي أرسلتها بالصور — النسخة المصورة</summary>
+    <div class="guideBody">
+      <p>أضفت هنا الصور التي أرسلتها أنت كما هي، لتكون مرجعًا بصريًا داخل المنصة إلى جانب الملخص النصي أعلاه.</p>
+      <div class="guideGallery"><img src="assets/guide/guide-01.jpg" alt="معلومات CSCA المصورة 1" onclick="openViewer(this.src)"><img src="assets/guide/guide-02.jpg" alt="معلومات CSCA المصورة 2" onclick="openViewer(this.src)"><img src="assets/guide/guide-03.jpg" alt="معلومات CSCA المصورة 3" onclick="openViewer(this.src)"><img src="assets/guide/guide-04.jpg" alt="معلومات CSCA المصورة 4" onclick="openViewer(this.src)"><img src="assets/guide/guide-05.jpg" alt="معلومات CSCA المصورة 5" onclick="openViewer(this.src)"><img src="assets/guide/guide-06.jpg" alt="معلومات CSCA المصورة 6" onclick="openViewer(this.src)"><img src="assets/guide/guide-07.jpg" alt="معلومات CSCA المصورة 7" onclick="openViewer(this.src)"><img src="assets/guide/guide-08.jpg" alt="معلومات CSCA المصورة 8" onclick="openViewer(this.src)"><img src="assets/guide/guide-09.jpg" alt="معلومات CSCA المصورة 9" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266050.jpg" alt="معلومات CSCA المضافة 10" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266048.jpg" alt="معلومات CSCA المضافة 11" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266046.jpg" alt="معلومات CSCA المضافة 12" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266040.jpg" alt="معلومات CSCA المضافة 13" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266042.jpg" alt="معلومات CSCA المضافة 14" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266044.jpg" alt="معلومات CSCA المضافة 15" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266038.jpg" alt="معلومات CSCA المضافة 16" onclick="openViewer(this.src)"><img src="assets/guide/source-1000266036.jpg" alt="معلومات CSCA المضافة 17" onclick="openViewer(this.src)"></div></div></details>
+
+  <div class="guideWarn">
+    <b>قاعدة مهمة للمنصة:</b> هذه الصفحة تجمع المعلومات العامة من المادة التي شاركتها، بينما قسم <b>المقرر + بنك الأسئلة + الاختبار التجريبي</b> مخصص للتحضير الأكاديمي في <b>الرياضيات والفيزياء والكيمياء</b>.
+  </div>
+
+  <div class="section" style="padding-bottom:0;margin-top:18px">
+    <div class="sectionHead"><div><h2 id="officialInfoTitle">معلومات CSCA المضافة من الصور + التحقق الرسمي</h2><p id="officialInfoText">المعلومات التالية تجمع ما ظهر في صورك مع أحدث البيانات المنشورة على موقع CSCA الرسمي.</p></div></div>
+    <div class="guideGrid">
+      <details class="guideCard" open><summary>🧭 ما هو CSCA؟</summary><div class="guideBody"><p>CSCA هو <b>China Scholastic Competency Assessment</b>، اختبار كفاءة أكاديمية للطلاب الدوليين المتقدمين للدراسة الجامعية في الصين. الهدف هو توفير تقييم أكاديمي موحّد يساعد المؤسسات والجامعات في عملية القبول.</p><p><b>المصدر الرسمي:</b> الموقع الرسمي لـ CSCA.</p></div></details>
+      <details class="guideCard"><summary>📚 المواد</summary><div class="guideBody"><ul><li>Mathematics — الرياضيات</li><li>Physics — الفيزياء</li><li>Chemistry — الكيمياء</li></ul><p>المواد المطلوبة تختلف حسب البرنامج والجامعة؛ لذلك يجب مراجعة متطلبات البرنامج قبل التسجيل.</p></div></details>
+      <details class="guideCard"><summary>📝 هيكلة الاختبار بحسب الصور</summary><div class="guideBody"><ul><li>النسخة الإنجليزية: <b>48 سؤالًا</b> لكل مادة.</li><li>النسخة الصينية: <b>80 سؤالًا</b> لكل مادة.</li><li>الدرجة: <b>100 درجة</b> لكل مادة.</li><li>المدة الظاهرة في المصدر: <b>60 دقيقة</b> للإنجليزية و<b>90 دقيقة</b> للصينية.</li><li>اختبار إلكتروني مع مراقبة عن بُعد وفق المادة المصورة.</li></ul><div class="guideWarn">هذه الأرقام من الصور التي أرسلتها؛ تحقق من دورة التسجيل الحالية قبل الاعتماد عليها.</div></div></details>
+      <details class="guideCard"><summary>🌍 المواعيد الحالية المنشورة رسميًا</summary><div class="guideBody"><ul><li><b>14–15 نوفمبر 2026</b> — التسجيل 15–21 أكتوبر 2026 (بتوقيت بكين).</li><li><b>19–20 ديسمبر 2026</b> — لم يبدأ التسجيل في الصفحة الرسمية وقت التحقق.</li><li><b>23–24 يناير 2027</b> — موعد منشور في الجدول الرسمي.</li></ul><p>الموقع الرسمي يوضح أن المواعيد والدورات تُحدّث باستمرار.</p></div></details>
+      <details class="guideCard"><summary>💳 الرسوم وطرق الدفع — من الصور</summary><div class="guideBody"><ul><li>مادة واحدة: <b>450 CNY</b> ≈ 63 USD.</li><li>مادتان أو أكثر: <b>700 CNY</b> ≈ 98 USD.</li><li>طرق الدفع الظاهرة: Visa، MasterCard، UnionPay، Alipay، WeChat Pay.</li></ul><div class="guideWarn">الرسوم المعروضة هنا مصدرها الصور التي أرسلتها وليست ضمانًا لرسوم كل دورة مستقبلية.</div></div></details>
+      <details class="guideCard"><summary>🛂 التسجيل والوثائق</summary><div class="guideBody"><ol style="margin:8px 0;padding-right:22px"><li>إنشاء حساب في الموقع الرسمي.</li><li>تفعيل البريد الإلكتروني.</li><li>إدخال البيانات الشخصية مطابقة لجواز السفر.</li><li>اختيار المواد واللغة والتاريخ/المركز المتاح.</li><li>إتمام الدفع ثم متابعة إصدار Admission Ticket.</li></ol><p><b>قاعدة الهوية الرسمية الحالية:</b> الموقع الرسمي يذكر أن جواز السفر العادي الأصلي هو وثيقة الهوية المقبولة للتحقق من الهوية.</p></div></details>
+      <details class="guideCard"><summary>⚠️ يوم الاختبار والعقوبات</summary><div class="guideBody"><ul><li>تجهيز الجهاز والكاميرا والميكروفون والإنترنت.</li><li>الالتزام بتعليمات المراقبة وعدم استخدام أجهزة/برامج أو مواد غير مسموحة.</li><li>وفق الصور: المخالفات البسيطة قد تؤدي لإلغاء النتيجة، والمتوسطة قد تؤدي لمنع مؤقت، والجسيمة قد تؤدي لمنع دائم.</li></ul><div class="guideWarn">العقوبات الفعلية تُحدد وفق اللائحة الرسمية للدورة التي تتقدم لها.</div></div></details>
+      <details class="guideCard"><summary>🏆 النتائج والصلاحية</summary><div class="guideBody"><p>وفق المادة المصورة التي أرسلتها: نتيجة CSCA مذكور أنها صالحة لمدة <b>سنتين من تاريخ الإصدار</b>. كما أن النتيجة قد تُستخدم ضمن متطلبات القبول بحسب الجامعة والبرنامج.</p><div class="guideWarn">اعتبر مدة الصلاحية المذكورة هنا معلومة مصدرية من صورك، وراجع متطلبات الجامعة والدورة عند التقديم.</div></div></details>
+      <details class="guideCard"><summary>🔗 المصدر الرسمي الحالي</summary><div class="guideBody"><p>للتسجيل، المواعيد، المتطلبات، والبيانات التي تتغير بمرور الوقت، استخدم موقع CSCA الرسمي:</p><p><a href="https://csca.cn/" target="_blank" rel="noopener" style="color:var(--cyan);font-weight:900">https://csca.cn/</a></p><p>دعم الاختبار: <b>cscasupport@cscdf.org</b></p></div></details>
+    </div>
+  </div>
+</div></section>
+
+
+<section id="academy" class="view hide"><div class="container section">
+  <div id="academyDashboard"></div>
+  <div class="academyTools" id="academyTabs"></div>
+  <div id="academyContent"></div>
+</div></section>
+
+<section id="models" class="view hide"><div class="container section">
+  <div class="sectionHead"><div><h2>النماذج الأصلية المضافة من ملفاتك</h2><p>الصفحات محفوظة كما ظهرت في ملفات ديسمبر 2025 وأبريل 2026 ويونيو 2026.</p></div></div>
+  <div class="sourceNote"><span class="sourcePill">✓ المصدر: ملفاتك المرفوعة</span> <span class="sourcePill">✓ الأسئلة محفوظة كصور أصلية</span> <span class="sourcePill">✓ يمكن التكبير والقراءة من الهاتف</span></div>
+  <div id="modelsContent" class="modelsGrid" style="margin-top:16px"></div>
+</div></section>
+
+<section id="bank" class="view hide"><div class="container section">
+  <div class="sectionHead"><div><h2>بنك الأسئلة</h2><p>تدريب موضوعي مع تصحيح فوري وشرح مختصر.</p></div></div>
+  <div class="quizPanel"><div class="toolbar"><div class="filters"><select id="bankSubject"><option>كل المواد</option><option>الرياضيات</option><option>الفيزياء</option><option>الكيمياء</option></select><select id="bankTopic"><option>كل المحاور</option></select></div><button class="btn" onclick="shuffleBank()">خلط الأسئلة</button></div><div id="bankList"></div></div>
+</div></section>
+
+<section id="mock" class="view hide"><div class="container section">
+  <div class="sectionHead"><div><h2>الاختبار التجريبي</h2><p>48 سؤالًا • 60 دقيقة • اختيار واحد لكل سؤال.</p></div></div>
+  <div class="quizPanel">
+    <div class="toolbar"><div><span class="timer" id="timer">60:00</span><div class="progress"><i id="progress"></i></div></div><button class="btn primary" onclick="finishMock()">إنهاء الاختبار</button></div>
+    <div id="mockList"></div><div id="mockResult" class="result hide"></div>
+  </div>
+</div></section>
+
+<div id="viewer" class="viewer" onclick="closeViewer()"><button aria-label="إغلاق" onclick="event.stopPropagation();closeViewer()">×</button><img id="viewerImg" src="" alt="معاينة"></div>
+<footer><div class="container">
+<span id="footerBrandAr">منصة الشرق الأوسط • رياضيات • فيزياء • كيمياء</span><span id="footerBrandEn" style="display:none">Middle East Platform • Mathematics • Physics • Chemistry</span><br>
+<small id="footerSubAr">واجهة تعليمية مستقلة للتحضير والممارسة.</small><small id="footerSubEn" style="display:none">An independent learning platform for CSCA preparation and practice.</small><br>
+<strong style="display:inline-block;margin-top:8px;color:#35d7ff">تصميم وتطوير: بكيل شاجع شاجع الدميني</strong>
+</div></footer>
+
+<script>
+const syllabus={
+"الرياضيات":[
+["المجموعات والمتباينات","تعريف وتمثيل وعمليات المجموعات • المتباينات التربيعية والكسرية"],
+["الدوال","المجال والمدى • التزايد والتناقص • الزوجية والفردية • الدوال الأسية واللوغاريتمية والمثلثية"],
+["الهندسة والجبر","المستقيمات والدوائر والقطوع المخروطية • المتجهات • الأعداد المركبة • الهندسة الفراغية"],
+["الاحتمالات والإحصاء","الاحتمال الكلاسيكي • المتوسط والتباين • أساسيات التوزيع الطبيعي"]
+],
+"الفيزياء":[
+["الميكانيكا","الحركة • قوانين نيوتن • الزخم والدفع • الشغل والطاقة • الحركة الدائرية والجاذبية • SHM والموجات"],
+["الكهرومغناطيسية","قانون كولوم • المجال والجهد • أوم • التوالي والتوازي • المجال المغناطيسي • أمبير ولورنتز • فاراداي ولنز"],
+["الديناميكا الحرارية","النظرية الحركية للغازات • الغاز المثالي • القانون الأول للديناميكا الحرارية"],
+["البصريات","الانعكاس والانكسار • البصريات الهندسية • التداخل والحيود"],
+["الفيزياء الحديثة","التأثير الكهروضوئي • تركيب الذرة • أساسيات الفيزياء النووية"]
+],
+"الكيمياء":[
+["المفاهيم والحسابات","تصنيف المادة وحالاتها • الرموز والمعادلات • التركيز وpH • المول • الغاز المثالي"],
+["خواص المواد والتفاعلات","اللافلزات والفلزات والأكاسيد والأحماض والقواعد والأملاح • العضوية الأساسية • الأكسدة والاختزال • التفاعلات الأيونية"],
+["النظريات والقوانين","تركيب الذرة والجدول الدوري • الروابط والقوى بين الجزيئات • سرعة التفاعل والاتزان • محاليل الإلكتروليت"],
+["التجارب والتطبيقات","السلامة والأدوات • تحضير واختبار الغازات • الفصل والتنقية • العمليات الصناعية مثل الأمونيا"]
+]};
+
+
+const lessonData={
+"الرياضيات":[
+{title:"المجموعات والمتباينات",summary:"لغة المجموعات، العمليات، الفترات والمتباينات الخطية والتربيعية والكسرية.",explain:["ابدأ بتمييز العنصر عن المجموعة: الرمز ∈ يعني أن العنصر ينتمي إلى المجموعة، بينما ⊂ يعني أن مجموعة تقع داخل مجموعة أخرى. استخدم الاتحاد ∪ لجمع العناصر من المجموعتين، والتقاطع ∩ للعناصر المشتركة فقط.","في المتباينات، انقل الحدود كما في المعادلات، لكن عند الضرب أو القسمة في عدد سالب يجب عكس إشارة المتباينة. المتباينة التربيعية تُحل بعد إيجاد الجذور ثم تحديد الإشارة في الفترات الناتجة.","للمتباينات الكسرية يجب أولًا تحديد نقاط الصفر في البسط ونقاط عدم التعريف في المقام، ثم بناء جدول إشارة واختيار الفترات التي تحقق المطلوب."],formulas:["A∪B ، A∩B ، A\\B","x²+bx+c < 0 → حدّد الجذور ثم اختبر الإشارة","(x-a)/(x-b)>0 → نقاط حرجة: a,b مع استبعاد b"],mistakes:["إدخال نقطة تجعل المقام صفرًا.","نسيان عكس الإشارة عند القسمة على عدد سالب.","الخلط بين قوس مفتوح وقوس مغلق في تمثيل الفترات."] ,topic:"المجموعات والمتباينات"},
+{title:"الدوال",summary:"المجال والمدى، العمليات على الدوال، العكسية، التزايد والتناقص، الزوجية والفردية، الأسية واللوغاريتمية والمثلثية.",explain:["الدالة تربط كل قيمة إدخال بقيمة إخراج واحدة. في المجال استبعد القيم التي تجعل المقام صفرًا أو تجعل ما تحت الجذر سالبًا أو تجعل حجة اللوغاريتم غير موجبة.","لفحص الزوجية والفردية استخدم f(-x): إذا كانت مساوية لـ f(x) فالدالة زوجية، وإذا كانت مساوية لـ -f(x) فهي فردية. الدالة العكسية تُبنى بتبديل x وy ثم حل y.","في الأسية واللوغاريتمية تذكر أن a^x متزايدة عندما a>1 ومتناقصة عندما 0<a<1، وأن log_a x لا يُعرّف إلا لـ x>0."],formulas:["f^{-1}(x): بدّل x,y ثم حل بالنسبة إلى y","f(-x)=f(x) → زوجية; f(-x)=-f(x) → فردية","a^{x}=b ⇔ x=log_a b"],mistakes:["نسيان قيود المجال بعد التبسيط.","القول إن كل دالة خطية متزايدة دون فحص الميل.","اعتبار الدالة الأسية معرفة عند كل قيمة سالبة لمدخل اللوغاريتم."] ,topic:"الدوال"},
+{title:"الهندسة والجبر",summary:"المستقيمات والدوائر والقطوع المخروطية والمتجهات والأعداد المركبة والهندسة الإحداثية.",explain:["ميل المستقيم يساوي Δy/Δx، والزاوية مع المحور السيني ترتبط بالعلاقة m=tanθ. المستقيمات المتوازية لها الميل نفسه، والمتعامدة تحقق m1m2=-1 عندما يكون الميلان معرفين.","معادلة الدائرة مركزها (h,k) ونصف قطرها r هي (x-h)²+(y-k)²=r². في القطوع المخروطية انتبه إلى موضع x² وy² ومعاملاتهما لتحديد القطع المكافئ أو الناقص أو الزائد.","في المتجهات اجمع أو اطرح المركبات المناظرة، وطول المتجه √(x²+y²). للعدد المركب a+bi، القيمة المطلقة |z|=√(a²+b²)."],formulas:["m=(y₂-y₁)/(x₂-x₁)","(x-h)²+(y-k)²=r²","|a+bi|=√(a²+b²)"],mistakes:["الخلط بين نصف القطر وقطر الدائرة.","إهمال الإشارة في مركز الدائرة.","اعتبار y²=4ax دائرة أو قطعًا ناقصًا؛ هي صورة قطع مكافئ."] ,topic:"الهندسة والجبر"},
+{title:"الاحتمالات والإحصاء",summary:"الاحتمال الكلاسيكي، الاحتمال الشرطي، الاستقلال، المتوسط والتباين والانحراف المعياري والتوزيع الطبيعي.",explain:["الاحتمال الكلاسيكي هو عدد النتائج المرغوبة مقسومًا على عدد النتائج الممكنة عندما تكون النتائج متساوية الاحتمال. استخدم متممة الحدث عندما يكون حساب عدم وقوع الحدث أسهل.","الاحتمال الشرطي P(A|B) يساوي P(A∩B)/P(B)، وإذا كان الحدثان مستقلين فإن P(A∩B)=P(A)P(B).", "المتوسط هو مركز البيانات، والتباين يقيس تشتتها. في التوزيع الطبيعي تتجمع القيم حول المتوسط ويحدد z موقع القيمة بالنسبة للمتوسط بوحدات الانحراف المعياري."],formulas:["P(A)=n(A)/n(S)","P(A|B)=P(A∩B)/P(B)","z=(x-μ)/σ"],mistakes:["جمع احتمالات أحداث متداخلة دون طرح التقاطع.","استخدام P(A) بدل P(A|B).","الخلط بين التباين والانحراف المعياري."] ,topic:"الاحتمالات والإحصاء"}
+],
+"الفيزياء":[
+{title:"الميكانيكا",summary:"القياس والوحدات، الحركة، قوانين نيوتن، الزخم والدفع، الشغل والطاقة، الحركة الدائرية، الجاذبية، SHM والموجات.",explain:["ابدأ بتحويل الوحدات قبل التعويض. في الحركة المستقيمة استخدم v=v0+at وx=x0+v0t+½at² وv²=v0²+2aΔx عندما تكون العجلة ثابتة.","قانون نيوتن الثاني Fnet=ma يربط القوة المحصلة بالعجلة. احتكاك الانزلاق غالبًا fk=μkN، وعلى سطح أفقي N≈mg ما لم توجد قوى رأسية إضافية.","الزخم p=mv والدفع J=Δp. في النظام المعزول يحفظ الزخم. الشغل W=Fd cosθ، والطاقة الحركية ½mv²، ومع غياب الفقد تتحفظ الطاقة الميكانيكية."],formulas:["v=v₀+at","F=ma","p=mv, J=Δp","W=Fd cosθ, KE=½mv²","v=2πr/T"],mistakes:["استخدام المسافة بدل الإزاحة دون الانتباه.","نسيان الإشارة والاتجاه في القوى.","استخدام قانون السرعة النهائية دون التأكد من ثبات العجلة."] ,topic:"الميكانيكا"},
+{title:"الكهرومغناطيسية",summary:"الشحنة والقوة والمجال والجهد، قانون أوم، التوالي والتوازي، المغناطيسية والحث الكهرومغناطيسي.",explain:["قانون كولوم F=k|q1q2|/r²، والمجال الكهربائي E=F/q. المجال الناتج عن شحنة نقطية يتناسب عكسيًا مع مربع المسافة.","قانون أوم V=IR. في التوالي تتساوى شدة التيار وتجمع المقاومات، بينما في التوازي يتساوى الجهد وتجمع التوصيلات بحسب 1/Req=Σ1/R.","القوة المغناطيسية على سلك F=BIL sinθ، وعلى شحنة متحركة F=qvB sinθ. قانون فاراداي يربط القوة الدافعة بمعدل تغير الفيض، واتجاه الحث يعاكس التغير وفق قانون لنز."],formulas:["F=k|q₁q₂|/r²","E=F/q","V=IR","P=VI=I²R=V²/R","ε=-dΦ/dt"],mistakes:["اعتبار المقاومات في التوازي تُجمع مباشرة.","نسيان أن المجال كمية متجهة.","إهمال زاوية السلك مع المجال في القوة المغناطيسية."] ,topic:"الكهرومغناطيسية"},
+{title:"الديناميكا الحرارية",summary:"درجة الحرارة والحرارة، الغاز المثالي، العمليات الغازية، القانون الأول وانتقال الحرارة.",explain:["درجة الحرارة ترتبط بالطاقة الحركية المتوسطة للجسيمات، بينما الحرارة انتقال للطاقة بسبب فرق درجة الحرارة. لا تساوِ بين الحرارة ودرجة الحرارة.","الغاز المثالي يحقق PV=nRT. عند ثبوت الضغط V يتناسب مع T المطلقة، وعند ثبوت الحجم P يتناسب مع T، وعند ثبوت الحرارة PV ثابت.","في القانون الأول، إذا كان W هو الشغل الذي يبذله النظام، فإن ΔU=Q−W. الإشارة مهمة: تسخين النظام يزيد U، بينما الشغل المبذول بواسطة النظام قد يخفضها."],formulas:["PV=nRT","V/T=constant عند P ثابت","P/T=constant عند V ثابت","ΔU=Q-W"],mistakes:["استخدام Celsius مباشرة في قوانين الغازات.","خلط الشغل المبذول على النظام بالشغل المبذول بواسطة النظام.","إهمال الوحدات في R والضغط والحجم."] ,topic:"الديناميكا الحرارية"},
+{title:"البصريات",summary:"الانعكاس والانكسار، قانون سنل، الزاوية الحرجة، الصور والعدسات، الطبيعة الموجية للضوء.",explain:["في الانعكاس θi=θr. عند الانكسار استخدم قانون سنل n1 sinθ1=n2 sinθ2. عند الانتقال إلى وسط أقل معامل انكسار ينكسر الضوء مبتعدًا عن العمود.","الانعكاس الكلي الداخلي يحدث عندما ينتقل الضوء من وسط أعلى معامل انكسار إلى أقل ويتجاوز زاوية السقوط الزاوية الحرجة. الزاوية الحرجة تحقق sinθc=n2/n1.","التداخل والحيود يبرزان الطبيعة الموجية للضوء، وتأتي الأسئلة غالبًا بصورة مفاهيمية أو حسابية قصيرة."],formulas:["θi=θr","n₁sinθ₁=n₂sinθ₂","sinθc=n₂/n₁"],mistakes:["قياس الزاوية من السطح بدل العمود.","استخدام n الأقل على البسط في الزاوية الحرجة دون فحص اتجاه الانتقال.","الخلط بين الانعكاس الكلي والانعكاس العادي."] ,topic:"البصريات"},
+{title:"الفيزياء الحديثة",summary:"الفوتونات والتأثير الكهروضوئي وبنية الذرة ومقدمات الفيزياء النووية.",explain:["طاقة الفوتون E=hf، ولذلك تؤدي زيادة التردد إلى زيادة طاقة الفوتون. في التأثير الكهروضوئي يجب تجاوز تردد العتبة حتى تنبعث الإلكترونات.","تتبنى النماذج الحديثة فكرة مستويات طاقة كمية؛ الانتقالات بين المستويات ترافقها امتصاص أو إصدار فوتونات محددة الطاقة.","في الأسئلة التمهيدية قد يظهر معنى العدد الذري والنظائر والنشاط الإشعاعي، مع ضرورة التمييز بين عدد البروتونات وعدد النيوترونات."],formulas:["E=hf=hc/λ","Kmax=hf-φ"],mistakes:["ربط عدد الإلكترونات بطاقة الفوتون.","نسيان أن تردد العتبة شرط لبدء الانبعاث.","الخلط بين النظائر والعناصر المختلفة."] ,topic:"الفيزياء الحديثة"}
+],
+"الكيمياء":[
+{title:"المفاهيم والحسابات",summary:"بنية المادة، المول والكتلة المولية، التركيز، المعادلات، الغازات، pH والأحماض والقواعد.",explain:["المادة قد تكون عنصرًا أو مركبًا أو مخلوطًا. المول هو جسر الحسابات الكيميائية، وعدد المولات n=m/M. في المحاليل، المولارية M=n/V حيث V باللتر.","وازن المعادلات قبل إجراء الحسابات الستوكيومترية. استخدم معاملات المعادلة كنسب مولية، ثم حوّل بين الكتلة والمول والحجم حسب المطلوب.","pH=-log[H+]. عند 25°C يكون pH=7 متعادلًا تقريبًا، وأقل من ذلك حمضي وأعلى منه قاعدي."],formulas:["n=m/M","M=n/V","PV=nRT","pH=-log[H⁺]"],mistakes:["استخدام mL مكان L في المولارية دون تحويل.","إجراء الحساب قبل موازنة المعادلة.","نسيان الإشارة في اللوغاريتم."] ,topic:"المفاهيم والحسابات"},
+{title:"خواص المواد والتفاعلات",summary:"الفلزات واللافلزات، الأكاسيد، الأحماض والقواعد والأملاح، العضوية الأساسية، الأكسدة والاختزال والتفاعلات الأيونية.",explain:["صنّف المواد قبل حفظ التفاعلات: الفلزات واللافلزات تختلف في السلوك الإلكتروني، والأكاسيد قد تكون حمضية أو قاعدية أو أمفوتيرية بحسب تركيبها.","التعادل بين حمض وقاعدة يعطي عادة ملحًا وماء. في تفاعلات الأكسدة والاختزال، الأكسدة فقد إلكترونات والاختزال اكتساب إلكترونات، ويمكن تتبع ذلك بأعداد الأكسدة.","في العضوية الأساسية ركّز على التعرف على الألكانات والألكينات والألكاينات والكحولات وبعض المجموعات الوظيفية الشائعة."],formulas:["Oxidation = loss e⁻; Reduction = gain e⁻","acid+base → salt+water"],mistakes:["عكس معنى الأكسدة والاختزال.","اعتبار كل مادة تحتوي O أكسيدًا.","الخلط بين الصيغة والاسم الكيميائي."] ,topic:"خواص المواد والتفاعلات"},
+{title:"النظريات والقوانين",summary:"تركيب الذرة، الجدول الدوري، الروابط، القوى بين الجزيئات، سرعة التفاعل والاتزان والإلكتروليتات.",explain:["العدد الذري يساوي عدد البروتونات، والعدد الكتلي يساوي البروتونات + النيوترونات. ترتيب الإلكترونات يفسر الكثير من خواص العناصر.","الرابطة الأيونية تنتج عن انتقال إلكترونات وتآثر كهروستاتيكي، بينما التساهمية تقوم على مشاركة الإلكترونات. الروابط الهيدروجينية من القوى المهمة بين جزيئات الماء وبعض الجزيئات القطبية.","سرعة التفاعل تتأثر بدرجة الحرارة والتركيز ومساحة السطح والحفازات. الاتزان ديناميكي عندما تتساوى سرعتي التفاعل الأمامي والعكسي."],formulas:["Z=p","A=p+n","Rate ↑ غالبًا مع T وsurface area","At equilibrium: rate_forward=rate_reverse"],mistakes:["القول إن الاتزان يعني توقف التفاعل.","الخلط بين العدد الذري والعدد الكتلي.","اعتبار الحفاز يغيّر ثابت الاتزان بحد ذاته."] ,topic:"النظريات والقوانين"},
+{title:"التجارب والتطبيقات",summary:"السلامة المخبرية، الفصل والتنقية، اختبارات الغازات، التحضير، والعمليات الصناعية مثل هابر.",explain:["السلامة جزء من المعرفة الكيميائية: عند تسخين أنبوب اختبار وجّه الفتحة بعيدًا عن الأشخاص، وعند تخفيف حمض مركز اتبع الإجراء الآمن بإضافة الحمض إلى الماء بحذر.","اختيار طريقة الفصل يعتمد على الخاصية الفيزيائية: الترشيح لصلب غير ذائب، التقطير لسوائل تختلف درجات غليانها، والتبخير لفصل مذاب متطاير عنه من غير متطاير.","في التطبيقات الصناعية قد يظهر إنتاج الأمونيا بطريقة هابر من N2 وH2، واختبارات الغازات مثل إعادة توهج عود ثقاب متوهج مع O2."],formulas:["N₂+3H₂ ⇌ 2NH₃","filtration: insoluble solid/liquid","distillation: boiling-point difference"],mistakes:["اختيار الترشيح لمحلولين ممتزجين.","توجيه اللهب أو الأنبوب نحو الآخرين.","إهمال نوع خاصية الفصل المناسبة للمخلوط."] ,topic:"التجارب والتطبيقات"}
+]};
+
+const expandedLessons={"الرياضيات":[{"title":"المعادلات والمتباينات المتقدمة","summary":"المعادلات الخطية والتربيعية والكسرية، القيمة المطلقة، الإشارة، والفترات.","explain":["للمعادلات التربيعية استخدم التحليل إلى عوامل أو القانون العام x=(-b±√(b²−4ac))/(2a). المميز Δ=b²−4ac يحدد عدد الجذور الحقيقية.","في القيمة المطلقة |x−a|<b تعني a−b<x<a+b عندما b>0، بينما |x−a|>b تعطي اتحاد فترتين. في المتباينات الكسرية حدّد أصفار البسط ونقاط عدم تعريف المقام ثم اختبر الإشارة.","عند حل المتباينة مع دالة تربيعية، ارسم أو حلّل إشارة القطع المكافئ بين الجذور وخارجها قبل اختيار الفترة المطلوبة."],"formulas":["ax²+bx+c=0 ⇒ x=(-b±√(b²-4ac))/(2a)","Δ=b²-4ac","|x|<a ⇒ -a<x<a"],"mistakes":["استخدام جذور المعادلة كنقاط مسموحة تلقائيًا في المتباينة الصارمة.","نسيان استبعاد قيم المقام التي تجعله صفرًا.","نسيان أن a<0 يعكس شكل القطع المكافئ."],"topic":"المعادلات والمتباينات المتقدمة"},{"title":"الدوال: المجال والمدى والتحويلات","summary":"تحليل الدالة، المجال والمدى، تركيب الدوال، الدالة العكسية، والتحويلات البيانية.","explain":["المجال هو قيم x المسموح بها، والمدى هو القيم الناتجة. افحص المقامات والجذور واللوغاريتمات قبل أي تبسيط.","تركيب الدوال (f∘g)(x)=f(g(x))، أما العكسية فتوجد للدالة واحد-لواحد على المجال المختار. بيانيًا، انعكاس الدالة حول y=x يعطي دالتها العكسية.","التحويلات مثل f(x)+k تنقل الرسم رأسيًا، وf(x−h) تنقله يمينًا h، بينما af(x) يغير المقياس الرأسي."],"formulas":["(f∘g)(x)=f(g(x))","f^{-1}(f(x))=x","f(x-h): shift right h"],"mistakes":["عكس اتجاه الإزاحة الأفقية.","إيجاد عكسية لدالة ليست واحد-لواحد دون تقييد المجال.","نسيان قيود المجال بعد تركيب دالتين."],"topic":"الدوال: المجال والمدى والتحويلات"},{"title":"الدوال الأسية واللوغاريتمية","summary":"القوانين الأسية واللوغاريتمية، المعادلات، والنمو والتناقص.","explain":["القواعد الأساسية a^m a^n=a^{m+n} و(a^m)^n=a^{mn}. للدالة الأسية قاعدة موجبة a≠1، ومدخلها يمكن أن يكون أي عدد حقيقي.","اللوغاريتم هو الأس الذي نحتاجه للوصول إلى عدد معين: log_a x=y تعني a^y=x. لذلك يجب أن يكون x>0 وa>0 وa≠1.","عند حل المعادلات، حاول توحيد القواعد أولًا، أو استخدم اللوغاريتمات عندما لا يمكن ذلك. في مسائل النمو استخدم الصيغة A=A0e^{kt} أو A=A0a^t حسب المعطى."],"formulas":["a^x=b ⇔ x=log_a b","log_a(xy)=log_a x+log_a y","log_a(x^r)=r log_a x"],"mistakes":["أخذ لوغاريتم لعدد غير موجب.","تطبيق log(x+y)=logx+logy، وهي قاعدة خاطئة.","الخلط بين e^x و10^x."],"topic":"الدوال الأسية واللوغاريتمية"},{"title":"الدوال المثلثية","summary":"الدوال المثلثية، الدائرة المثلثية، الهويات الأساسية، المعادلات والرسوم.","explain":["في المثلث القائم sinθ=opposite/hypotenuse وcosθ=adjacent/hypotenuse وtanθ=opposite/adjacent. استخدم دائرة الوحدة لتحديد الإشارات والقيم الخاصة.","من أهم الهويات sin²θ+cos²θ=1 وtanθ=sinθ/cosθ. استخدمها لتبسيط التعبيرات وحل المعادلات.","انتبه إلى الفترة: sin وcos دورهما 2π، بينما tan دورها π. وفي التحويلات y=A sin(Bx+C)+D تحدد A السعة و2π/|B| الفترة."],"formulas":["sin²x+cos²x=1","tanx=sinx/cosx","Period(sin Bx)=2π/|B|"],"mistakes":["نسيان الربع وتغير الإشارة.","استخدام درجات بدل راديان دون الانتباه.","اعتبار tan دورها 2π بدل π."],"topic":"الدوال المثلثية"},{"title":"المتتاليات والمتسلسلات","summary":"المتتالية الحسابية والهندسية، الحد العام، المجاميع، والمتسلسلات الهندسية.","explain":["في المتتالية الحسابية الفرق d ثابت، وفي الهندسية النسبة r ثابتة. استخرج d أو r من حدين متتاليين قبل استخدام القانون.","للمتتالية الحسابية an=a1+(n−1)d، ومجموع أول n حدًا Sn=n/2[2a1+(n−1)d]. للهندسية an=a1r^{n−1}.","إذا كانت |r|<1 فإن مجموع المتسلسلة الهندسية اللانهائية يساوي a1/(1−r)."],"formulas":["a_n=a_1+(n-1)d","S_n=n/2[2a_1+(n-1)d]","a_n=a_1r^{n-1}","S_∞=a_1/(1-r), |r|<1"],"mistakes":["استخدام قانون هندسي لمتتالية حسابية.","نسيان n−1 في الحد العام.","استخدام S∞ عندما |r|≥1."],"topic":"المتتاليات والمتسلسلات"},{"title":"التفاضل: النهايات والمشتقات","summary":"فكرة النهاية، تعريف المشتقة، قواعد الاشتقاق، مشتقات الدوال الأساسية.","explain":["النهاية تصف قيمة اقتراب الدالة عندما يقترب x من قيمة معينة، ويمكن في الحالات البسيطة التعويض المباشر أو التحليل لإزالة عدم التعيين.","المشتقة هي معدل التغير اللحظي وميل المماس: f'(x)=lim_{h→0}[f(x+h)−f(x)]/h. في CSCA الرسمي يظهر أساس المشتقة ومعناها الهندسي وتطبيقاتها البسيطة.","أهم القواعد: مشتقة x^n هي nx^{n−1}، ومشتقة ثابت صفر، ومشتقة الجمع هي جمع المشتقات. للدوال المركبة استخدم قاعدة السلسلة."],"formulas":["f'(x)=lim_{h→0}(f(x+h)-f(x))/h","d(x^n)/dx=nx^{n-1}","(uv)'=u'v+uv'","(f(g(x)))'=f'(g(x))g'(x)"],"mistakes":["الخلط بين قيمة الدالة ومشتقتها.","نسيان ضرب مشتقة الداخل في قاعدة السلسلة.","اشتقاق الثابت على أنه 1 بدل 0."],"topic":"التفاضل: النهايات والمشتقات"},{"title":"تطبيقات التفاضل","summary":"المماس، التزايد والتناقص، القيم القصوى، التقعر، ومعدلات التغير.","explain":["معادلة المماس عند x=a هي y−f(a)=f'(a)(x−a). إذا كانت f'(x)>0 على فترة فالدالة متزايدة، وإذا كانت سالبة فهي متناقصة.","النقاط الحرجة تحدث عندما f'(x)=0 أو تكون المشتقة غير موجودة. قارن القيم المناسبة لتحديد القيمة العظمى أو الصغرى المحلية، وراقب المجال في مسائل الاختيار.","المشتقة الثانية f'' تساعد على تحديد التقعر: موجبة يعني تقعر لأعلى وسالبة تقعر لأسفل، ويمكن استخدامها مع اختبارات القيم القصوى."],"formulas":["y-f(a)=f'(a)(x-a)","f'(x)>0 ⇒ increasing","f'(x)<0 ⇒ decreasing","f''(x)>0 ⇒ concave up"],"mistakes":["اعتبار كل نقطة f'=0 قيمة عظمى أو صغرى دون فحص الإشارة.","إهمال أطراف المجال المغلق.","الخلط بين التقعر والميل."],"topic":"تطبيقات التفاضل"},{"title":"التكامل الأساسي","summary":"المضاد التفاضلي، التكامل غير المحدد والمحدد، المساحة تحت المنحنى وتطبيقات بسيطة.","explain":["التكامل غير المحدد هو عائلة من الدوال التي مشتقتها تساوي integrand، ولذلك نضيف ثابت التكامل C. القاعدة الأساسية ∫x^n dx=x^{n+1}/(n+1)+C عندما n≠−1.","التكامل المحدد يعطي التراكم أو المساحة الموقعة بين حدين، ويُحسب من خلال مبرهنة أساسية: ∫_a^b f(x)dx=F(b)−F(a). إذا كانت الدالة تحت المحور تكون المساحة الهندسية موجبة لكن التكامل الموقّع سالب.","التكامل جزء تمهيدي في هذه المنصة للتوسعة التدريبية؛ المنهج الرسمي المنشور يذكر أساسيات المشتقات والتفاضل والتطبيقات البسيطة، وليس مقرر Calculus جامعيًا كاملًا."],"formulas":["∫x^n dx=x^{n+1}/(n+1)+C","∫_a^b f(x)dx=F(b)-F(a)","d/dx(∫_a^x f(t)dt)=f(x)"],"mistakes":["نسيان +C في التكامل غير المحدد.","استخدام صيغة القوة عند n=−1.","الخلط بين المساحة الهندسية والتكامل الموقّع."],"topic":"التكامل الأساسي"},{"title":"الهندسة التحليلية والقطوع المخروطية","summary":"المستقيم والدائرة والقطع المكافئ والناقص والزائد والمسافات والميل.","explain":["المسافة بين نقطتين d=√[(x2−x1)²+(y2−y1)²]، ونقطة المنتصف هي متوسط الإحداثيات. استخدم الميل لتحديد التوازي والتعامد.","الدائرة (x−h)²+(y−k)²=r². القطع المكافئ قد يكتب y²=4ax أو x²=4ay، بينما للناقص والزائد حدّان تربيعيان بعلامتين مختلفتين أو متشابهتين بحسب النوع.","في الأسئلة، حدد نوع المنحنى من المعادلة القياسية ثم استخرج المركز أو الرأس أو نصف المحور أو البؤرة إذا كان المطلوب."],"formulas":["d=√((x₂-x₁)²+(y₂-y₁)²)","midpoint=((x₁+x₂)/2,(y₁+y₂)/2)","(x-h)²+(y-k)²=r²","y²=4ax"],"mistakes":["الخلط بين a وr في القطع المكافئ والدائرة.","إشارة مركز الدائرة.","تحديد القطع الناقص أو الزائد من الشكل دون فحص الإشارات."],"topic":"الهندسة التحليلية والقطوع المخروطية"},{"title":"المتجهات","summary":"المركبات، الطول، الجمع والطرح، الضرب القياسي والزوايا بين المتجهات.","explain":["المتجه له مقدار واتجاه. اجمع المتجهات مركبة بمركبة، وطوله في بعدين √(x²+y²). المتجه الصفري مقداره صفر.","الضرب القياسي A·B=|A||B|cosθ=A_xB_x+A_yB_y. إذا كان الناتج صفرًا والمتجهان غير صفريين فهما متعامدان.","يمكن استخدام المركبات لحساب الزاوية أو الإسقاط، وهي مهارات مفيدة في الهندسة والفيزياء أيضًا."],"formulas":["|A|=√(A_x²+A_y²)","A·B=A_xB_x+A_yB_y","cosθ=(A·B)/(|A||B|)"],"mistakes":["جمع المقادير بدل المركبات.","نسيان أن الضرب القياسي يعطي عددًا لا متجهًا.","إهمال اتجاه المركبات السالبة."],"topic":"المتجهات"},{"title":"الأعداد المركبة","summary":"الصورة الجبرية، العمليات، المرافق، القيمة المطلقة والتمثيل على المستوى المركب.","explain":["العدد المركب z=a+bi حيث i²=−1. اجمع واضرب بجمع الحدود المتشابهة واستبدال i² بـ −1.","مرافق z=a+bi هو a−bi، ويُستخدم في قسمة الأعداد المركبة بضرب البسط والمقام في المرافق. القيمة المطلقة |z|=√(a²+b²).","تمثّل a+bi بالنقطة (a,b) في المستوى المركب؛ المحور الحقيقي أفقي والتخيلي عمودي."],"formulas":["i²=-1","|a+bi|=√(a²+b²)","(a+bi)(a-bi)=a²+b²"],"mistakes":["نسيان i²=−1.","الخلط بين المرافق والقيمة المطلقة.","خطأ في إشارة الجزء التخيلي عند إيجاد المرافق."],"topic":"الأعداد المركبة"},{"title":"الهندسة الفراغية","summary":"الإحداثيات ثلاثية الأبعاد، المسافة في الفراغ، المكعبات والأسطوانات والكرات والحجوم.","explain":["في الفراغ توجد ثلاثة محاور x,y,z، والمسافة بين نقطتين تُحسب بإضافة مربع فرق z إلى صيغة البعدين.","احفظ صيغ الحجوم الأساسية: المكعب a³، متوازي المستطيلات lwh، الأسطوانة πr²h، والكرة 4πr³/3.","في المسائل المركبة، افصل المطلوب إلى طول أو مساحة أو حجم ثم عوّض الوحدات نفسها."],"formulas":["d=√((Δx)²+(Δy)²+(Δz)²)","V_cylinder=πr²h","V_sphere=4πr³/3"],"mistakes":["نسيان البعد الثالث.","استخدام مساحة الدائرة بدل مساحة القاعدة كاملة في الحجم.","الخلط بين نصف القطر والقطر."],"topic":"الهندسة الفراغية"},{"title":"الاحتمالات","summary":"الفضاء العيني، المتممة، الاتحاد والتقاطع، الاحتمال الشرطي والاستقلال.","explain":["ابدأ بتحديد جميع النتائج الممكنة. في النموذج الكلاسيكي P(A)=عدد النتائج المناسبة/عدد النتائج الكلية عندما تكون متساوية الاحتمال.","P(A∪B)=P(A)+P(B)−P(A∩B). أما المتممة P(A^c)=1−P(A). الاحتمال الشرطي يغيّر الفضاء المتاح بناءً على حدوث B.","إذا كان الحدثان مستقلين فإن معرفة حدوث أحدهما لا تغير احتمال الآخر، ويكون P(A∩B)=P(A)P(B)."],"formulas":["P(A^c)=1-P(A)","P(A∪B)=P(A)+P(B)-P(A∩B)","P(A|B)=P(A∩B)/P(B)"],"mistakes":["نسيان طرح التقاطع في الاتحاد.","اعتبار أحداث غير مستقلة مستقلة.","استخدام المقام الخطأ في الاحتمال الشرطي."],"topic":"الاحتمالات"},{"title":"الإحصاء والتوزيع الطبيعي","summary":"المتوسط والوسيط والمنوال والتباين والانحراف المعياري ودرجة z وفكرة التوزيع الطبيعي.","explain":["المتوسط الحسابي يساوي مجموع القيم مقسومًا على عددها، والوسيط هو القيمة الوسطى بعد الترتيب، والمنوال الأكثر تكرارًا. لكل مقياس استخدام مختلف.","التباين يقيس متوسط مربعات الانحرافات عن المتوسط، والانحراف المعياري هو الجذر التربيعي للتباين. كلما زاد الانحراف المعياري زاد انتشار البيانات.","التوزيع الطبيعي متماثل حول المتوسط. درجة z تخبرك كم انحراف معياري تقع القيمة فوق أو تحت المتوسط، وتُستخدم للمقارنة بين القيم."],"formulas":["x̄=Σx/n","σ²=Σ(x-μ)²/N","σ=√σ²","z=(x-μ)/σ"],"mistakes":["الخلط بين σ وσ².","نسيان ترتيب البيانات عند إيجاد الوسيط.","تفسير z الموجب على أنه أقل من المتوسط."],"topic":"الإحصاء والتوزيع الطبيعي"}],"الفيزياء":[{"title":"الوحدات والمتجهات والكميات الفيزيائية","summary":"النظام الدولي، التحويلات، الكميات القياسية والمتجهة، والتحليل البعدي.","explain":["الوحدات الأساسية في SI تشمل m وkg وs وA وK. قبل التعويض، وحّد جميع الوحدات لتجنب أخطاء العوامل 10.","الكمية القياسية تحتاج مقدارًا فقط مثل الكتلة والزمن، والمتجهة تحتاج مقدارًا واتجاهًا مثل الإزاحة والقوة والسرعة المتجهة.","التحليل البعدي يساعد على اكتشاف الصيغ غير الصحيحة؛ يجب أن تتطابق أبعاد طرفي المعادلة."],"formulas":["1 N=1 kg·m/s²","1 J=1 N·m","1 W=1 J/s"],"mistakes":["استخدام km/h مع معادلات SI دون تحويل.","الخلط بين المسافة والإزاحة.","تجاهل الاتجاه في كمية متجهة."],"topic":"الوحدات والمتجهات والكميات الفيزيائية"},{"title":"الحركة الخطية","summary":"الإزاحة والسرعة والتسارع والحركة بعجلة ثابتة والسقوط الحر.","explain":["السرعة المتوسطة هي Δx/Δt، والتسارع هو Δv/Δt. اختر اتجاهًا موجبًا ثم التزم به في جميع الإشارات.","عند ثبات التسارع استخدم معادلات الحركة الثلاث بحسب المعطيات. في السقوط الحر قرب سطح الأرض يكون مقدار g≈9.8 m/s² إلى أسفل.","الرسوم البيانية مهمة: ميل منحنى x-t يعطي v، وميل v-t يعطي a، والمساحة تحت v-t تعطي الإزاحة."],"formulas":["v=v₀+at","Δx=v₀t+½at²","v²=v₀²+2aΔx","g≈9.8 m/s²"],"mistakes":["اعتبار السرعة المتوسطة دائمًا متوسط السرعتين.","نسيان إشارة g.","استخدام معادلات العجلة الثابتة عندما تكون العجلة متغيرة."],"topic":"الحركة الخطية"},{"title":"قوانين نيوتن والاحتكاك","summary":"القوة المحصلة، مخططات الجسم الحر، الوزن، الشد، القوة العمودية والاحتكاك.","explain":["القانون الأول يصف القصور الذاتي، والثاني ΣF=ma، والثالث يربط قوتي الفعل ورد الفعل على جسمين مختلفين.","ابدأ دائمًا بمخطط جسم حر. على سطح أفقي غالبًا N=mg إذا لم توجد قوى رأسية إضافية. الاحتكاك الحركي fk=μkN واتجاهه عكس الحركة النسبية.","في المستوى المائل حلل الوزن إلى مركبتين: mg sinθ على طول السطح وmg cosθ عموديًا عليه."],"formulas":["ΣF=ma","W=mg","f_k=μ_kN","N≈mg"],"mistakes":["وضع قوتي الفعل ورد الفعل على الجسم نفسه.","اختيار اتجاه الاحتكاك عشوائيًا.","نسيان تحليل الوزن على المستوى المائل."],"topic":"قوانين نيوتن والاحتكاك"},{"title":"الحركة الدائرية","summary":"السرعة الزاوية، التسارع المركزي، القوة المركزية والحركة الدائرية المنتظمة.","explain":["في الحركة الدائرية المنتظمة تتغير جهة السرعة حتى لو بقي مقدارها ثابتًا. التسارع المركزي نحو المركز a_c=v²/r=ω²r.","القوة المركزية ليست قوة جديدة مستقلة؛ هي اسم لمحصلة القوى المتجهة نحو المركز، وقد يوفرها الشد أو الاحتكاك أو الجاذبية.","العلاقة v=ωr تربط السرعة الخطية بالسرعة الزاوية."],"formulas":["a_c=v²/r=ω²r","F_c=mv²/r","v=ωr","ω=2π/T"],"mistakes":["القول إن السرعة المتجهة ثابتة لأنها ذات مقدار ثابت.","إضافة قوة مركزية إلى القوى بدل تحديد القوة التي تؤدي دورها.","الخلط بين T وf حيث f=1/T."],"topic":"الحركة الدائرية"},{"title":"الزخم والدفع والتصادمات","summary":"الزخم الخطي، الدفع، حفظ الزخم والتصادمات البسيطة.","explain":["الزخم p=mv كمية متجهة. الدفع يساوي تغير الزخم J=Δp ويساوي مساحة منحنى القوة-الزمن.","في نظام معزول مجموع الزخم قبل التصادم يساوي مجموع الزخم بعده. في التصادم غير المرن قد لا تحفظ الطاقة الحركية، لكنها لا تعني فقد الطاقة الكلية.","حدد الاتجاه الموجب قبل الحساب، خصوصًا في التصادمات أحادية البعد."],"formulas":["p=mv","J=FΔt=Δp","Σp_before=Σp_after"],"mistakes":["حفظ الطاقة الحركية في كل تصادم.","إهمال الإشارة للسرعات المتعاكسة.","الخلط بين الدفع والشغل."],"topic":"الزخم والدفع والتصادمات"},{"title":"الشغل والطاقة والقدرة","summary":"الشغل والقوة، الطاقة الحركية والوضعية، حفظ الطاقة والقدرة والكفاءة.","explain":["الشغل W=Fd cosθ؛ يكون موجبًا عندما يكون للقوة مركبة في اتجاه الإزاحة وسالبًا عندما تعاكسها.","نظرية الشغل والطاقة تقول W_net=ΔK. وطاقة الوضع الثقالية قرب سطح الأرض mgh، وطاقة الوضع المرونية ½kx².","إذا لم توجد قوى غير محافظة مهمة، يمكن استخدام حفظ الطاقة الميكانيكية. القدرة هي معدل بذل الشغل."],"formulas":["W=Fd cosθ","K=½mv²","U_g=mgh","U_s=½kx²","P=W/t=Fv"],"mistakes":["حساب الشغل من Fd دون زاوية عندما تكون القوة مائلة.","الخلط بين القدرة والطاقة.","حفظ الطاقة الميكانيكية رغم وجود احتكاك دون حساب شغله."],"topic":"الشغل والطاقة والقدرة"},{"title":"الجاذبية والمدارات","summary":"قانون نيوتن للجذب العام، المجال والوزن والمدارات والسرعة المدارية.","explain":["قوة الجذب بين كتلتين F=Gm1m2/r² وتكون على خط الوصل بينهما. قرب سطح الأرض يكون الوزن mg تقريبًا.","تقل g مع الارتفاع لأن المسافة عن مركز الأرض تزداد. في المدار الدائري توفر الجاذبية القوة المركزية.","لا تعتمد كتلة الجسم على موقعه، بينما الوزن يتغير بتغير g."],"formulas":["F=Gm₁m₂/r²","g=GM/r²","v_orbit=√(GM/r)"],"mistakes":["استخدام الارتفاع بدل المسافة من مركز الأرض.","اعتبار الوزن والكتلة الشيء نفسه.","نسيان تربيع r."],"topic":"الجاذبية والمدارات"},{"title":"الحركة التوافقية البسيطة","summary":"الإزاحة والسرعة والتسارع والطاقة في SHM والنابض والبندول البسيط.","explain":["في SHM يكون التسارع متناسبًا مع الإزاحة ومعاكسًا لها: a=−ω²x. عند الاتزان تكون السرعة أعظمية، وعند الطرفين تكون السرعة صفرًا.","للنابض ω=√(k/m) وT=2π√(m/k). للبندول البسيط عند الزوايا الصغيرة T=2π√(L/g).","الطاقة الميكانيكية ثابتة في النموذج المثالي وتنتقل بين الحركية والوضعية."],"formulas":["a=-ω²x","T=2π√(m/k)","T=2π√(L/g)","E=½kA²"],"mistakes":["اعتبار التسارع في اتجاه الإزاحة.","استخدام قانون البندول لزوايا كبيرة دون شرط التقريب.","الخلط بين السعة والإزاحة اللحظية."],"topic":"الحركة التوافقية البسيطة"},{"title":"الموجات","summary":"الطول الموجي والتردد والسرعة والموجات الميكانيكية والطاقة والمبادئ الأساسية.","explain":["العلاقة الأساسية v=fλ. التردد يحدده المصدر في كثير من الأوساط، بينما تتغير السرعة والطول الموجي عند تغير الوسط.","الموجة تنقل طاقة ولا تنقل المادة ككل لمسافة كبيرة. الموجات المستعرضة يكون الاهتزاز عموديًا على اتجاه الانتشار والطولية موازيًا له.","استخدم الرسوم لتحديد السعة والطول الموجي، وانتبه إلى أن المسافة بين قمتين متتاليتين هي λ."],"formulas":["v=fλ","f=1/T"],"mistakes":["الخلط بين السعة والطول الموجي.","اعتبار التردد يتغير تلقائيًا عند دخول وسط جديد.","حساب λ من المسافة بين قمة وقاع متتاليين دون ضرب مناسب."],"topic":"الموجات"},{"title":"الكهرباء الساكنة","summary":"الشحنة، قانون كولوم، المجال الكهربائي، الجهد والطاقة الكامنة.","explain":["الشحنة نوعان، والقوة بين شحنتين نقطيتين تعطى بقانون كولوم وتكون تجاذبًا للمختلفتين وتنافرًا للمتشابهتين.","المجال الكهربائي هو القوة لكل وحدة شحنة اختبار موجبة. اتجاه المجال يخرج من الشحنة الموجبة ويدخل إلى السالبة.","الجهد كمية قياسية، والفرق في الجهد يرتبط بالطاقة لكل وحدة شحنة."],"formulas":["F=k|q₁q₂|/r²","E=F/q=kQ/r²","V=kQ/r","U=qV"],"mistakes":["التعامل مع الجهد كمتجه.","عكس اتجاه المجال للشحنة الموجبة.","نسيان أن القوة تعتمد على حاصل ضرب الشحنتين."],"topic":"الكهرباء الساكنة"},{"title":"الدوائر الكهربائية والتيار","summary":"التيار والجهد والمقاومة وقانون أوم والتوصيل على التوالي والتوازي والطاقة الكهربائية.","explain":["التيار I=ΔQ/Δt، وقانون أوم V=IR للمقاومات الأومية في شروطها المناسبة. المقاومة المكافئة في التوالي هي مجموع المقاومات.","في التوازي يكون فرق الجهد نفسه على الفروع، ويكون 1/Req=Σ1/R. التيار الكلي يساوي مجموع تيارات الفروع.","القدرة الكهربائية P=VI ويمكن تحويلها إلى I²R أو V²/R، والطاقة E=Pt."],"formulas":["I=Q/t","V=IR","R_series=ΣR","1/R_parallel=Σ1/R","P=VI=I²R=V²/R"],"mistakes":["جمع مقاومات التوازي مباشرة.","الخلط بين التيار والجهد في التوالي والتوازي.","نسيان تحويل الزمن إلى ثوانٍ عند حساب الطاقة بالجول."],"topic":"الدوائر الكهربائية والتيار"},{"title":"المجال المغناطيسي والقوة","summary":"المجال المغناطيسي، قوة لورنتز، قوة السلك الحامل للتيار وقواعد الاتجاه.","explain":["المجال المغناطيسي كمية متجهة تقاس بالتسلا. الشحنة المتحركة تتعرض لقوة qvB sinθ، وتكون القوة عمودية على v وB عندما تكون الزاوية 90°.","السلك الحامل للتيار في مجال يتعرض لقوة BIL sinθ. استخدم قاعدة اليد المناسبة لتحديد الاتجاه وفق نظام الإحداثيات المعطى.","إذا تحركت شحنة موازية للمجال تكون القوة المغناطيسية صفرًا."],"formulas":["F=qvB sinθ","F=BIL sinθ","F=0 when v∥B"],"mistakes":["نسيان sinθ.","استخدام مقدار الشحنة السالبة دون عكس الاتجاه عند استخدام قاعدة اليد.","اعتبار المجال المغناطيسي يبذل شغلاً على شحنة نقطية دائمًا؛ القوة المغناطيسية عمودية على الحركة في الحالة المثالية."],"topic":"المجال المغناطيسي والقوة"},{"title":"الحث الكهرومغناطيسي","summary":"الفيض، قانون فاراداي، قانون لنز والقوة الدافعة المستحثة.","explain":["الفيض Φ=BA cosθ لسطح مستوٍ. تتولد قوة دافعة مستحثة عندما يتغير الفيض خلال الدائرة.","قانون فاراداي ε=−dΦ/dt، والإشارة السالبة تعبّر عن قانون لنز: التيار المستحث يعاكس التغير الذي سببه.","يمكن أن يتغير الفيض بتغير B أو A أو الزاوية. لذلك ليس شرطًا أن يتحرك المغناطيس فقط حتى يحدث الحث."],"formulas":["Φ=BA cosθ","ε=-dΦ/dt","ε≈-ΔΦ/Δt"],"mistakes":["القول إن وجود مجال مغناطيسي ثابت وحده يولد تيارًا.","نسيان cosθ في الفيض.","عكس اتجاه التيار المستحث بالنسبة للتغير."],"topic":"الحث الكهرومغناطيسي"},{"title":"الحرارة والنظرية الحركية","summary":"درجة الحرارة والطاقة الداخلية والسعة الحرارية وانتقال الحرارة والنموذج الجزيئي.","explain":["درجة الحرارة المطلقة بالكلفن ترتبط بمتوسط الطاقة الحركية للجزيئات. الحرارة طاقة تنتقل بسبب فرق درجة الحرارة.","يمكن حساب الحرارة المحسوسة من Q=mcΔT، بينما تغيير الحالة يستخدم الحرارة الكامنة Q=mL.","تنتقل الحرارة بالتوصيل والحمل والإشعاع. في أسئلة الغاز المثالي ركز على علاقة المتغيرات وتوحيد الوحدات."],"formulas":["Q=mcΔT","Q=mL","T(K)=T(°C)+273.15"],"mistakes":["استخدام Celsius في PV=nRT.","الخلط بين الحرارة ودرجة الحرارة.","نسيان أن Q أثناء تغير الطور قد يحدث دون تغير في T."],"topic":"الحرارة والنظرية الحركية"},{"title":"الغاز المثالي وقوانين الغازات","summary":"قانون الغاز المثالي والعلاقات بين الضغط والحجم ودرجة الحرارة والعمليات البسيطة.","explain":["المعادلة PV=nRT تجمع المتغيرات الأساسية. استخدم T بالكلفن، وR المتوافق مع وحدات الضغط والحجم.","عند ثبوت n، قانون بويل PV=constant، وقانون شارل V/T=constant عند ثبوت الضغط، وقانون جاي-لوساك P/T=constant عند ثبوت الحجم.","يمكن مقارنة حالتين للغاز باستخدام P1V1/T1=P2V2/T2 عندما تكون كمية الغاز ثابتة."],"formulas":["PV=nRT","P₁V₁/T₁=P₂V₂/T₂","PV=constant (T,n fixed)"],"mistakes":["استخدام درجة الحرارة المئوية.","تغيير عدد المولات دون إدخاله في المقارنة.","عدم توحيد وحدات الضغط والحجم مع R."],"topic":"الغاز المثالي وقوانين الغازات"},{"title":"القانون الأول للديناميكا الحرارية","summary":"الطاقة الداخلية والحرارة والشغل وعلاقة القانون الأول بالعمليات الغازية.","explain":["القانون الأول يحفظ الطاقة: وفق اصطلاح W شغل يبذله النظام ΔU=Q−W. إذا استُخدم اصطلاح مختلف للشغل يجب الالتزام به، والأهم فهم الإشارة.","في عملية عند حجم ثابت لا يبذل الغاز شغلاً تمدديًا، بينما عند ضغط ثابت يمكن أن يكون الشغل W=PΔV في الحالة البسيطة.","الطاقة الداخلية لدالة حالة؛ تعتمد في الغاز المثالي أحادي الذرة على درجة الحرارة فقط في النموذج الأساسي."],"formulas":["ΔU=Q-W","W=PΔV","ΔU=Q at constant V (simple case)"],"mistakes":["تغيير اصطلاح إشارة W أثناء الحل.","الخلط بين ΔU وQ؛ الحرارة ليست دالة حالة.","نسيان أن الانضغاط يجعل ΔV سالبًا."],"topic":"القانون الأول للديناميكا الحرارية"},{"title":"البصريات الهندسية","summary":"الانعكاس والمرايا والانكسار وقانون سنل والعدسات والصور.","explain":["قانون الانعكاس θi=θr وتقاس الزوايا من العمود. في الانكسار n1sinθ1=n2sinθ2، ويتغير اتجاه الضوء لأن سرعته تتغير في الوسط.","للمرايا والعدسات الرقيقة يمكن استخدام معادلة الصورة 1/f=1/do+1/di والتكبير m=−di/do وفق الاصطلاح الشائع.","حدد نوع الصورة من إشارة المسافة والتكبير أو من الرسم الشعاعي إذا كان السؤال مفاهيميًا."],"formulas":["θ_i=θ_r","n₁sinθ₁=n₂sinθ₂","1/f=1/d_o+1/d_i","m=-d_i/d_o"],"mistakes":["قياس الزاوية من السطح.","إهمال إشارة البعد البؤري حسب نوع المرآة/العدسة.","الخلط بين التكبير الخطي والتكبير الزاوي."],"topic":"البصريات الهندسية"},{"title":"التداخل والحيود","summary":"الطبيعة الموجية للضوء، التداخل البنّاء والهدّام والحيود الأساسي.","explain":["يحدث التداخل عندما تتراكب موجات مترابطة. فرق المسار يحدد إن كان التداخل بنّاءً أو هدّامًا.","في التداخل البنّاء البسيط فرق المسار mλ، وفي الهدّام (m+1/2)λ. الحيود يظهر بوضوح عندما يكون حجم الفتحة قريبًا من الطول الموجي.","ركز على قراءة الرسوم وتحديد فرق المسار وعدد الأطوال الموجية."],"formulas":["Δr=mλ (constructive)","Δr=(m+1/2)λ (destructive)"],"mistakes":["عكس شروط التداخل البنّاء والهدّام.","اعتبار الحيود ظاهرة مختلفة تمامًا عن التداخل؛ كلاهما دليل موجي.","الخلط بين فرق المسار والطول الموجي نفسه."],"topic":"التداخل والحيود"},{"title":"التأثير الكهروضوئي والفوتونات","summary":"طاقة الفوتون وتردد العتبة ودالة الشغل وطاقة الإلكترون القصوى.","explain":["طاقة الفوتون E=hf=hc/λ. زيادة التردد تزيد طاقة الفوتون، بينما زيادة شدة الضوء عند ثبات التردد تزيد عدد الفوتونات وبالتالي قد تزيد شدة التيار الكهروضوئي.","يبدأ الانبعاث عندما hf≥φ. طاقة الحركة القصوى Kmax=hf−φ، وتردد العتبة f0=φ/h.","في أسئلة الرسوم، ميل علاقة Kmax مع f يساوي h، والقطع على المحور يعطي معلومات عن دالة الشغل."],"formulas":["E=hf=hc/λ","K_max=hf-φ","f₀=φ/h"],"mistakes":["القول إن زيادة الشدة تعوض ترددًا أقل من العتبة.","الخلط بين طاقة الفوتون وعدد الفوتونات.","استخدام λ مع c دون توحيد الوحدات."],"topic":"التأثير الكهروضوئي والفوتونات"},{"title":"الذرة والفيزياء النووية","summary":"مستويات الطاقة والنماذج الذرية والنظائر والنشاط الإشعاعي ونصف العمر والطاقة النووية الأساسية.","explain":["الإلكترونات في النموذج الكمي توجد في مستويات طاقة محددة. الانتقال بين مستويين يصدر أو يمتص فوتونًا بطاقة تساوي فرق الطاقتين.","النظائر لها العدد الذري نفسه وعدد نيوترونات مختلف. في التحلل الإشعاعي يمكن أن تتغير هوية النواة أو كتلتها حسب نوع الإشعاع.","نصف العمر هو الزمن اللازم لانخفاض عدد الأنوية غير المتحللة إلى النصف. بعد n أنصاف أعمار يبقى N=N0(1/2)^n."],"formulas":["E_γ=ΔE=hf","N=N₀(1/2)^{t/T_{1/2}}","A=λN"],"mistakes":["الخلط بين العدد الذري والعدد الكتلي.","اعتبار نصف العمر يعني أن كل النوى تتحلل في نفس اللحظة.","الخلط بين الانشطار والاندماج."],"topic":"الذرة والفيزياء النووية"}]};
+for(const s of Object.keys(expandedLessons)) lessonData[s].push(...expandedLessons[s]);
+
+const modelManifest={
+"الرياضيات":[
+ {name:"ديسمبر 2025",count:"48 سؤالًا",pages:[...Array(5)].map((_,i)=>`assets/models/december/الرياضيات/page-${String(i+1).padStart(2,'0')}.jpg`)},
+ {name:"أبريل 2026",count:"48 سؤالًا",pages:[...Array(6)].map((_,i)=>`assets/models/april/الرياضيات/page-${String(i+1).padStart(2,'0')}.jpg`)},
+ {name:"يونيو 2026",count:"48 سؤالًا",pages:[...Array(9)].map((_,i)=>`assets/models/june/الرياضيات/page-${String(i+1).padStart(2,'0')}.jpg`)}
+],
+"الفيزياء":[
+ {name:"ديسمبر 2025",count:"48 سؤالًا",pages:[...Array(8)].map((_,i)=>`assets/models/december/الفيزياء/page-${String(i+1).padStart(2,'0')}.jpg`)},
+ {name:"أبريل 2026",count:"48 سؤالًا",pages:[...Array(8)].map((_,i)=>`assets/models/april/الفيزياء/page-${String(i+1).padStart(2,'0')}.jpg`)},
+ {name:"يونيو 2026",count:"40 سؤالًا",pages:[...Array(13)].map((_,i)=>`assets/models/june/الفيزياء/page-${String(i+1).padStart(2,'0')}.jpg`)}
+],
+"الكيمياء":[
+ {name:"ديسمبر 2025",count:"48 سؤالًا",pages:[...Array(7)].map((_,i)=>`assets/models/december/الكيمياء/page-${String(i+1).padStart(2,'0')}.jpg`)},
+ {name:"أبريل 2026",count:"48 سؤالًا",pages:[...Array(7)].map((_,i)=>`assets/models/april/الكيمياء/page-${String(i+1).padStart(2,'0')}.jpg`)},
+ {name:"يونيو 2026",count:"31 سؤالًا + 4 مستعادة",pages:[...Array(8)].map((_,i)=>`assets/models/june/الكيمياء/page-${String(i+1).padStart(2,'0')}.jpg`),note:"الملف يوضح أن 4 أسئلة مستعادة لها صياغة/رسم أصلي غير متاح في المصدر."}
+]};
+
+function openViewer(src){
+ const v=document.getElementById('viewer');document.getElementById('viewerImg').src=src;v.classList.add('show');
+}
+function closeViewer(){document.getElementById('viewer').classList.remove('show');}
+function openAcademy(subject){go('academy');setAcademySubject(subject);}
+const academyBlueprint={
+ "الرياضيات":{
+  icon:"📐",eyebrow:"CSCA MATHEMATICS • MASTER ROADMAP",title:"الرياضيات — من الأساس إلى مستوى الاختبار",desc:"مسار كامل يحوّل منهج CSCA إلى وحدات صغيرة قابلة للدراسة: شرح المفهوم، القوانين، أمثلة محلولة، أخطاء شائعة، ثم أسئلة مرتبطة مباشرة بالدرس.",time:"≈ 62 ساعة",weight:"100% من مسار الرياضيات",modules:[
+   {name:"1. Sets & Inequalities",weight:"10%",level:"أساسي → متوسط",topics:["المجموعات والعمليات","المعادلات والمتباينات المتقدمة","القيمة المطلقة والمتباينات الكسرية"]},
+   {name:"2. Functions",weight:"30%",level:"محوري",topics:["المجال والمدى والتحويلات","الأسية واللوغاريتمية","الدوال المثلثية","المتتاليات والمتسلسلات"]},
+   {name:"3. Calculus",weight:"20%",level:"متقدم",topics:["النهايات والمشتقات","قواعد التفاضل","تطبيقات المشتقة","التكامل الأساسي"]},
+   {name:"4. Geometry & Algebra",weight:"25%",level:"محوري",topics:["الهندسة التحليلية والقطوع","المتجهات","الأعداد المركبة","الهندسة الفراغية"]},
+   {name:"5. Probability & Statistics",weight:"15%",level:"متوسط",topics:["الاحتمالات","الاحتمال الشرطي والاستقلال","الإحصاء الوصفي","التوزيع الطبيعي"]}
+  ]},
+ "الفيزياء":{
+  icon:"⚡",eyebrow:"CSCA PHYSICS • MASTER ROADMAP",title:"الفيزياء — خريطة المنهج كاملة",desc:"من الحركة والقوى إلى الكهرباء والمغناطيسية والحرارة والبصريات والفيزياء الحديثة، مع ربط كل محور بالقوانين ونمط سؤال CSCA والتدريب المباشر.",time:"≈ 70 ساعة",weight:"100% من مسار الفيزياء",modules:[
+   {name:"1. Foundations & Mechanics",weight:"30%",level:"محوري",topics:["الوحدات والمتجهات","الحركة","قوانين نيوتن والاحتكاك","الزخم والتصادمات","الشغل والطاقة","الجاذبية"]},
+   {name:"2. Oscillations & Waves",weight:"15%",level:"متوسط",topics:["الحركة التوافقية البسيطة","البندول والنابض","الموجات","التردد والطول الموجي"]},
+   {name:"3. Electricity & Circuits",weight:"20%",level:"محوري",topics:["الكهرباء الساكنة","المجال والجهد","التيار والمقاومة","التوالي والتوازي","القدرة والطاقة"]},
+   {name:"4. Magnetism & Electromagnetism",weight:"15%",level:"متقدم",topics:["القوة المغناطيسية","قوة لورنتز","الفيض","فاراداي ولنز"]},
+   {name:"5. Thermal Physics",weight:"10%",level:"متوسط",topics:["الحرارة والنظرية الحركية","قوانين الغازات","الغاز المثالي","القانون الأول للديناميكا الحرارية"]},
+   {name:"6. Optics & Modern Physics",weight:"10%",level:"متقدم",topics:["الانعكاس والانكسار","العدسات","التداخل والحيود","الفوتونات","التأثير الكهروضوئي","الذرة والنووية"]}
+  ]}
+};
+function subjectStats(subject){
+ const lessons=lessonData[subject]||[]; const qs=Q.filter(q=>q[0]===subject); const formulas=lessons.reduce((n,l)=>n+(l.formulas||[]).length,0); return {lessons,questions:qs.length,formulas};
+}
+function academyDashboard(subject){
+ const b=academyBlueprint[subject], st=subjectStats(subject), done=Number(localStorage.getItem('mep-'+subject+'-done')||0), total=st.lessons.length;
+ const pct=total?Math.round(done/total*100):0;
+ const focus=b.modules.slice(0,3);
+ return `<div class="academyHero"><div class="academyHeroGrid"><div><div class="academyKicker">${b.eyebrow}</div><h1>${b.icon} ${b.title}</h1><p>${b.desc}</p><div class="academyBadges"><span class="academyBadge">${st.lessons.length} درسًا</span><span class="academyBadge">${st.questions} سؤالًا مرتبطًا</span><span class="academyBadge">${st.formulas} قانونًا</span><span class="academyBadge">${b.time}</span></div><div class="actions"><button class="btn primary" onclick="document.getElementById('lessonArea').scrollIntoView({behavior:'smooth'})">ابدأ من أول درس</button><button class="btn violet" onclick="go('bank');document.getElementById('bankSubject').value='${subject}';topicOptions();renderBank()">تدرب الآن</button></div></div><div class="academyOrb"><div class="bigSigma">${subject==='الرياضيات'?'∑':'F=ma'}</div></div></div></div>
+ <div class="quickGrid"><div class="quickCard"><div class="qIcon">📚</div><strong>${st.lessons.length}</strong><small>درسًا مفصلًا</small></div><div class="quickCard"><div class="qIcon">📝</div><strong>${st.questions}</strong><small>سؤالًا مرتبطًا بالمحاور</small></div><div class="quickCard"><div class="qIcon">∑</div><strong>${st.formulas}</strong><small>قانونًا ومعادلة</small></div><div class="quickCard"><div class="qIcon">🎯</div><strong>${pct}%</strong><small>تقدمك في الدروس</small></div></div>
+ <div class="studyGrid"><div class="studyPanel"><h3>🎯 أولويات المذاكرة</h3><p>ابدأ بالمحاور الأعلى تأثيرًا ثم انتقل للتدريب المختلط.</p>${focus.map((m,i)=>`<div class="focusItem"><div><b>${i+1}. ${m.name}</b><div class="meter"><i style="width:${parseInt(m.weight)}%"></i></div></div><span>${m.weight}</span></div>`).join('')}</div><div class="studyPanel"><h3>🚀 طريقة التفوق على السؤال</h3><p>لا تحفظ القانون منفردًا؛ اربطه بنمط السؤال.</p><div class="stepBox"><b>01 — افهم</b><br><span>شرح مبسط + معنى كل رمز ووحدة.</span></div><div class="stepBox"><b>02 — طبّق</b><br><span>مثال محلول خطوة بخطوة.</span></div><div class="stepBox"><b>03 — اختبر</b><br><span>أسئلة نفس المحور مع تصحيح فوري.</span></div><div class="stepBox"><b>04 — راجع</b><br><span>سجل الخطأ وكرر المحور الضعيف.</span></div></div></div>
+ <div class="sectionHead" style="margin-top:26px"><div><h2>Study Roadmap</h2><p>خريطة دراسية كاملة قبل الدخول في التفاصيل.</p></div><b style="color:var(--green)">${b.weight}</b></div><div class="roadmap">${b.modules.map((m,i)=>`<div class="roadStep"><div class="roadDot"></div><div class="roadCard"><div class="roadTop"><div><div style="color:var(--muted);font-size:.78rem">Step ${i+1}</div><h3>${m.name}</h3></div><span class="weight">${m.weight}</span></div><div class="roadMeta"><span>◈ ${m.level}</span><span>◷ ${Math.max(3,Math.round(8*m.weight.replace('%','')/10))} ساعات تقريبية</span><span>▣ ${m.topics.length} محاور</span></div><div class="topicChips">${m.topics.map(t=>`<span class="topicChip">${t}</span>`).join('')}</div></div></div>`).join('')}</div>
+ <div class="outlineBox"><div class="outlineHead"><div><h3>Exam Outline — ${subject}</h3><div style="color:var(--muted);font-size:.82rem">اضغط على أي وحدة لرؤية ما ستدرسه داخلها.</div></div><div class="outlineActions"><button class="filterBtn" onclick="toggleOutline(true)">فتح الكل</button><button class="filterBtn" onclick="toggleOutline(false)">إغلاق الكل</button></div></div><div id="outlineRows">${b.modules.map((m,i)=>`<details class="outlineRow"><summary><span>${i+1}. ${m.name} <small style="color:var(--muted);margin-right:6px">(${m.weight})</small></span><span style="color:var(--muted);font-size:.8rem">${m.topics.length} محاور</span></summary><div class="outlineBody">${m.topics.map((t,j)=>`<div class="topicLine"><b>${j+1}. ${t}</b><span>شرح + قوانين + تدريب</span></div>`).join('')}</div></details>`).join('')}</div></div>`;
+}
+function toggleOutline(open){document.querySelectorAll('#outlineRows .outlineRow').forEach(x=>x.open=open)}
+function setAcademySubject(subject){
+ document.querySelectorAll('.subjectTab').forEach(b=>b.classList.toggle('active',b.dataset.subject===subject));
+ document.getElementById('academyDashboard').innerHTML=academyDashboard(subject);
+ const root=document.getElementById('academyContent'); const lessons=lessonData[subject]||[];
+ root.innerHTML=`<div id="lessonArea" style="padding-top:26px"><div class="sectionHead"><div><h2>Detailed Lessons</h2><p>شرح → قوانين → أخطاء شائعة → أسئلة من نفس المحور.</p></div><span class="sourcePill">✓ CSCA Study Mode</span></div><div class="lessonFilters"><input id="lessonSearch" class="lessonSearch" placeholder="ابحث داخل الدروس…" oninput="filterLessons()"><button class="filterBtn active" data-level="all" onclick="setLessonLevel('all')">الكل</button><button class="filterBtn" data-level="calc" onclick="setLessonLevel('calc')">التفاضل/التكامل</button><button class="filterBtn" data-level="core" onclick="setLessonLevel('core')">المحاور الأساسية</button></div><div class="lessonWrap">${lessons.map((l,i)=>{const qs=Q.filter(q=>q[0]===subject&&q[1]===l.topic).slice(0,5); const isCalc=/تفاضل|تكامل|نهايات|مشتق/.test(l.title+l.topic);return `<details class="lessonCard" data-title="${(l.title+' '+l.summary).toLowerCase()}" data-level="${isCalc?'calc':'core'}" ${i===0?'open':''}><summary class="lessonHead"><h3><span class="num">الدرس ${i+1}</span>${l.title}</h3><span class="lessonInfo">${l.explain.length} فقرات • ${l.formulas.length} قوانين • ${qs.length} أسئلة</span></summary><div class="lessonBody"><p><b>الفكرة الأساسية:</b> ${l.summary}</p><h4>📘 1. الشرح المفصل</h4>${l.explain.map(x=>`<p>${x}</p>`).join('')}<h4>🧮 2. القوانين والخطوات</h4>${l.formulas.map(x=>`<div class="formulaBox">\(${x}\)</div>`).join('')}<div class="mistakes"><b>⚠️ 3. أخطاء شائعة في الاختبار</b><ul>${l.mistakes.map(x=>`<li>${x}</li>`).join('')}</ul></div><div class="practiceTitle"><h4>📝 4. أسئلة هذا الدرس</h4><span>${qs.length} سؤالًا</span></div><div class="quizPanel">${qs.map((q,j)=>questionHTML(q,j,'lesson'+i)).join('')}</div><button class="btn primary" style="margin-top:12px" onclick="markLesson('${subject}',${i},this)">✓ علّمت الدرس كمكتمل</button></div></details>`}).join('')}</div></div>`;
+ root.querySelectorAll('.lessonCard').forEach((card,ci)=>{const qs=Q.filter(q=>q[0]===subject&&q[1]===lessons[ci].topic).slice(0,5);attachQuestions(card,qs,'lesson'+ci)});
+ if(window.MathJax)MathJax.typesetPromise([root]);
+}
+function markLesson(subject,i,btn){const key='mep-'+subject+'-done';let n=Number(localStorage.getItem(key)||0);if(!btn.dataset.done){n++;btn.dataset.done='1';localStorage.setItem(key,n);btn.textContent='✓ مكتمل';btn.disabled=true;document.getElementById('academyDashboard').innerHTML=academyDashboard(subject)}}
+let lessonLevel='all';
+function setLessonLevel(level){lessonLevel=level;document.querySelectorAll('.lessonFilters .filterBtn').forEach(b=>b.classList.toggle('active',b.dataset.level===level));filterLessons()}
+function filterLessons(){const q=(document.getElementById('lessonSearch')?.value||'').toLowerCase();document.querySelectorAll('#lessonArea .lessonCard').forEach(c=>{const okText=c.dataset.title.includes(q),okLevel=lessonLevel==='all'||c.dataset.level===lessonLevel;c.style.display=okText&&okLevel?'block':'none'})}
+function renderAcademy(){const tabs=document.getElementById('academyTabs');tabs.innerHTML=Object.keys(lessonData).map((s,i)=>`<button class="subjectTab ${i===0?'active':''}" data-subject="${s}" onclick="setAcademySubject('${s}')">${s}</button>`).join('');setAcademySubject('الرياضيات')}
+function renderModels(){
+ const root=document.getElementById('modelsContent');
+ root.innerHTML=Object.entries(modelManifest).map(([subject,models])=>`<details class="modelCard" ${subject==='الرياضيات'?'open':''}><summary><h3>${subject}</h3></summary><div style="padding-top:12px">${models.map(m=>`<details class="guideCard" style="margin-top:12px"><summary>${m.name} — ${m.count}</summary><div class="guideBody"><div class="modelMeta"><span>${subject}</span><span>${m.count}</span><span>أسئلة أصلية من الملف</span></div>${m.note?`<div class="guideWarn">⚠️ ${m.note}</div>`:''}<div class="pageGallery">${m.pages.map((p,i)=>`<img src="${p}" alt="${subject} ${m.name} صفحة ${i+1}" onclick="openViewer(this.src)">`).join('')}</div></div></details>`).join('')}</div></details>`).join('');
+}
+
+const Q=[
+["الرياضيات","المجموعات والمتباينات","إذا كان \(A=\{1,2,3\}\) و\(B=\{2,3,4\}\)، فما \(A\\cap B\)؟",["{1,2}","{2,3}","{1,2,3,4}","{4}"],1,"العناصر المشتركة هي 2 و3."],
+["الرياضيات","المجموعات والمتباينات","حل المتباينة \(x^2-5x+6<0\).",["x<2","2<x<3","x>3","x<2 أو x>3"],1,"الجذور 2 و3، والقطع المكافئ موجب خارج الجذور وسالب بينهما."],
+["الرياضيات","المجموعات والمتباينات","حل \(\\frac{x-1}{x+2}>0\).",["x<-2 أو x>1","-2<x<1","x>-2","x<1"],0,"إشارتا البسط والمقام متساويتان خارج الجذرين."],
+["الرياضيات","الدوال","مجال \(f(x)=\\sqrt{x-4}\) هو:",["x<4","x≤4","x≥4","كل الأعداد"],2,"ما تحت الجذر يجب أن يكون غير سالب."],
+["الرياضيات","الدوال","إذا كانت \(f(x)=2x+3\)، فما \(f(4)\)؟",["8","10","11","12"],2,"نعوض x=4: 8+3=11."],
+["الرياضيات","الدوال","أي دالة زوجية؟",["x^3","x^2","x+1","2x-5"],1,"الدالة الزوجية تحقق f(-x)=f(x)، وx² مثال مباشر."],
+["الرياضيات","الدوال","مجموع أول 5 حدود للمتتالية الحسابية 2,5,8,... يساوي:",["30","35","40","45"],2,"الحدود 2+5+8+11+14=40. الإجابة الصحيحة: 40."],
+["الرياضيات","الدوال","إذا \(a_n=3(2)^{n-1}\)، فما \(a_4\)؟",["12","18","24","48"],2,"3×2³=24."],
+["الرياضيات","الدوال","مشتقة \(f(x)=x^3-2x\) هي:",["3x²-2","x²-2","3x-2","x³-2"],0,"باستخدام قاعدة القوة."],
+["الرياضيات","الهندسة والجبر","ميل المستقيم المار بالنقطتين (1,2) و(3,6) هو:",["1","2","3","4"],1,"الميل=(6-2)/(3-1)=2."],
+["الرياضيات","الهندسة والجبر","معادلة الدائرة مركزها (0,0) ونصف قطرها 3:",["x²+y²=3","x²+y²=6","x²+y²=9","x+y=9"],2,"معادلة الدائرة x²+y²=r²."],
+["الرياضيات","الهندسة والجبر","إذا كان المتجه a=(2,3) وb=(1,-1)، فإن a+b يساوي:",["(3,2)","(1,4)","(2,2)","(3,4)"],0,"نجمع المركبات المناظرة."],
+["الرياضيات","الهندسة والجبر","القيمة المطلقة للعدد المركب \(3+4i\) هي:",["3","4","5","7"],2,"|z|=√(3²+4²)=5."],
+["الرياضيات","الهندسة والجبر","أي قطع مخروطي له معادلة نموذجية \(y^2=4ax\)؟",["الدائرة","القطع المكافئ","القطع الناقص","القطع الزائد"],1,"هذه الصورة القياسية للقطع المكافئ."],
+["الرياضيات","الاحتمالات والإحصاء","احتمال ظهور عدد زوجي عند رمي حجر نرد عادل مرة واحدة:",["1/6","1/3","1/2","2/3"],2,"النتائج الزوجية 2,4,6؛ أي 3 من 6."],
+["الرياضيات","الاحتمالات والإحصاء","متوسط 2,4,6,8 يساوي:",["4","5","6","20"],1,"المجموع 20 ÷ 4 = 5."],
+["الرياضيات","الاحتمالات والإحصاء","إذا كان متوسط البيانات ثابتًا، فإن زيادة كل قيمة بمقدار 3 تجعل المتوسط:",["ينقص 3","لا يتغير","يزداد 3","يتضاعف"],2,"إضافة ثابت لكل القيم تضيفه إلى المتوسط."],
+["الرياضيات","الاحتمالات والإحصاء","في التوزيع الطبيعي، أين تتركز غالبية القيم تقريبًا؟",["بعيدًا عن المتوسط","حول المتوسط","عند الصفر دائمًا","عند الحد الأقصى"],1,"التوزيع الطبيعي متماثل حول المتوسط."],
+
+["الفيزياء","الميكانيكا","جسم تحرك من x=2 m إلى x=9 m. الإزاحة تساوي:",["7 m","11 m","18 m","-7 m"],0,"Δx=xf−xi=7 m."],
+["الفيزياء","الميكانيكا","إذا قطعت سيارة 120 m خلال 10 s بسرعة ثابتة، سرعتها:",["10 m/s","12 m/s","20 m/s","1200 m/s"],1,"v=d/t=12 m/s."],
+["الفيزياء","الميكانيكا","جسم بدأ من السكون بعجلة 2 m/s² لمدة 5 s. سرعته النهائية:",["5","7","10","25"],2,"v=v0+at=10 m/s."],
+["الفيزياء","الميكانيكا","القوة المحصلة على جسم كتلته 4 kg وعجلته 3 m/s²:",["7 N","12 N","1.33 N","24 N"],1,"F=ma=12 N."],
+["الفيزياء","الميكانيكا","كمية الحركة لجسم كتلته 2 kg وسرعته 5 m/s:",["2.5","7","10","25"],2,"p=mv=10 kg·m/s."],
+["الفيزياء","الميكانيكا","إذا لم تؤثر قوة خارجية محصلة على نظام، فإن الزخم الكلي:",["يزداد","ينقص","يبقى محفوظًا","يصبح صفرًا دائمًا"],2,"هذا هو قانون حفظ الزخم."],
+["الفيزياء","الميكانيكا","شغل قوة 10 N تحرك جسمًا 3 m في اتجاه القوة:",["3 J","10 J","30 J","13 J"],2,"W=Fd=30 J."],
+["الفيزياء","الميكانيكا","طاقة حركة جسم كتلته 2 kg وسرعته 4 m/s:",["4 J","8 J","16 J","32 J"],2,"KE=½mv²=16 J. الإجابة الصحيحة: 16 J."],
+["الفيزياء","الميكانيكا","في حركة دائرية منتظمة، اتجاه السرعة اللحظية يكون:",["نحو المركز","مماسًا للمسار","بعيدًا عن المركز","ثابتًا في الاتجاه"],1,"السرعة المماسية للمسار."],
+["الفيزياء","الميكانيكا","قوة الجاذبية بين جسمين تعتمد عكسيًا مع:",["r","r²","m₁m₂","G"],1,"F∝1/r²."],
+["الفيزياء","الميكانيكا","في الحركة التوافقية البسيطة، عند موضع الاتزان تكون السرعة:",["صفرًا","أكبر ما يمكن","ثابتة صفرًا","سالبة دائمًا"],1,"تكون الطاقة الحركية عظمى عند الاتزان."],
+["الفيزياء","الميكانيكا","العلاقة الصحيحة للموجة هي:",["v=fλ","v=f/λ","v=λ/f","v=f+λ"],0,"سرعة الموجة = التردد × الطول الموجي."],
+["الفيزياء","الكهرومغناطيسية","قانون كولوم يعطي القوة بين شحنتين بأنها تتناسب طرديًا مع:",["المسافة","حاصل ضرب الشحنتين","مربع المسافة","الزمن"],1,"F=k|q₁q₂|/r²."],
+["الفيزياء","الكهرومغناطيسية","وحدة شدة المجال الكهربائي في SI يمكن أن تكون:",["N/C","J/s","C/N","W"],0,"E=F/q."],
+["الفيزياء","الكهرومغناطيسية","الجهد الكهربائي هو طاقة الوضع الكهربائية لكل:",["كتلة","زمن","شحنة","مسافة"],2,"V=U/q."],
+["الفيزياء","الكهرومغناطيسية","إذا كان V=12 V وR=6 Ω فالتيار:",["0.5 A","2 A","6 A","72 A"],1,"I=V/R=2 A."],
+["الفيزياء","الكهرومغناطيسية","مقاومتان 4 Ω و6 Ω على التوالي؛ المقاومة المكافئة:",["2","4","10","24"],2,"في التوالي نجمع المقاومات."],
+["الفيزياء","الكهرومغناطيسية","القوة على سلك يمر فيه تيار داخل مجال مغناطيسي تسمى:",["قوة الجاذبية","قوة أمبير","قوة الطفو","قوة الاحتكاك"],1,"قوة أمبير تؤثر على موصل يحمل تيارًا."],
+["الفيزياء","الكهرومغناطيسية","قوة لورنتز تؤثر على:",["شحنة متحركة في مجال مغناطيسي/كهربائي","جسم ساكن فقط","موجة صوتية","مادة عازلة فقط"],0,"تصف القوة على الشحنة بسبب المجالات الكهربائية والمغناطيسية."],
+["الفيزياء","الكهرومغناطيسية","قانون فاراداي يرتبط بـ:",["الحث الكهرومغناطيسي","الضغط","الجاذبية","الحرارة فقط"],0,"القوة الدافعة المستحثة ترتبط بمعدل تغير الفيض المغناطيسي."],
+["الفيزياء","الديناميكا الحرارية","معادلة الغاز المثالي:",["PV=nRT","P=nVRT","P=V/nRT","PV=RT/n"],0,"قانون الحالة للغاز المثالي."],
+["الفيزياء","الديناميكا الحرارية","عند ثبوت الضغط، يتناسب حجم الغاز المثالي مع:",["درجة الحرارة المطلقة","الكتلة فقط","الزمن","المقاومة"],0,"قانون شارل: V∝T عند ضغط ثابت."],
+["الفيزياء","الديناميكا الحرارية","القانون الأول للديناميكا الحرارية يربط تغير الطاقة الداخلية بالحرارة والشغل. أي صيغة شائعة؟",["ΔU=Q−W","ΔU=Q+W دائمًا","ΔU=W−Q دائمًا","ΔU=QW"],0,"عندما يكون W شغلًا يبذله النظام: ΔU=Q−W."],
+["الفيزياء","البصريات","زاوية السقوط تساوي زاوية:",["الانكسار دائمًا","الانعكاس","الحيود","التداخل"],1,"قانون الانعكاس."],
+["الفيزياء","البصريات","عند انتقال الضوء من وسط أعلى معامل انكسار إلى أقل، فإنه ينحرف عادة:",["نحو العمود","بعيدًا عن العمود","لا يتغير أبدًا","يتوقف"],1,"ينكسر بعيدًا عن العمود عند الانتقال إلى وسط أقل كثافة ضوئية."],
+["الفيزياء","البصريات","التداخل والحيود ظاهرتان ترتبطان أساسًا بـ:",["الطبيعة الموجية للضوء","كتلة الإلكترون","الجاذبية","الضغط الجوي"],0,"هما من الأدلة على السلوك الموجي."],
+["الفيزياء","الفيزياء الحديثة","في التأثير الكهروضوئي، زيادة تردد الضوء فوق تردد العتبة تزيد:",["طاقة حركة الإلكترونات المنبعثة","كتلة الإلكترون","ثابت بلانك","عدد البروتونات"],0,"طاقة الفوتون E=hf، وزيادة f تزيد طاقة الحركة القصوى."],
+["الفيزياء","الفيزياء الحديثة","الفوتون طاقته تعطى بـ:",["E=mc","E=hf","E=ma","E=IR"],1,"علاقة بلانك."],
+
+["الكيمياء","المفاهيم والحسابات","كم عدد مولات مادة كتلتها 18 g وكتلتها المولية 18 g/mol؟",["0.5","1","18","36"],1,"n=m/M=1 mol."],
+["الكيمياء","المفاهيم والحسابات","المحلول ذو pH=7 عند 25°C يوصف بأنه:",["حمضي","قاعدي","متعادل","مشبع دائمًا"],2,"pH=7 متعادل تقريبًا عند 25°C."],
+["الكيمياء","المفاهيم والحسابات","معادلة الغاز المثالي هي:",["PV=nRT","P=nRTV","PV=RT/n","P=V/nRT"],0,"قانون الغاز المثالي."],
+["الكيمياء","المفاهيم والحسابات","أي صيغة تمثل المولارية؟",["M=n/V","M=V/n","M=mV","M=nV"],0,"M = عدد المولات/حجم المحلول باللتر."],
+["الكيمياء","خواص المواد والتفاعلات","أي مما يلي حمض؟",["NaOH","HCl","NaCl","NH3"],1,"HCl حمض قوي في الماء."],
+["الكيمياء","خواص المواد والتفاعلات","في التفاعل NaOH + HCl → NaCl + H₂O يسمى هذا:",["احتراقًا","تعادلًا حمضيًا قاعديًا","ترسيبًا فقط","بلمرة"],1,"حمض + قاعدة → ملح + ماء."],
+["الكيمياء","خواص المواد والتفاعلات","أي تغير يمثل أكسدة؟",["اكتساب إلكترونات","فقد إلكترونات","فقد بروتون فقط","اكتساب نيوترونات"],1,"الأكسدة فقد إلكترونات."],
+["الكيمياء","خواص المواد والتفاعلات","أي مما يلي هيدروكربون؟",["CH₄","NaCl","H₂SO₄","NaOH"],0,"الهيدروكربونات تتكون من C وH فقط."],
+["الكيمياء","خواص المواد والتفاعلات","التفاعل الذي تتكون فيه مادة صلبة غير ذائبة من محلولين يسمى غالبًا:",["احتراق","ترسيب","تسامي","اختزال فقط"],1,"تكوين الراسب هو تفاعل ترسيب."],
+["الكيمياء","النظريات والقوانين","عدد البروتونات في ذرة عنصر يساوي:",["العدد الكتلي","العدد الذري","عدد النيوترونات","عدد الإلكترونات دائمًا"],1,"العدد الذري Z يساوي عدد البروتونات."],
+["الكيمياء","النظريات والقوانين","الرابطة الناتجة عن مشاركة الإلكترونات تسمى:",["أيونية","تساهمية","فلزية فقط","هيدروجينية فقط"],1,"الرابطة التساهمية تقوم على مشاركة أزواج إلكترونية."],
+["الكيمياء","النظريات والقوانين","القوى بين الجزيئات التي تؤثر بقوة في غليان الماء تشمل:",["الروابط الهيدروجينية","القوى النووية فقط","الجاذبية بين الكواكب","روابط معدنية"],0,"الماء يكون روابط هيدروجينية بين الجزيئات."],
+["الكيمياء","النظريات والقوانين","رفع درجة الحرارة غالبًا يزيد سرعة التفاعل لأن:",["طاقة الجسيمات تزيد","الحجم يصبح صفرًا","عدد البروتونات يزيد","ثابت الغاز يتغير"],0,"يزداد عدد التصادمات الفعالة."],
+["الكيمياء","النظريات والقوانين","في الاتزان الكيميائي الديناميكي:",["يتوقف التفاعل تمامًا","سرعة الأمامي تساوي سرعة العكسي","تختفي المواد المتفاعلة","يزداد أحد الاتجاهين فقط"],1,"الاتزان ديناميكي وليس توقفًا."],
+["الكيمياء","النظريات والقوانين","المحلول الإلكتروليتي القوي يحتوي على:",["أيونات كثيرة ناتجة عن التأين/التفكك","جزيئات فقط دون أيونات","غازات فقط","معادن صلبة فقط"],0,"الإلكتروليت القوي يتفكك بدرجة كبيرة في الماء."],
+["الكيمياء","التجارب والتطبيقات","أفضل ممارسة عند تسخين مادة في أنبوب اختبار هي:",["توجيه الأنبوب نحو شخص","توجيهه بعيدًا عن الأشخاص","إغلاقه بإحكام دائمًا","لمسه مباشرة"],1,"للسلامة يجب توجيه الفتحة بعيدًا عن الأشخاص."],
+["الكيمياء","التجارب والتطبيقات","فصل الرمل عن الماء يتم بسهولة باستخدام:",["الترشيح","التقطير فقط","التسامي","الكروماتوغرافيا دائمًا"],0,"الرمل غير ذائب ويمكن فصله بالترشيح."],
+["الكيمياء","التجارب والتطبيقات","لفصل سائلين ممتزجين باختلاف درجات الغليان يستخدم:",["التقطير","الترشيح","المغنطة","الترسيب فقط"],0,"التقطير يعتمد على اختلاف درجات الغليان."],
+["الكيمياء","التجارب والتطبيقات","في عملية هابر الصناعية يتم إنتاج الأمونيا من:",["N₂ وH₂","O₂ وH₂","CO₂ وH₂O","Na وCl₂"],0,"N₂ + 3H₂ ⇌ 2NH₃."],
+["الكيمياء","التجارب والتطبيقات","أي غاز يعيد توهج عود ثقاب متوهج؟",["O₂","CO₂","N₂","H₂"],0,"الأكسجين يدعم الاحتراق ويعيد توهج العود."],
+["الكيمياء","المفاهيم والحسابات","إذا كان تركيز H⁺ يساوي 10⁻³ M، فإن pH يساوي:",["1","3","7","11"],1,"pH=-log[H⁺]=3."],
+["الكيمياء","المفاهيم والحسابات","إذا احتوى 0.5 mol مذاب في 2 L محلول، فالمولارية:",["0.25 M","1 M","2.5 M","4 M"],0,"M=0.5/2=0.25 M."],
+["الكيمياء","خواص المواد والتفاعلات","العنصر الذي يفقد إلكترونات بسهولة يكون غالبًا:",["عاملًا مختزلًا","عاملًا مؤكسدًا","غازًا خاملًا دائمًا","حمضًا دائمًا"],0,"العامل المختزل يمنح الإلكترونات."],
+["الكيمياء","النظريات والقوانين","عبر الدورة في الجدول الدوري من اليسار إلى اليمين، يقل نصف القطر الذري عمومًا بسبب:",["زيادة الشحنة النووية الفعالة","اختفاء النواة","نقص البروتونات","زيادة مستويات الطاقة"],0,"تزداد الشحنة النووية الفعالة عبر الدورة."],
+["الكيمياء","النظريات والقوانين","العامل الحفاز يؤثر في التفاعل عبر:",["خفض طاقة التنشيط لمسار بديل","زيادة كتلة المتفاعلات","تغيير ثابت الاتزان دائمًا","إيقاف التفاعل"],0,"الحفاز يوفر مسارًا أقل في طاقة التنشيط."],
+["الكيمياء","التجارب والتطبيقات","عند التعامل مع حمض مركز، الإجراء الأكثر أمانًا هو:",["إضافة الماء بسرعة إلى الحمض","إضافة الحمض إلى الماء بحذر وفق الإجراء","تذوق الحمض","تسخينه مباشرة"],1,"قاعدة السلامة: إضافة الحمض إلى الماء ببطء وحذر عند التخفيف."]
+];
+
+let currentLanguage=localStorage.getItem('mep-lang')||'ar';
+const EXTRA_Q=[["الرياضيات","المعادلات والمتباينات المتقدمة","حل x²−5x+6=0؟",["1,6","2,3","−2,−3","0,6"],1,"التحليل (x−2)(x−3)=0."],["الرياضيات","المعادلات والمتباينات المتقدمة","عدد جذور  x²+4x+4=0 هو؟",["0","1 حقيقي مكرر","2 مختلفان","3"],1,"المميز صفر، إذن جذر حقيقي مكرر."],["الرياضيات","المعادلات والمتباينات المتقدمة","حل |x|<3؟",["x<−3 أو x>3","−3<x<3","x≤3","x≥−3"],1,"القيمة المطلقة الأصغر من 3 بين −3 و3."],["الرياضيات","المعادلات والمتباينات المتقدمة","في (x−1)/(x+2)>0، ما القيمة المستبعدة؟",["1","−1","2","−2"],3,"المقام لا يساوي صفرًا، لذلك x=−2 مستبعد."],["الرياضيات","المعادلات والمتباينات المتقدمة","إذا Δ<0 في معادلة تربيعية، فكم جذرًا حقيقيًا؟",["0","1","2","3"],0,"المميز السالب يعني لا جذور حقيقية."],["الرياضيات","الدوال: المجال والمدى والتحويلات","مجال f(x)=1/(x−3)؟",["كل الأعداد","x≠3","x>3","x<3"],1,"المقام لا يجوز أن يساوي صفرًا."],["الرياضيات","الدوال: المجال والمدى والتحويلات","إذا f(x)=x+1 وg(x)=2x، فما (f∘g)(3)؟",["4","6","7","8"],2,"g(3)=6 ثم f(6)=7."],["الرياضيات","الدوال: المجال والمدى والتحويلات","الرسم y=f(x−2) ينتقل؟",["يسار 2","يمين 2","أعلى 2","أسفل 2"],1,"x−h يعني إزاحة أفقية إلى اليمين h."],["الرياضيات","الدوال: المجال والمدى والتحويلات","أي شرط يضمن أن للدالة عكسية على مجالها؟",["دورية","واحد-لواحد","ثابتة فقط","سالبة فقط"],1,"العكسية تتطلب واحد-لواحد على المجال المختار."],["الرياضيات","الدوال: المجال والمدى والتحويلات","مدى √(x−1) هو؟",["y<0","y≤0","y≥0","كل الأعداد"],2,"الجذر التربيعي غير سالب."],["الرياضيات","الدوال الأسية واللوغاريتمية","log₂8 يساوي؟",["2","3","4","8"],1,"2³=8."],["الرياضيات","الدوال الأسية واللوغاريتمية","أي عبارة صحيحة؟",["log(x+y)=logx+logy","log(xy)=logx+logy","log(x/y)=logx·logy","log(x²)=logx/2"],1,"قاعدة حاصل الضرب هي مجموع اللوغاريتمين."],["الرياضيات","الدوال الأسية واللوغاريتمية","حل 3^x=27؟",["1","2","3","4"],2,"27=3³."],["الرياضيات","الدوال الأسية واللوغاريتمية","مجال log(x−4)؟",["x<4","x≤4","x>4","كل الأعداد"],2,"حجة اللوغاريتم يجب أن تكون موجبة."],["الرياضيات","الدوال الأسية واللوغاريتمية","الدالة 2^x تكون؟",["متناقصة","ثابتة","متزايدة","دورية"],2,"الأساس أكبر من 1."],["الرياضيات","الدوال المثلثية","sin²x+cos²x يساوي؟",["0","1","2","sin x"],1,"الهوية المثلثية الأساسية."],["الرياضيات","الدوال المثلثية","دورة tan x؟",["π/2","π","2π","4π"],1,"دالة الظل دورها π."],["الرياضيات","الدوال المثلثية","sin 30°؟",["0","1/2","√2/2","1"],1,"قيمة أساسية معروفة."],["الرياضيات","الدوال المثلثية","إذا cosθ=0 في 0≤θ≤2π، فـθ؟",["0","π/2 أو 3π/2","π","2π"],1,"الصفر عند هاتين الزاويتين."],["الرياضيات","الدوال المثلثية","سعة y=3sin x؟",["1","2","3","6"],2,"السعة هي القيمة المطلقة للمعامل أمام sin."],["الرياضيات","المتتاليات والمتسلسلات","الحد الخامس للمتتالية 2,5,8,...؟",["11","12","14","15"],2,"a5=2+4×3=14."],["الرياضيات","المتتاليات والمتسلسلات","نسبة 3,6,12,24,...؟",["1","2","3","4"],1,"كل حد ضعف السابق."],["الرياضيات","المتتاليات والمتسلسلات","مجموع 1+2+4+8؟",["12","15","16","18"],1,"1+2+4+8=15."],["الرياضيات","المتتاليات والمتسلسلات","إذا a1=5,d=3 فما a10؟",["27","30","32","35"],2,"5+9×3=32."],["الرياضيات","المتتاليات والمتسلسلات","متى يتقارب S∞=a/(1−r)؟",["r>1","|r|<1","r=2 فقط","كل r"],1,"شرط التقارب |r|<1."],["الرياضيات","التفاضل: النهايات والمشتقات","مشتقة x⁵؟",["x⁴","5x⁴","5x","x⁶/6"],1,"قاعدة القوة."],["الرياضيات","التفاضل: النهايات والمشتقات","مشتقة الثابت 7؟",["0","1","7","−7"],0,"مشتقة الثابت صفر."],["الرياضيات","التفاضل: النهايات والمشتقات","مشتقة 3x²؟",["3x","6x","6x²","x²"],1,"3×2x=6x."],["الرياضيات","التفاضل: النهايات والمشتقات","إذا f(x)=x²، فـf′(3)؟",["3","6","9","12"],1,"f′=2x ثم عند 3 تساوي 6."],["الرياضيات","التفاضل: النهايات والمشتقات","المشتقة تمثل هندسيًا؟",["مساحة","ميل المماس","الحجم","المتوسط فقط"],1,"المشتقة عند نقطة هي ميل المماس."],["الرياضيات","تطبيقات التفاضل","إذا f′(x)>0 على فترة، فالدالة؟",["متناقصة","ثابتة","متزايدة","دورية"],2,"المشتقة الموجبة تعني تزايدًا."],["الرياضيات","تطبيقات التفاضل","نقطة حرجة شائعة عندما؟",["f=0 فقط","f′=0 أو غير موجودة","x=0 فقط","f′=1"],1,"هذا تعريف عملي للنقاط الحرجة."],["الرياضيات","تطبيقات التفاضل","مماس y=x² عند x=1؟",["y=x","y=2x−1","y=x+1","y=2x+1"],1,"الميل 2 والنقطة (1,1)."],["الرياضيات","تطبيقات التفاضل","إذا f″>0 فالتقعر؟",["لأسفل","لأعلى","لا يوجد","خطي"],1,"المشتقة الثانية الموجبة تعني تقعرًا لأعلى."],["الرياضيات","تطبيقات التفاضل","أين تكون السرعة اللحظية في نموذج حركة x(t)؟",["x′(t)","x″(t)","∫x dt","x/t دائمًا"],0,"السرعة مشتقة الإزاحة."],["الرياضيات","التكامل الأساسي","∫x² dx؟",["x³/3+C","2x+C","x²/2+C","x³+C"],0,"قاعدة القوة."],["الرياضيات","التكامل الأساسي","∫₀¹ x dx؟",["0","1/2","1","2"],1,"المضاد x²/2 من 0 إلى 1."],["الرياضيات","التكامل الأساسي","تكامل غير محدد يحتاج؟",["−C","+C","لا شيء","π"],1,"نضيف ثابت التكامل."],["الرياضيات","التكامل الأساسي","∫₀² 3 dx؟",["3","6","9","12"],1,"3×2=6."],["الرياضيات","التكامل الأساسي","إذا كانت الدالة تحت المحور، التكامل المحدد قد يكون؟",["سالبًا","موجبًا فقط","دائمًا صفرًا","غير معرف"],0,"التكامل الموقّع يحسب الإشارة."],["الرياضيات","الهندسة التحليلية والقطوع المخروطية","مركز (x−2)²+(y+3)²=16؟",["(2,3)","(−2,3)","(2,−3)","(−2,−3)"],2,"الصيغة (x−h)²+(y−k)²=r²."],["الرياضيات","الهندسة التحليلية والقطوع المخروطية","نصف قطر الدائرة السابقة؟",["2","4","8","16"],1,"r²=16."],["الرياضيات","الهندسة التحليلية والقطوع المخروطية","ميل الخط بين (0,1),(2,5)؟",["1","2","3","4"],1,"Δy/Δx=4/2=2."],["الرياضيات","الهندسة التحليلية والقطوع المخروطية","أي معادلة تمثل قطعًا مكافئًا؟",["x²+y²=1","y²=4x","x²/4+y²/9=1","x²−y²=1"],1,"مربع متغير واحد فقط في الصورة القياسية."],["الرياضيات","الهندسة التحليلية والقطوع المخروطية","المسافة بين (0,0) و(3,4)؟",["4","5","6","7"],1,"√(9+16)=5."],["الرياضيات","المتجهات","مقدار المتجه (3,4)؟",["4","5","7","12"],1,"√(9+16)=5."],["الرياضيات","المتجهات","(1,2)+(3,−1)=؟",["(4,1)","(2,3)","(−2,1)","(4,3)"],0,"نجمع المركبات."],["الرياضيات","المتجهات","(1,0)·(0,5)=؟",["0","1","5","6"],0,"المتجهان متعامدان."],["الرياضيات","المتجهات","إذا A·B=0 والمتجهان غير صفريين فهما؟",["متوازيان","متعامدان","متساويان","متعاكسان"],1,"الضرب القياسي صفر يعني التعامد."],["الرياضيات","المتجهات","مركبة x لمتجه مقداره A بزاوية θ؟",["A sinθ","A cosθ","A tanθ","A/θ"],1,"Ax=A cosθ."],["الرياضيات","الأعداد المركبة","i² يساوي؟",["1","−1","i","−i"],1,"تعريف الوحدة التخيلية."],["الرياضيات","الأعداد المركبة","(2+3i)+(1−i)=؟",["3+2i","1+4i","3+4i","2+2i"],0,"نجمع الأجزاء الحقيقية والتخيلية."],["الرياضيات","الأعداد المركبة","|3+4i|؟",["3","4","5","7"],2,"√(9+16)=5."],["الرياضيات","الأعداد المركبة","مرافق 2−5i؟",["2+5i","−2+5i","−2−5i","5+2i"],0,"نعكس إشارة الجزء التخيلي."],["الرياضيات","الأعداد المركبة","(1+i)(1−i)=؟",["0","1","2","−2"],2,"1−i²=2."],["الرياضيات","الهندسة الفراغية","مسافة (0,0,0) إلى (1,2,2)؟",["2","3","√5","√9"],1,"√(1+4+4)=3."],["الرياضيات","الهندسة الفراغية","حجم مكعب ضلعه 3؟",["9","18","27","36"],2,"V=a³=27."],["الرياضيات","الهندسة الفراغية","حجم كرة نصف قطرها r؟",["πr²","2πr³","4πr³/3","πr³/3"],2,"الصيغة القياسية."],["الرياضيات","الهندسة الفراغية","إذا تضاعف نصف قطر الكرة، الحجم يصبح؟",["ضعفين","4 أضعاف","6 أضعاف","8 أضعاف"],3,"الحجم يتناسب مع r³."],["الرياضيات","الهندسة الفراغية","عدد الإحداثيات اللازمة لنقطة في الفراغ؟",["1","2","3","4"],2,"نستخدم x,y,z."],["الرياضيات","الاحتمالات","احتمال وجه عند رمي نرد عادل؟",["1/2","1/3","1/6","1/12"],2,"وجه واحد من ستة."],["الرياضيات","الاحتمالات","P(Aᶜ) إذا P(A)=0.7؟",["0.1","0.2","0.3","0.7"],2,"1−0.7=0.3."],["الرياضيات","الاحتمالات","إذا A وB مستقلان وP(A)=0.5,P(B)=0.2، P(A∩B)؟",["0.1","0.2","0.3","0.7"],0,"الاستقلال: حاصل الضرب."],["الرياضيات","الاحتمالات","P(A∪B)=P(A)+P(B)−؟",["P(A|B)","P(A∩B)","1","P(B|A)"],1,"نطرح التقاطع لتجنب العد مرتين."],["الرياضيات","الاحتمالات","P(A|B) يساوي؟",["P(A∩B)/P(B)","P(A)/P(B)","P(B)/P(A)","P(A)+P(B)"],0,"تعريف الاحتمال الشرطي."],["الرياضيات","الإحصاء والتوزيع الطبيعي","متوسط 2,4,6؟",["3","4","5","6"],1,"12/3=4."],["الرياضيات","الإحصاء والتوزيع الطبيعي","الوسيط 1,3,5,9,10؟",["3","5","6","9"],1,"القيمة الوسطى هي 5."],["الرياضيات","الإحصاء والتوزيع الطبيعي","الانحراف المعياري هو؟",["مربع التباين","جذر التباين","متوسط فقط","مجموع القيم"],1,"σ=√σ²."],["الرياضيات","الإحصاء والتوزيع الطبيعي","إذا x=70, μ=60, σ=5، z؟",["1","2","5","10"],1,"(70−60)/5=2."],["الرياضيات","الإحصاء والتوزيع الطبيعي","التوزيع الطبيعي متماثل حول؟",["الوسيط فقط","المتوسط","الصفر دائمًا","المنوال فقط"],1,"في الطبيعي المتوسط هو مركز التناظر."],["الفيزياء","الوحدات والمتجهات والكميات الفيزيائية","وحدة القوة SI؟",["J","N","W","Pa"],1,"النيوتن وحدة القوة."],["الفيزياء","الوحدات والمتجهات والكميات الفيزيائية","أي كمية متجهة؟",["الزمن","الكتلة","الإزاحة","درجة الحرارة"],2,"الإزاحة لها مقدار واتجاه."],["الفيزياء","الوحدات والمتجهات والكميات الفيزيائية","1 km يساوي؟",["10 m","100 m","1000 m","10000 m"],2,"بادئة kilo تعني 1000."],["الفيزياء","الوحدات والمتجهات والكميات الفيزيائية","1 J يساوي؟",["N/m","N·m","kg/s","W/s"],1,"الجول = نيوتن·متر."],["الفيزياء","الوحدات والمتجهات والكميات الفيزيائية","إذا كانت أبعاد طرفي معادلة مختلفة، فالمعادلة؟",["صحيحة دائمًا","غير متسقة بعديًا","تساوي صفرًا","لا علاقة"],1,"تطابق الأبعاد شرط أساسي."],["الفيزياء","الحركة الخطية","سيارة من السكون بعجلة 2 m/s² لمدة 5 s، سرعتها؟",["5","10","12","20"],1,"v=at=10."],["الفيزياء","الحركة الخطية","السقوط الحر من السكون لمدة 2 s، الإزاحة تقريبًا؟",["9.8 m","19.6 m","4.9 m","39.2 m"],1,"½gt²=19.6 m."],["الفيزياء","الحركة الخطية","ميل منحنى v-t يمثل؟",["الإزاحة","التسارع","القوة","الطاقة"],1,"ميل السرعة-الزمن هو التسارع."],["الفيزياء","الحركة الخطية","المساحة تحت منحنى v-t تمثل؟",["الإزاحة","التسارع","الكتلة","الزمن"],0,"التكامل الزمني للسرعة يعطي الإزاحة."],["الفيزياء","الحركة الخطية","إذا كانت العجلة صفرًا، فالسرعة المتجهة؟",["تتغير دائمًا","ثابتة","صفر دائمًا","لا يمكن تحديدها"],1,"العجلة هي معدل تغير السرعة."],["الفيزياء","قوانين نيوتن والاحتكاك","إذا كانت القوة المحصلة 10 N والكتلة 2 kg، a؟",["2","5","10","20"],1,"a=F/m=5."],["الفيزياء","قوانين نيوتن والاحتكاك","وزن جسم كتلته 3 kg عند g=10؟",["3 N","10 N","30 N","300 N"],2,"W=mg=30 N."],["الفيزياء","قوانين نيوتن والاحتكاك","قوة الاحتكاك الحركي تساوي؟",["μ/N","μN","N/μ","mgμ²"],1,"fk=μkN."],["الفيزياء","قوانين نيوتن والاحتكاك","قوتا الفعل ورد الفعل تؤثران على؟",["الجسم نفسه","جسمين مختلفين","لا جسم","ثلاثة أجسام"],1,"القانون الثالث يتطلب جسمين."],["الفيزياء","قوانين نيوتن والاحتكاك","على سطح أفقي دون قوى رأسية إضافية، N؟",["0","mg","ma","μmg"],1,"الاتزان الرأسي يعطي N=mg."],["الفيزياء","الحركة الدائرية","a_c لجسم v=10,r=5؟",["2","5","20","50"],2,"v²/r=100/5=20؛ انتبه: الإجابة الصحيحة 20."],["الفيزياء","الحركة الدائرية","إذا T=2 s، f؟",["0.5 Hz","1 Hz","2 Hz","4 Hz"],0,"f=1/T."],["الفيزياء","الحركة الدائرية","v=ωr. إذا ω=3,r=2، v؟",["1","5","6","9"],2,"3×2=6."],["الفيزياء","الحركة الدائرية","القوة المركزية تتجه؟",["للخارج","نحو المركز","لأعلى دائمًا","عكس السرعة دائمًا"],1,"هي محصلة موجهة نحو المركز."],["الفيزياء","الحركة الدائرية","في الحركة الدائرية المنتظمة، مقدار السرعة؟",["يتغير","ثابت","صفر","غير موجود"],1,"المقدار ثابت والاتجاه يتغير."],["الفيزياء","الزخم والدفع والتصادمات","زخم 2 kg بسرعة 3 m/s؟",["2","3","5","6"],3,"p=mv=6."],["الفيزياء","الزخم والدفع والتصادمات","الدفع يساوي؟",["Δp","Δx","ΔK فقط","mv²"],0,"J=Δp."],["الفيزياء","الزخم والدفع والتصادمات","في نظام معزول، ما الذي يحفظ؟",["الزخم الخطي","السرعة لكل جسم","الطاقة الحركية دائمًا","القوة"],0,"الزخم الكلي محفوظ."],["الفيزياء","الزخم والدفع والتصادمات","إذا تضاعفت السرعة والكتلة ثابتة، الزخم؟",["ينصف","يبقى","يتضاعف","يتربع"],2,"p يتناسب طرديًا مع v."],["الفيزياء","الزخم والدفع والتصادمات","التصادم غير المرن تمامًا يعني أن الجسمين؟",["يرتدان دائمًا","يلتصقان","لا يتلامسان","يفقدان الكتلة"],1,"يلتصقان بعد التصادم."],["الفيزياء","الشغل والطاقة والقدرة","شغل قوة 10 N لمسافة 2 m في اتجاه الحركة؟",["5","10","20","40"],2,"W=Fd=20 J."],["الفيزياء","الشغل والطاقة والقدرة","طاقة حركة 2 kg بسرعة 3؟",["3 J","6 J","9 J","18 J"],2,"½×2×9=9 J."],["الفيزياء","الشغل والطاقة والقدرة","طاقة وضع جسم 2 kg على ارتفاع 5 m وg=10؟",["10","50","100","200"],2,"mgh=100 J."],["الفيزياء","الشغل والطاقة والقدرة","القدرة إذا أُنجز 100 J خلال 5 s؟",["5 W","20 W","50 W","500 W"],1,"P=W/t=20 W."],["الفيزياء","الشغل والطاقة والقدرة","إذا كانت القوة عمودية على الإزاحة، الشغل؟",["موجب","سالب","صفر","أقصى"],2,"cos90°=0."],["الفيزياء","الجاذبية والمدارات","قوة الجذب تتناسب مع؟",["1/r","1/r²","r","r²"],1,"قانون نيوتن للجذب العام."],["الفيزياء","الجاذبية والمدارات","إذا تضاعفت المسافة بين جسمين، القوة تصبح؟",["ضعفين","نصف","ربع","أربع مرات"],2,"1/(2r)²=1/4."],["الفيزياء","الجاذبية والمدارات","الكتلة مقارنة بالوزن؟",["كلاهما نفس الشيء","الكتلة مقدار مادة والوزن قوة","الوزن ثابت دائمًا","الكتلة تعتمد على g"],1,"الكتلة لا تعتمد على g في هذا السياق."],["الفيزياء","الجاذبية والمدارات","في مدار دائري، القوة المركزية يوفرها عادة؟",["الجاذبية","الاحتكاك","الضغط الجوي","الحرارة"],0,"الجاذبية هي القوة المركزية للمدار الكوكبي."],["الفيزياء","الجاذبية والمدارات","g على ارتفاع كبير مقارنة بسطح الأرض؟",["أكبر","أصغر","صفر دائمًا","نفسها تمامًا"],1,"g تقل مع r."],["الفيزياء","الحركة التوافقية البسيطة","في SHM a يتناسب مع؟",["+x","−x","1/x فقط","x²"],1,"a=−ω²x."],["الفيزياء","الحركة التوافقية البسيطة","عند موضع الاتزان في SHM، السرعة؟",["صفر","أعظمية","سالبة دائمًا","ثابتة صفر"],1,"السرعة أعظمية عند الاتزان في النموذج المثالي."],["الفيزياء","الحركة التوافقية البسيطة","T للنابض يتناسب مع؟",["√(m/k)","m/k","k/m","1/√m"],0,"T=2π√(m/k)."],["الفيزياء","الحركة التوافقية البسيطة","بندول بسيط: زيادة L تجعل T؟",["تقل","تزداد","لا تتغير","تصبح صفرًا"],1,"T∝√L."],["الفيزياء","الحركة التوافقية البسيطة","عند الطرف الأقصى، سرعة SHM؟",["أعظمية","صفر","c","لا يمكن تحديدها"],1,"تتوقف لحظة قبل عكس الاتجاه."],["الفيزياء","الموجات","إذا f=5 Hz وλ=2 m، v؟",["2.5","5","10","20"],2,"v=fλ=10 m/s."],["الفيزياء","الموجات","المسافة بين قمتين متتاليتين؟",["السعة","الطول الموجي","الفترة","التردد"],1,"هي λ."],["الفيزياء","الموجات","التردد يساوي؟",["T","1/T","λ/T²","vT"],1,"f=1/T."],["الفيزياء","الموجات","الموجة الطولية تهتز؟",["عموديًا على الانتشار","موازيًا للانتشار","دائريًا دائمًا","دون اهتزاز"],1,"الاهتزاز موازي لاتجاه الانتشار."],["الفيزياء","الموجات","الموجة تنقل أساسًا؟",["المادة لمسافات كبيرة","الطاقة","الكتلة فقط","الزمن"],1,"الموجة تنقل الطاقة."],["الفيزياء","الكهرباء الساكنة","قوة كولوم تتناسب مع؟",["q1q2/r²","q1q2r²","r/q","1/q"],0,"F=k|q1q2|/r²."],["الفيزياء","الكهرباء الساكنة","اتجاه المجال من شحنة موجبة؟",["إلى الداخل","إلى الخارج","دائري دائمًا","لا اتجاه"],1,"خطوط المجال تخرج من الموجب."],["الفيزياء","الكهرباء الساكنة","الجهد كمية؟",["متجهة","قياسية","مصفوفة","لا يمكن تحديدها"],1,"الجهد كمية قياسية."],["الفيزياء","الكهرباء الساكنة","U لشحنة q عند جهد V؟",["q/V","qV","V/q","q+V"],1,"U=qV."],["الفيزياء","الكهرباء الساكنة","إذا تضاعفت r من شحنة نقطية، E يصبح؟",["ضعفين","نصف","ربع","أربع"],2,"E∝1/r²."],["الفيزياء","الدوائر الكهربائية والتيار","V=12,R=4، I؟",["2 A","3 A","4 A","48 A"],1,"I=V/R=3 A."],["الفيزياء","الدوائر الكهربائية والتيار","مقاومتان 2Ω و3Ω على التوالي، Req؟",["1","5","6","2.5"],1,"نجمعهما."],["الفيزياء","الدوائر الكهربائية والتيار","مقاومتان 2Ω و2Ω على التوازي، Req؟",["1","2","4","0.5"],0,"1/Req=1/2+1/2 ⇒ Req=1Ω."],["الفيزياء","الدوائر الكهربائية والتيار","القدرة عند V=10,I=2؟",["5 W","12 W","20 W","100 W"],2,"P=VI=20 W."],["الفيزياء","الدوائر الكهربائية والتيار","في التوالي، ما المتساوي في كل عنصر؟",["الجهد","التيار","المقاومة","القدرة دائمًا"],1,"التيار نفسه في مسار واحد."],["الفيزياء","المجال المغناطيسي والقوة","F=qvB sinθ تصبح صفرًا عندما v؟",["عمودي على B","موازٍ لـB","بزاوية 45°","دائمًا"],1,"sin0=0."],["الفيزياء","المجال المغناطيسي والقوة","وحدة B في SI؟",["N","T","J","W"],1,"التسلا."],["الفيزياء","المجال المغناطيسي والقوة","قوة سلك BIL sinθ تصبح أعظمية عند θ؟",["0°","30°","60°","90°"],3,"sin90=1."],["الفيزياء","المجال المغناطيسي والقوة","القوة المغناطيسية على شحنة متحركة تكون عمومًا؟",["موازية للسرعة","عمودية على السرعة","موازية للمجال دائمًا","صفر دائمًا"],1,"في المجال المغناطيسي المثالي تكون عمودية على v."],["الفيزياء","المجال المغناطيسي والقوة","إذا كانت الشحنة سالبة، اتجاه القوة مقارنة بقاعدة اليد للشحنة الموجبة؟",["نفسه","معكوس","لا يوجد","عشوائي"],1,"إشارة q تعكس الاتجاه."],["الفيزياء","الحث الكهرومغناطيسي","الفيض Φ يساوي؟",["BA cosθ","BA sinθ دائمًا","B/A","A/B"],0,"للسطح المستوي Φ=BAcosθ."],["الفيزياء","الحث الكهرومغناطيسي","قانون فاراداي؟",["ε=−dΦ/dt","ε=Φt","ε=B/A","ε=qV"],0,"القوة الدافعة تتناسب مع معدل تغير الفيض."],["الفيزياء","الحث الكهرومغناطيسي","قانون لنز يحدد؟",["كتلة السلك","اتجاه التيار المستحث","سرعة الضوء","درجة الحرارة"],1,"يحدد اتجاه الحث لمقاومة التغير."],["الفيزياء","الحث الكهرومغناطيسي","إذا لم يتغير الفيض، القوة الدافعة المستحثة؟",["أعظمية","صفر","لا نهائية","تتضاعف"],1,"dΦ/dt=0."],["الفيزياء","الحث الكهرومغناطيسي","يمكن تغيير الفيض بتغيير؟",["B فقط","A فقط","الزاوية فقط","أي منها"],3,"كلها تدخل في Φ."],["الفيزياء","الحرارة والنظرية الحركية","Q=mcΔT، إذا m=2,c=1,ΔT=5، Q؟",["2","5","10","20"],2,"Q=10."],["الفيزياء","الحرارة والنظرية الحركية","درجة 27°C بالكلفن تقريبًا؟",["246","273","300","327"],2,"27+273≈300 K."],["الفيزياء","الحرارة والنظرية الحركية","أثناء تغير الطور في مادة نقية، درجة الحرارة؟",["تتغير دائمًا","قد تثبت","تصبح صفرًا","تتضاعف"],1,"الحرارة تذهب للتغير الكامن."],["الفيزياء","الحرارة والنظرية الحركية","أي طريقة لا تحتاج وسطًا ماديًا؟",["التوصيل","الحمل","الإشعاع","كلها"],2,"الإشعاع ينتقل كهرومغناطيسيًا."],["الفيزياء","الحرارة والنظرية الحركية","الحرارة تنتقل تلقائيًا من؟",["الأبرد للأدفأ","الأدفأ للأبرد","أي اتجاه دائمًا","الفراغ فقط"],1,"بسبب فرق درجة الحرارة."],["الفيزياء","الغاز المثالي وقوانين الغازات","في PV=nRT، T يجب أن تكون؟",["°C","K","°F","أي وحدة"],1,"يجب استخدام المطلقة بالكلفن."],["الفيزياء","الغاز المثالي وقوانين الغازات","عند T ثابتة، إذا تضاعف V فإن P؟",["تتضاعف","تنصف","تبقى","تتربع"],1,"PV ثابت."],["الفيزياء","الغاز المثالي وقوانين الغازات","عند P ثابتة، V تتناسب مع؟",["1/T","T","T²","P"],1,"قانون شارل."],["الفيزياء","الغاز المثالي وقوانين الغازات","إذا P ثابتة وT تضاعفت، V؟",["تنصف","تتضاعف","تبقى","تصبح صفرًا"],1,"V∝T."],["الفيزياء","الغاز المثالي وقوانين الغازات","لغاز ثابت n: P1V1/T1 =؟",["P2V2/T2","P2T2/V2","V2/P2","1"],0,"قانون الغاز العام."],["الفيزياء","القانون الأول للديناميكا الحرارية","وفق ΔU=Q−W، إذا Q=100 وW=40، ΔU؟",["40","60","100","140"],1,"100−40=60 J."],["الفيزياء","القانون الأول للديناميكا الحرارية","عند حجم ثابت في الحالة البسيطة، W؟",["PΔV=0","PV","Q","−Q"],0,"ΔV=0."],["الفيزياء","القانون الأول للديناميكا الحرارية","إذا تمدد الغاز، ΔV؟",["موجب","سالب","صفر دائمًا","لا معنى"],0,"التمدد يزيد الحجم."],["الفيزياء","القانون الأول للديناميكا الحرارية","الطاقة الداخلية في الغاز المثالي ترتبط أساسًا بـ؟",["درجة الحرارة","اللون","الشكل","الضغط فقط"],0,"في النموذج الأساسي تعتمد على T."],["الفيزياء","القانون الأول للديناميكا الحرارية","الحرارة Q هي؟",["دالة حالة دائمًا","طاقة تنتقل بسبب فرق الحرارة","كتلة","قوة"],1,"الحرارة انتقال للطاقة."],["الفيزياء","البصريات الهندسية","قانون الانعكاس؟",["θi=θr","θi=2θr","θi+θr=0","θi=θr+90"],0,"زاوية السقوط تساوي الانعكاس."],["الفيزياء","البصريات الهندسية","قانون سنل؟",["n1sinθ1=n2sinθ2","n1/n2=θ1θ2","n1θ1=n2","sinθ1+sinθ2=1"],0,"قانون الانكسار."],["الفيزياء","البصريات الهندسية","معادلة العدسة الرقيقة؟",["1/f=1/do+1/di","f=do+di","1/f=do+di","m=f/do"],0,"المعادلة الأساسية."],["الفيزياء","البصريات الهندسية","التكبير m؟",["−di/do","di+do","do/di فقط","fdi"],0,"وفق الاصطلاح الشائع."],["الفيزياء","البصريات الهندسية","الزاوية تقاس في الانعكاس من؟",["السطح","العمود","مصدر الضوء","المحور الأفقي دائمًا"],1,"من العمود على السطح."],["الفيزياء","التداخل والحيود","للتداخل البنّاء فرق المسار؟",["mλ","(m+1/2)λ","λ/2 دائمًا","0 فقط"],0,"تساوي عددًا صحيحًا من الأطوال الموجية."],["الفيزياء","التداخل والحيود","للتداخل الهدّام فرق المسار؟",["mλ","(m+1/2)λ","2mλ","0"],1,"فرق نصف عدد صحيح من λ."],["الفيزياء","التداخل والحيود","الحيود يزداد عندما الفتحة؟",["أكبر بكثير من λ","قريبة من λ","صفر فقط","لا علاقة"],1,"يظهر بوضوح عندما يكون الحجم قريبًا من λ."],["الفيزياء","التداخل والحيود","التداخل دليل على طبيعة الضوء؟",["الموجية","الكتلية فقط","السكونية","الحرارية"],0,"التداخل ظاهرة موجية."],["الفيزياء","التداخل والحيود","إذا زاد λ مع f ثابتة؟",["لا يمكن في الوسط نفسه وفق v ثابت","v تتضاعف دائمًا","f تتغير","الطاقة دائمًا صفر"],0,"في وسط ثابت v=fλ؛ لا يمكن تغيير λ مستقلًا مع ثبات v وf."],["الفيزياء","التأثير الكهروضوئي والفوتونات","E للفوتون تتناسب مع؟",["f","1/f","f² فقط","لا شيء"],0,"E=hf."],["الفيزياء","التأثير الكهروضوئي والفوتونات","إذا f أقل من تردد العتبة، الانبعاث؟",["يحدث بقوة","لا يحدث","يحدث عند أي شدة","يتضاعف"],1,"لا يمكن بدء الانبعاث دون تجاوز العتبة."],["الفيزياء","التأثير الكهروضوئي والفوتونات","Kmax=؟",["hf−φ","hf+φ","φ−hf دائمًا","h/f"],0,"معادلة أينشتاين الكهروضوئية."],["الفيزياء","التأثير الكهروضوئي والفوتونات","زيادة الشدة عند f>f0 تؤثر أساسًا على؟",["عدد الفوتونات/التيار","تردد العتبة","دالة الشغل","h"],0,"في النموذج الكهروضوئي."],["الفيزياء","التأثير الكهروضوئي والفوتونات","f0 يساوي؟",["φ/h","h/φ","φh","c/φ"],0,"من φ=hf0."],["الفيزياء","الذرة والفيزياء النووية","العدد الذري يساوي عدد؟",["النيوترونات","البروتونات","البروتونات+النيوترونات","الإلكترونات فقط في كل حالة"],1,"Z يساوي عدد البروتونات."],["الفيزياء","الذرة والفيزياء النووية","نظائر العنصر لها نفس؟",["العدد الذري","العدد الكتلي","عدد النيوترونات","الكتلة دائمًا"],0,"نفس Z واختلاف N."],["الفيزياء","الذرة والفيزياء النووية","بعد نصف عمر واحد، المتبقي؟",["100%","75%","50%","25%"],2,"يبقى النصف."],["الفيزياء","الذرة والفيزياء النووية","بعد نصفَي عمر، المتبقي؟",["50%","25%","12.5%","0%"],1,"(1/2)^2=1/4."],["الفيزياء","الذرة والفيزياء النووية","الاندماج النووي يعني؟",["انقسام نواة ثقيلة","اتحاد نوى خفيفة","إلكترونات فقط","تبخر المادة"],1,"Fusion اتحاد نوى خفيفة."]];
+Q.push(...EXTRA_Q);
+
+const EN={
+nav:['Home','Syllabus','CSCA Guide','Lessons','Exam Models','Question Bank','48-Question Mock'],
+heroEyebrow:'CSCA • STEM • ACADEMIC PREPARATION',
+heroTitle:'Prepare for <span>CSCA</span><br>with understanding, not memorization.',
+heroText:'A focused platform for Mathematics, Physics and Chemistry, combining syllabus, formulas, interactive visuals, question banks, original models and mock exams in one place.',
+start:'Start Lessons',practice:'Practice Now',models:'Original Exam Models',materialsTitle:'Subject Lab',materialsText:'Choose a subject and start with the topic you need.',visualTitle:'Interactive Visuals',visualText:'Turn formulas into visuals before memorizing them.',stats:['CSCA subjects','questions / subject','minutes / test','points'],
+syllabusTitle:'Official Syllabus Inside the Platform',syllabusText:'The study content is organised around CSCA Mathematics, Physics and Chemistry topics.',academyTitle:'CSCA Academy — Detailed Explanation Then Questions',academyText:'Expanded CSCA Mathematics and Physics: detailed lessons, formulas, common mistakes and topic-based practice questions.',modelsTitle:'Original Models Added From Your Files',modelsText:'Original question pages are preserved as images for review.',bankTitle:'Question Bank',bankText:'Topic-based practice with instant correction and explanations.',mockTitle:'Mock Exam',mockText:'48 questions • 60 minutes • one answer per question.',
+};
+function setLanguage(lang){
+ currentLanguage=lang; localStorage.setItem('mep-lang',lang);
+ document.documentElement.lang=lang; document.body.classList.toggle('lang-en',lang==='en');
+ document.dir=lang==='en'?'ltr':'rtl';
+ document.getElementById('langBtn').textContent=lang==='en'?'العربية':'EN';
+ document.querySelectorAll('nav button[data-view]').forEach(b=>b.textContent=lang==='en'?b.dataset.en:b.dataset.ar);
+ document.getElementById('brandAr').style.display=lang==='ar'?'inline':'none';document.getElementById('brandEn').style.display=lang==='en'?'inline':'none';
+ document.getElementById('footerBrandAr').style.display=lang==='ar'?'inline':'none';document.getElementById('footerBrandEn').style.display=lang==='en'?'inline':'none';
+ document.getElementById('footerSubAr').style.display=lang==='ar'?'inline':'none';document.getElementById('footerSubEn').style.display=lang==='en'?'inline':'none';
+ if(lang==='en'){
+  document.getElementById('heroEyebrow').textContent=EN.heroEyebrow;document.getElementById('heroTitle').innerHTML=EN.heroTitle;document.getElementById('heroText').textContent=EN.heroText;
+  document.getElementById('startLessons').textContent=EN.start;document.getElementById('practiceNow').textContent=EN.practice;document.getElementById('originalModels').textContent=EN.models;
+  document.getElementById('materialsTitle').textContent=EN.materialsTitle;document.getElementById('materialsText').textContent=EN.materialsText;document.getElementById('visualTitle').textContent=EN.visualTitle;document.getElementById('visualText').textContent=EN.visualText;
+  document.querySelectorAll('[data-stat]').forEach((x,i)=>x.textContent=EN.stats[i]);
+ } else {
+  document.getElementById('heroEyebrow').textContent='CSCA • STEM • 2025 SYLLABUS';document.getElementById('heroTitle').innerHTML='استعد لـ <span>CSCA</span><br>بذكاء، لا بالحفظ فقط.';document.getElementById('heroText').textContent='منصة مركّزة بالكامل على الرياضيات والفيزياء والكيمياء، تجمع المقرر، القوانين، الرسومات التفاعلية، بنك الأسئلة، والاختبار التجريبي في واجهة واحدة.';
+  document.getElementById('startLessons').textContent='ابدأ الدروس';document.getElementById('practiceNow').textContent='تدرب الآن';document.getElementById('originalModels').textContent='نماذج الاختبارات الأصلية';document.getElementById('materialsTitle').textContent='مختبر المواد';document.getElementById('materialsText').textContent='اختر المادة وابدأ من المحور الذي تحتاجه.';document.getElementById('visualTitle').textContent='رسومات تفاعلية';document.getElementById('visualText').textContent='حوّل القانون إلى صورة قبل أن تحفظه.';
+  document.querySelectorAll('[data-stat]').forEach((x,i)=>x.textContent=['مواد CSCA','سؤالًا / مادة','دقيقة / اختبار','درجة'][i]);
+ }
+ renderDynamicLanguage();
+}
+function toggleLanguage(){setLanguage(currentLanguage==='ar'?'en':'ar')}
+function renderDynamicLanguage(){
+ const s=document.getElementById('syllabus'); if(s){const h=s.querySelector('h2');const p=s.querySelector('.sectionHead p');if(h&&p){h.textContent=currentLanguage==='en'?EN.syllabusTitle:'المقرر الرسمي داخل المنصة';p.textContent=currentLanguage==='en'?EN.syllabusText:'المحتوى أدناه مبني على محاور منهج CSCA المنشورة رسميًا.';}}
+ const a=document.getElementById('academy');if(a){const h=a.querySelector('.sectionHead h2'),p=a.querySelector('.sectionHead p');if(h&&p){h.textContent=currentLanguage==='en'?EN.academyTitle:'أكاديمية CSCA — شرح مفصل ثم أسئلة';p.textContent=currentLanguage==='en'?EN.academyText:'الرياضيات والفيزياء موسعتان إلى دروس تفصيلية تشمل كامل نطاق المنهج المنشور، مع التفاضل والتكامل التمهيدي والتدريب على الأسئلة.';}}
+ const m=document.getElementById('models');if(m){const h=m.querySelector('.sectionHead h2'),p=m.querySelector('.sectionHead p');if(h&&p){h.textContent=currentLanguage==='en'?EN.modelsTitle:'النماذج الأصلية المضافة من ملفاتك';p.textContent=currentLanguage==='en'?EN.modelsText:'الصفحات محفوظة كما ظهرت في ملفات الاختبارات.';}}
+ const b=document.getElementById('bank');if(b){const h=b.querySelector('.sectionHead h2'),p=b.querySelector('.sectionHead p');if(h&&p){h.textContent=currentLanguage==='en'?EN.bankTitle:'بنك الأسئلة';p.textContent=currentLanguage==='en'?EN.bankText:'تدريب موضوعي مع تصحيح فوري وشرح مختصر.';}}
+ const q=document.getElementById('mock');if(q){const h=q.querySelector('.sectionHead h2'),p=q.querySelector('.sectionHead p');if(h&&p){h.textContent=currentLanguage==='en'?EN.mockTitle:'الاختبار التجريبي';p.textContent=currentLanguage==='en'?EN.mockText:'48 سؤالًا • 60 دقيقة • اختيار واحد لكل سؤال.';}}
+}
+function go(view){
+ document.querySelectorAll('.view').forEach(x=>x.classList.add('hide'));
+ document.getElementById(view).classList.remove('hide');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(view==='bank') renderBank();
+ if(view==='mock') startMock();
+ if(view==='academy') renderAcademy();
+ if(view==='models') renderModels();
+}
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.view));
+function filterSubject(s){document.getElementById('bankSubject').value=s;go('bank')}
+function topicOptions(){
+ const s=document.getElementById('bankSubject').value, sel=document.getElementById('bankTopic');
+ const topics=[...new Set(Q.filter(q=>s==='كل المواد'||q[0]===s).map(q=>q[1]))];
+ sel.innerHTML='<option>كل المحاور</option>'+topics.map(t=>`<option>${t}</option>`).join('');
+}
+document.getElementById('bankSubject').onchange=()=>{topicOptions();renderBank()};
+document.getElementById('bankTopic').onchange=renderBank;
+function questionHTML(q,i,mode){
+ return `<div class="q" id="${mode}${i}" data-i="${i}"><span class="tag">${q[0]} • ${q[1]}</span><h4>${i+1}. ${q[2]}</h4><div class="options">${q[3].map((o,j)=>`<button class="option" data-answer="${j}">${String.fromCharCode(65+j)}) ${o}</button>`).join('')}</div><div class="explain hide"></div></div>`;
+}
+function attachQuestions(root,questions,mode){
+ root.querySelectorAll('.q').forEach((card,local)=>{
+   const idx=Number(card.dataset.i), q=questions[local];
+   card.querySelectorAll('.option').forEach(btn=>btn.onclick=()=>{
+     if(card.dataset.done)return; card.dataset.done=1;
+     const ans=Number(btn.dataset.answer);
+     card.querySelectorAll('.option').forEach((x,j)=>{if(j===q[4])x.classList.add('good'); if(j===ans&&ans!==q[4])x.classList.add('bad');});
+     card.classList.toggle('correct',ans===q[4]);card.classList.toggle('wrong',ans!==q[4]);
+     const ex=card.querySelector('.explain');ex.classList.remove('hide');ex.innerHTML=`<b>${ans===q[4]?'إجابة صحيحة':'إجابة غير صحيحة'}</b> — ${q[5]}`;
+     if(window.MathJax)MathJax.typesetPromise([card]);
+   });
+ });
+}
+function renderBank(){
+ topicOptions();
+ const s=document.getElementById('bankSubject').value,t=document.getElementById('bankTopic').value;
+ let arr=Q.filter(q=>(s==='كل المواد'||q[0]===s)&&(t==='كل المحاور'||q[1]===t));
+ const root=document.getElementById('bankList');
+ root.innerHTML=arr.map((q,i)=>questionHTML(q,i,'b')).join('');
+ attachQuestions(root,arr,'bank');
+ if(window.MathJax)MathJax.typesetPromise([root]);
+}
+function shuffleBank(){Q.sort(()=>Math.random()-.5);renderBank()}
+let mockQuestions=[],mockAnswers={},mockStart=null,mockTimer=null;
+function startMock(){
+ clearInterval(mockTimer);mockAnswers={};mockStart=Date.now();
+ mockQuestions=[...Q].sort(()=>Math.random()-.5).slice(0,48);
+ const root=document.getElementById('mockList');root.innerHTML=mockQuestions.map((q,i)=>questionHTML(q,i,'m')).join('');
+ root.querySelectorAll('.q').forEach((card,i)=>{
+  card.querySelectorAll('.option').forEach(btn=>btn.onclick=()=>{
+   if(mockAnswers[i]!==undefined)return;
+   mockAnswers[i]=Number(btn.dataset.answer);
+   card.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));
+   btn.classList.add('selected');
+   document.getElementById('progress').style.width=(Object.keys(mockAnswers).length/48*100)+'%';
+  });
+ });
+ document.getElementById('mockResult').classList.add('hide');
+ mockTimer=setInterval(()=>{
+   let left=3600-Math.floor((Date.now()-mockStart)/1000);if(left<=0){finishMock();return}
+   document.getElementById('timer').textContent=`${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`;
+ },500);
+ if(window.MathJax)MathJax.typesetPromise([root]);
+}
+function finishMock(){
+ clearInterval(mockTimer);let score=0;
+ mockQuestions.forEach((q,i)=>{if(mockAnswers[i]===q[4])score++});
+ const pct=Math.round(score/48*100);
+ const r=document.getElementById('mockResult');r.classList.remove('hide');
+ r.innerHTML=`<div class="score">${score}/48</div><b>${pct}/100</b><p>${pct>=85?'ممتاز — مستواك قوي.':pct>=70?'جيد جدًا — ركّز على أخطائك قبل المحاولة التالية.':pct>=50?'مقبول — تحتاج مراجعة المحاور الضعيفة.':'ابدأ بالمفاهيم الأساسية ثم أعد الاختبار.'}</p><button class="btn primary" onclick="startMock()">إعادة الاختبار</button>`;
+ r.scrollIntoView({behavior:'smooth'});
+}
+function renderSyllabus(){
+ const root=document.getElementById('syllabusGrid');
+ const icons={"الرياضيات":"📐","الفيزياء":"⚡","الكيمياء":"🧪"};
+ root.innerHTML=Object.entries(syllabus).map(([s,mods])=>`<div class="syllabusCard"><h3>${icons[s]} ${s}</h3>${mods.map((m,i)=>`<div class="module"><b>${i+1}. ${m[0]}</b><span>${m[1]}</span></div>`).join('')}</div>`).join('');
+}
+// Expand the syllabus cards so the full Mathematics and Physics preparation map is visible.
+syllabus["الرياضيات"]=[...syllabus["الرياضيات"],...expandedLessons["الرياضيات"].map(l=>[l.title,l.summary])];
+syllabus["الفيزياء"]=[...syllabus["الفيزياء"],...expandedLessons["الفيزياء"].map(l=>[l.title,l.summary])];
+renderSyllabus();renderAcademy();renderModels();topicOptions();renderBank();
+if(window.MathJax)MathJax.typesetPromise();
+
+const mc=document.getElementById('motionCanvas'),ctx=mc.getContext('2d');
+function drawMotion(){
+ const w=mc.clientWidth*devicePixelRatio,h=230*devicePixelRatio;mc.width=w;mc.height=h;ctx.clearRect(0,0,w,h);ctx.save();ctx.scale(devicePixelRatio,devicePixelRatio);
+ const W=mc.clientWidth/devicePixelRatio,H=230;
+ ctx.strokeStyle='#29435f';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(35,H-30);ctx.lineTo(W-15,H-30);ctx.stroke();
+ ctx.beginPath();ctx.moveTo(35,H-30);ctx.lineTo(35,20);ctx.stroke();
+ ctx.strokeStyle='#35d7ff';ctx.lineWidth=3;ctx.beginPath();
+ for(let x=35;x<W-15;x++){let t=(x-35)/(W-50)*5;let y=H-30-(t*t/25)*(H-55);if(x===35)ctx.moveTo(x,y);else ctx.lineTo(x,y)}ctx.stroke();
+ ctx.fillStyle='#9fb0c6';ctx.font='12px Cairo';ctx.fillText('الزمن t',W-55,H-8);ctx.fillText('المسافة x',5,18);ctx.restore();
+}
+drawMotion();window.addEventListener('resize',drawMotion);
+function drawOhm(){
+ const c=document.getElementById('ohmCanvas'),x=c.getContext('2d'),W=c.clientWidth,H=230,d=devicePixelRatio;c.width=W*d;c.height=H*d;x.scale(d,d);x.clearRect(0,0,W,H);
+ const V=+document.getElementById('vRange').value,R=+document.getElementById('rRange').value,I=V/R;
+ x.strokeStyle='#29435f';x.lineWidth=2;x.beginPath();x.moveTo(35,115);x.lineTo(W-35,115);x.stroke();
+ x.strokeStyle='#45e6a2';x.lineWidth=5;x.beginPath();x.moveTo(55,115);x.lineTo(W-55,115);x.stroke();
+ x.fillStyle='#ffb454';x.font='800 20px Cairo';x.fillText(`V = ${V} V`,45,55);x.fillStyle='#35d7ff';x.fillText(`R = ${R} Ω`,45,85);x.fillStyle='#45e6a2';x.fillText(`I = ${I.toFixed(2)} A`,45,175);
+ x.fillStyle='#9fb0c6';x.font='12px Cairo';x.fillText('تيار كهربائي',W-110,95);
+}
+document.getElementById('vRange').oninput=drawOhm;document.getElementById('rRange').oninput=drawOhm;drawOhm();
+</script>
+</body>
+</html>
