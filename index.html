@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>منصة الشرق الأوسط</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#0e1b2e;--mute:#5a6a80;--blue:#1b3a6b;--gold:#e8a33d;--line:#dde4ee;--ok:#1f8a5b;--bad:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1424;--card:#13203a;--ink:#eaf0f8;--mute:#9fb0c8;--blue:#7fa6e6;--line:#24365a}}
+:root[data-theme="dark"]{--bg:#0b1424;--card:#13203a;--ink:#eaf0f8;--mute:#9fb0c8;--blue:#7fa6e6;--line:#24365a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,Tahoma,sans-serif;line-height:1.7}
+header{background:#0e1b2e;color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bar{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem}.logo b{color:var(--gold)}
+nav{display:flex;gap:4px}
+nav button{background:none;border:0;color:#cfd9e8;font:inherit;padding:6px 12px;border-radius:8px;cursor:pointer}
+nav button.on,nav button:hover{background:#1b3a6b;color:#fff}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{background:linear-gradient(160deg,#0e1b2e,#1b3a6b);color:#fff;text-align:center;padding:56px 16px 48px}
+.hero h1{margin:0 0 8px;font-size:clamp(1.9rem,6vw,3rem);font-weight:800}
+.hero p{margin:0 auto 24px;max-width:520px;color:#cfd9e8}
+.stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.stats div{font-size:.9rem;color:#cfd9e8}.stats strong{display:block;font-size:1.6rem;color:var(--gold)}
+main{max-width:1000px;margin:auto;padding:24px 16px 48px}
+h2{font-size:1.4rem;margin:32px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px}.card small{color:var(--mute)}
+.card.sub{border-top:4px solid var(--gold)}
+.plan{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.plan li{background:var(--card);border:1px solid var(--line);border-right:4px solid var(--blue);border-radius:10px;padding:10px 14px}
+.btn{background:var(--gold);color:#0e1b2e;border:0;font:inherit;font-weight:700;padding:11px 24px;border-radius:10px;cursor:pointer}
+.cta{text-align:center;margin-top:40px;padding:32px 16px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.q p{margin:0 0 10px;font-weight:700}
+.opt{display:block;width:100%;text-align:right;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin-bottom:6px;font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:rgba(31,138,91,.15)}.opt.no{border-color:var(--bad);background:rgba(192,57,43,.15)}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.tools select{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+#timer{font-weight:800;color:var(--blue)}
+footer{text-align:center;color:var(--mute);padding:24px 16px;font-size:.9rem}
+.hide{display:none}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<div class="logo">🌍 منصة <b>الشرق الأوسط</b></div>
+<nav>
+<button class="on" data-v="home">الرئيسية</button>
+<button data-v="bank">بنك الأسئلة</button>
+<button data-v="mock">الامتحان التجريبي</button>
+</nav></div></header>
+
+<section id="home">
+<div class="hero">
+<h1>منصة الشرق الأوسط</h1>
+<p>منصتك الشاملة للتحضير للاختبارات: دروس، أسئلة تدريبية، وخطط دراسة واضحة.</p>
+<div class="stats"><div><strong>4</strong>مواد</div><div><strong>+500</strong>سؤال تدريبي</div><div><strong>3</strong>لغات</div></div>
+</div>
+<main>
+<h2>📋 عن الاختبار</h2>
+<div class="card">تساعدك المنصة على فهم هيكل الاختبار وأوزان المواد، ثم التدرّب على أسئلة مشابهة وقياس مستواك بامتحان تجريبي بمؤقت.</div>
+<h2>📚 المواد الدراسية</h2>
+<div class="grid">
+<div class="card sub"><h3>📐 الرياضيات</h3><small>الجبر · الهندسة · الدوال</small></div>
+<div class="card sub"><h3>⚡ الفيزياء</h3><small>5 وحدات</small></div>
+<div class="card sub"><h3>🧪 الكيمياء</h3><small>6 وحدات</small></div>
+<div class="card sub"><h3>📗 اللغة الإنجليزية</h3><small>قواعد ومفردات وفهم</small></div>
+</div>
+<h2>📅 خطة الدراسة المقترحة</h2>
+<ul class="plan">
+<li><b>الأسابيع 1–2:</b> مراجعة الأساسيات في كل مادة.</li>
+<li><b>الأسابيع 3–4:</b> حل أسئلة بنك الأسئلة حسب الوحدة.</li>
+<li><b>الأسبوع 5:</b> تحليل الأخطاء وتقوية نقاط الضعف.</li>
+<li><b>الأسبوع 6:</b> امتحانان تجريبيان بنفس زمن الاختبار.</li>
+</ul>
+<h2>💡 نصائح للنجاح</h2>
+<div class="grid">
+<div class="card">ابدأ بالمواد الأعلى وزناً.</div>
+<div class="card">دوّن أخطاءك وراجعها أسبوعياً.</div>
+<div class="card">تدرّب تحت ضغط الوقت.</div>
+</div>
+<div class="cta"><h2 style="margin-top:0">🏆 ابدأ رحلتك اليوم</h2><button class="btn" data-go="bank">ابدأ التدريب الآن</button></div>
+</main>
+</section>
+
+<section id="quiz" class="hide"><main>
+<h2 id="qt"></h2>
+<div class="tools"><select id="subj"><option value="all">كل المواد</option><option>الرياضيات</option><option>الفيزياء</option><option>الكيمياء</option><option>الإنجليزية</option></select><span id="timer"></span><button class="btn" id="fin">إنهاء وعرض النتيجة</button></div>
+<div id="list"></div>
+<div id="res" class="card hide"></div>
+</main></section>
+
+<footer>© 2026 منصة الشرق الأوسط. جميع الحقوق محفوظة.<br>تصميم: <b>بكيل شاجع شاجع الدميني</b></footer>
+
+<script>
+const Q=[
+["الرياضيات","ما حل المعادلة 2x + 6 = 14؟",["2","4","6","8"],1],
+["الرياضيات","ما مساحة دائرة نصف قطرها 3 (بدلالة π)؟",["6π","9π","3π","12π"],1],
+["الفيزياء","وحدة قياس القوة في النظام الدولي هي:",["جول","واط","نيوتن","باسكال"],2],
+["الفيزياء","السرعة = المسافة ÷ ؟",["الكتلة","الزمن","القوة","التسارع"],1],
+["الكيمياء","الرمز الكيميائي للصوديوم:",["So","Na","S","N"],1],
+["الكيمياء","الرقم الهيدروجيني للماء النقي تقريباً:",["1","7","10","14"],1],
+["الإنجليزية","Choose the correct form: She ___ to school every day.",["go","goes","going","gone"],1],
+["الإنجليزية","The opposite of 'expensive' is:",["cheap","large","fast","late"],0]
+];
+let mode="home",answered={},t0,tm;
+const $=s=>document.querySelector(s);
+function show(v){
+ mode=v;clearInterval(tm);$("#timer").textContent="";
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
+ $("#home").classList.toggle("hide",v!=="home");
+ $("#quiz").classList.toggle("hide",v==="home");
+ if(v!=="home"){build();window.scrollTo(0,0)}
+}
+function build(){
+ answered={};$("#res").classList.add("hide");
+ $("#qt").textContent=mode==="mock"?"⏱️ الامتحان التجريبي":"📝 بنك الأسئلة";
+ $("#subj").classList.toggle("hide",mode==="mock");
+ $("#fin").classList.toggle("hide",mode!=="mock");
+ if(mode==="mock"){t0=Date.now();const total=15*60;tm=setInterval(()=>{const r=total-Math.floor((Date.now()-t0)/1000);if(r<=0){finish();return}$("#timer").textContent="الوقت المتبقي: "+Math.floor(r/60)+":"+String(r%60).padStart(2,"0")},500)}
+ const f=mode==="mock"?"all":$("#subj").value;
+ const items=Q.map((q,i)=>[q,i]).filter(([q])=>f==="all"||q[0]===f);
+ $("#list").innerHTML=items.map(([q,i])=>`<div class="q"><small>${q[0]}</small><p>${q[1]}</p>${q[2].map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}</div>`).join("");
+}
+$("#list").addEventListener("click",e=>{
+ const b=e.target.closest(".opt");if(!b||answered[b.dataset.q]!==undefined)return;
+ const i=+b.dataset.q,o=+b.dataset.o;answered[i]=o;
+ if(mode==="bank"){const ok=Q[i][3];b.parentNode.querySelectorAll(".opt").forEach((x,j)=>{if(j===ok)x.classList.add("ok");else if(x===b)x.classList.add("no")})}
+ else b.classList.add("ok");
+});
+function finish(){
+ clearInterval(tm);
+ const s=Q.filter((q,i)=>answered[i]===q[3]).length;
+ const r=$("#res");r.classList.remove("hide");
+ r.innerHTML=`<h3>نتيجتك: ${s} من ${Q.length}</h3><p>${s/Q.length>=.7?"أداء ممتاز، واصل التدريب.":"راجع الوحدات الضعيفة ثم أعد المحاولة."}</p><button class="btn" id="again">إعادة الامتحان</button>`;
+ $("#again").onclick=build;r.scrollIntoView({behavior:"smooth"});
+}
+$("#fin").onclick=finish;
+$("#subj").onchange=build;
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+</script>
+</body>
+</html>
