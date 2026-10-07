@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json"><title>منصة الشرق الأوسط</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f8fb;--card:#fff;--ink:#0e1b2e;--mute:#5a6a80;--blue:#1b3a6b;--gold:#e8a33d;--line:#dde4ee;--ok:#1f8a5b;--bad:#c0392b;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1424;--card:#13203a;--ink:#eaf0f8;--mute:#9fb0c8;--blue:#7fa6e6;--line:#24365a}}
+:root[data-theme="dark"]{--bg:#0b1424;--card:#13203a;--ink:#eaf0f8;--mute:#9fb0c8;--blue:#7fa6e6;--line:#24365a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,Tahoma,sans-serif;line-height:1.7}
+header{background:#0e1b2e;color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bar{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;flex-wrap:wrap}
+.logo{font-weight:800;font-size:1.15rem}.logo b{color:var(--gold)}
+nav{display:flex;gap:4px}
+nav button{background:none;border:0;color:#cfd9e8;font:inherit;padding:6px 12px;border-radius:8px;cursor:pointer}
+nav button.on,nav button:hover{background:#1b3a6b;color:#fff}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.hero{background:linear-gradient(160deg,#0e1b2e,#1b3a6b);color:#fff;text-align:center;padding:56px 16px 48px}
+.hero h1{margin:0 0 8px;font-size:clamp(1.9rem,6vw,3rem);font-weight:800}
+.hero p{margin:0 auto 24px;max-width:520px;color:#cfd9e8}
+.stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.stats div{font-size:.9rem;color:#cfd9e8}.stats strong{display:block;font-size:1.6rem;color:var(--gold)}
+main{max-width:1000px;margin:auto;padding:24px 16px 48px}
+h2{font-size:1.4rem;margin:32px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.card h3{margin:0 0 4px}.card small{color:var(--mute)}
+.card.sub{border-top:4px solid var(--gold)}
+.plan{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.plan li{background:var(--card);border:1px solid var(--line);border-inline-start:4px solid var(--blue);border-radius:10px;padding:10px 14px}
+.btn{background:var(--gold);color:#0e1b2e;border:0;font:inherit;font-weight:700;padding:11px 24px;border-radius:10px;cursor:pointer}
+.cta{text-align:center;margin-top:40px;padding:32px 16px;background:var(--card);border:1px solid var(--line);border-radius:14px}
+.q{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.q p{margin:0 0 10px;font-weight:700}
+.opt{display:block;width:100%;text-align:start;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:9px 12px;margin-bottom:6px;font:inherit;cursor:pointer}
+.opt.ok{border-color:var(--ok);background:rgba(31,138,91,.15)}.opt.no{border-color:var(--bad);background:rgba(192,57,43,.15)}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.tools select{font:inherit;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+#timer{font-weight:800;color:var(--blue)}
+footer{text-align:center;color:var(--mute);padding:24px 16px;font-size:.9rem}
+.hide{display:none}
+
+#lg{font:inherit;padding:5px 8px;border-radius:8px;border:0;background:#1b3a6b;color:#fff}
+details.card{margin-bottom:10px;padding:0}details.card>summary{cursor:pointer;font-weight:700;padding:12px 16px}
+details.card>div{padding:0 16px 14px}
+.fm{direction:ltr;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px;font-family:Consolas,monospace;font-size:.92rem;overflow-x:auto;white-space:nowrap}
+.g{max-width:340px;width:100%;display:block;margin:10px 0;color:var(--ink)}
+.tb{overflow-x:auto}.tb table{border-collapse:collapse;margin:8px 0}.tb td,.tb th{border:1px solid var(--line);padding:5px 12px;text-align:center}.tb th{background:var(--blue);color:#fff}
+.ut{font-size:1.2rem;margin:26px 0 10px;color:var(--blue)}
+
+.xb{height:12px;background:var(--line);border-radius:9px;overflow:hidden;margin:8px 0}.xb i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),#f5c76b);border-radius:9px}
+.kp{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}.kp div{flex:1;min-width:110px;text-align:center}.kp strong{display:block;font-size:1.7rem;color:var(--gold)}
+.bd{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.bd div{text-align:center;padding:12px;border:1px solid var(--line);border-radius:12px;background:var(--card)}.bd .lk{opacity:.35;filter:grayscale(1)}
+.sl{display:grid;grid-template-columns:30px 1fr 40px;gap:8px;align-items:center;direction:ltr}.sl input{width:100%}
+#pal{position:fixed;inset:0;background:rgba(5,10,20,.6);z-index:20;display:flex;justify-content:center;align-items:flex-start;padding-top:12vh}
+#pal>div{width:min(460px,92vw);background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+#pal input{width:100%;font:inherit;padding:10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+#pal button{display:block;width:100%;text-align:start;background:none;border:0;color:var(--ink);font:inherit;padding:9px 10px;border-radius:8px;cursor:pointer}#pal button:hover{background:var(--bg)}
+#kb{background:#1b3a6b;color:#fff;border:0;border-radius:8px;padding:5px 10px;cursor:pointer}
+
+:root[data-theme="dark"]{--bg:#050816;--card:rgba(255,255,255,.08);--ink:#fff;--mute:#b8c4d9;--blue:#00d9ff;--line:rgba(255,255,255,.12);--gold:#ffd700}
+:root[data-theme="dark"] body{background:radial-gradient(circle at top,#172554,#050816 65%) fixed}
+header{background:rgba(5,8,22,.78);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.1)}
+.card,.q,.cta,.bd div{backdrop-filter:blur(15px)}.card.sub{transition:.3s;animation:up .6s both}.card.sub:hover{transform:translateY(-8px);box-shadow:0 0 30px rgba(0,217,255,.25)}
+.btn{background:linear-gradient(45deg,#00d9ff,#7c3cff);color:#fff;border-radius:50px;transition:.3s}.btn:hover{transform:translateY(-3px);box-shadow:0 0 30px rgba(0,217,255,.25)}
+.hero{background:transparent}.hero h1{text-shadow:0 0 30px rgba(0,217,255,.35)}
+.orb{width:230px;height:230px;border:2px solid rgba(0,217,255,.4);border-radius:50%;margin:34px auto 0;position:relative;animation:rot 20s linear infinite}
+.orb span{position:absolute;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.12);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:28px}
+.orb span:nth-child(1){top:-29px;left:86px}.orb span:nth-child(2){bottom:8px;left:-29px}.orb span:nth-child(3){right:-29px;top:86px}
+.stars{position:fixed;inset:0;z-index:-1;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:45px 45px;opacity:.15;animation:mv 25s linear infinite}
+#ld{position:fixed;inset:0;background:#050816;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;animation:ldo .5s 1.4s forwards}
+.ld-l{font-size:72px;animation:pls 1.5s infinite;filter:drop-shadow(0 0 20px #00d9ff)}
+#tb{background:#1b3a6b;color:#fff;border:0;border-radius:8px;padding:5px 10px;cursor:pointer}
+.ai{display:flex;gap:8px}.ai input{flex:1;font:inherit;padding:12px;border-radius:25px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.aa{margin-top:14px;padding:14px;border-radius:14px;background:rgba(0,0,0,.2);color:var(--mute)}
+@keyframes rot{to{transform:rotate(360deg)}}@keyframes mv{to{background-position:0 -500px}}@keyframes pls{50%{transform:scale(1.15)}}
+@keyframes ldo{to{opacity:0;visibility:hidden;pointer-events:none}}@keyframes up{from{opacity:0;transform:translateY(30px)}}
+</style>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("mep-theme")||"dark"}catch(e){document.documentElement.dataset.theme="dark"}</script></head>
+<body>
+<div id="ld"><div class="ld-l">🌍</div><p>منصة الشرق الأوسط</p></div><div class="stars"></div>
+<header><div class="bar">
+<div class="logo">🌍 منصة <b>الشرق الأوسط</b></div>
+<nav>
+<button class="on" data-v="home">الرئيسية</button>
+<button data-v="dash">لوحتي</button>
+<button data-v="ex">استكشاف</button>
+<button data-v="math">الرياضيات</button>
+<button data-v="bank">بنك الأسئلة</button>
+<button data-v="mock">الامتحان التجريبي</button>
+</nav><select id="lg" aria-label="language"><option value="0">العربية</option><option value="1">English</option><option value="2">中文</option></select></div></header>
+
+<section id="home">
+<div class="hero">
+<h1>منصة الشرق الأوسط</h1>
+<p>منصتك الشاملة للتحضير للاختبارات: دروس، أسئلة تدريبية، وخطط دراسة واضحة.</p>
+<div class="stats"><div><strong>3</strong>مواد</div><div><strong>+500</strong>سؤال تدريبي</div><div><strong>3</strong>لغات</div></div><div class="orb"><span>⚛️</span><span>🧪</span><span>📐</span></div>
+</div>
+<main>
+<h2>📋 عن الاختبار</h2>
+<div class="card">تساعدك المنصة على فهم هيكل الاختبار وأوزان المواد، ثم التدرّب على أسئلة مشابهة وقياس مستواك بامتحان تجريبي بمؤقت.</div>
+<h2>📚 المواد الدراسية</h2>
+<div class="grid">
+<div class="card sub"><h3>📐 الرياضيات</h3><small>الجبر · الهندسة · الدوال</small></div>
+<div class="card sub"><h3>⚡ الفيزياء</h3><small>5 وحدات</small></div>
+<div class="card sub"><h3>🧪 الكيمياء</h3><small>6 وحدات</small></div>
+</div>
+<h2>📅 خطة الدراسة المقترحة</h2>
+<ul class="plan">
+<li><b>الأسابيع 1–2:</b> مراجعة الأساسيات في كل مادة.</li>
+<li><b>الأسابيع 3–4:</b> حل أسئلة بنك الأسئلة حسب الوحدة.</li>
+<li><b>الأسبوع 5:</b> تحليل الأخطاء وتقوية نقاط الضعف.</li>
+<li><b>الأسبوع 6:</b> امتحانان تجريبيان بنفس زمن الاختبار.</li>
+</ul>
+<h2>💡 نصائح للنجاح</h2>
+<div class="grid">
+<div class="card">ابدأ بالمواد الأعلى وزناً.</div>
+<div class="card">دوّن أخطاءك وراجعها أسبوعياً.</div>
+<div class="card">تدرّب تحت ضغط الوقت.</div>
+</div>
+<div class="cta"><h2 style="margin-top:0">🏆 ابدأ رحلتك اليوم</h2><button class="btn" data-go="bank">ابدأ التدريب الآن</button></div>
+</main>
+</section>
+
+<section id="quiz" class="hide"><main>
+<h2 id="qt"></h2>
+<div class="tools"><select id="subj"><option value="all">كل المواد</option><option>الرياضيات</option><option>الفيزياء</option><option>الكيمياء</option></select><span id="timer"></span><button class="btn" id="fin">إنهاء وعرض النتيجة</button></div>
+<div id="list"></div>
+<div id="res" class="card hide"></div>
+</main></section>
+
+<section id="math" class="hide"><main id="mc"></main></section>
+<section id="dash" class="hide"><main id="dc"></main></section>
+<section id="ex" class="hide"><main id="ec"></main></section>
+<footer>© 2026 منصة الشرق الأوسط. جميع الحقوق محفوظة.<br><span id="dl">تصميم</span>: <b>بكيل شاجع شاجع الدميني</b></footer>
+
+<script>
+const Q=[
+["الرياضيات","ما حل المعادلة 2x + 6 = 14؟",["2","4","6","8"],1],
+["الرياضيات","ما مساحة دائرة نصف قطرها 3 (بدلالة π)؟",["6π","9π","3π","12π"],1],
+["الفيزياء","وحدة قياس القوة في النظام الدولي هي:",["جول","واط","نيوتن","باسكال"],2],
+["الفيزياء","السرعة = المسافة ÷ ؟",["الكتلة","الزمن","القوة","التسارع"],1],
+["الكيمياء","الرمز الكيميائي للصوديوم:",["So","Na","S","N"],1],
+["الكيمياء","الرقم الهيدروجيني للماء النقي تقريباً:",["1","7","10","14"],1]
+];
+let mode="home",answered={},t0,tm;
+const $=s=>document.querySelector(s);
+function show(v){
+ mode=v;clearInterval(tm);$("#timer").textContent="";
+ document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v===v));
+ $("#home").classList.toggle("hide",v!=="home");
+ $("#quiz").classList.toggle("hide",v==="home");
+ if(v!=="home"){build();window.scrollTo(0,0)}
+}
+function build(){
+ answered={};$("#res").classList.add("hide");
+ $("#qt").textContent=mode==="mock"?"⏱️ الامتحان التجريبي":"📝 بنك الأسئلة";
+ $("#subj").classList.toggle("hide",mode==="mock");
+ $("#fin").classList.toggle("hide",mode!=="mock");
+ if(mode==="mock"){t0=Date.now();const total=15*60;tm=setInterval(()=>{const r=total-Math.floor((Date.now()-t0)/1000);if(r<=0){finish();return}$("#timer").textContent="الوقت المتبقي: "+Math.floor(r/60)+":"+String(r%60).padStart(2,"0")},500)}
+ const f=mode==="mock"?"all":$("#subj").value;
+ const items=Q.map((q,i)=>[q,i]).filter(([q])=>f==="all"||q[0]===f);
+ $("#list").innerHTML=items.map(([q,i])=>`<div class="q"><small>${q[0]}</small><p>${q[1]}</p>${q[2].map((o,j)=>`<button class="opt" data-q="${i}" data-o="${j}">${o}</button>`).join("")}</div>`).join("");
+}
+$("#list").addEventListener("click",e=>{
+ const b=e.target.closest(".opt");if(!b||answered[b.dataset.q]!==undefined)return;
+ const i=+b.dataset.q,o=+b.dataset.o;answered[i]=o;
+ if(mode==="bank"){const ok=Q[i][3];b.parentNode.querySelectorAll(".opt").forEach((x,j)=>{if(j===ok)x.classList.add("ok");else if(x===b)x.classList.add("no")})}
+ else b.classList.add("ok");
+});
+function finish(){
+ clearInterval(tm);
+ const s=Q.filter((q,i)=>answered[i]===q[3]).length;
+ const r=$("#res");r.classList.remove("hide");
+ r.innerHTML=`<h3>نتيجتك: ${s} من ${Q.length}</h3><p>${s/Q.length>=.7?"أداء ممتاز، واصل التدريب.":"راجع الوحدات الضعيفة ثم أعد المحاولة."}</p><button class="btn" id="again">إعادة الامتحان</button>`;
+ $("#again").onclick=build;r.scrollIntoView({behavior:"smooth"});
+}
+$("#fin").onclick=finish;
+$("#subj").onchange=build;
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
+</script>
+<script>
+const NAV={home:["الرئيسية","Home","首页"],math:["الرياضيات","Mathematics","数学"],bank:["بنك الأسئلة","Question bank","题库"],mock:["الامتحان التجريبي","Mock exam","模拟考试"]};
+const NAME=["منصة الشرق الأوسط","Middle East Platform","中东平台"];
+const SUB=["منصتك الشاملة للتحضير للاختبارات: دروس، أسئلة تدريبية، وخطط دراسة واضحة.","Your complete exam-prep platform: lessons, practice questions and clear study plans.","一站式备考平台：课程、练习题与清晰的学习计划。"];
+const MT=["📐 مادة الرياضيات: شرح مفصل","📐 Mathematics: detailed notes","📐 数学：详细讲解"];
+const B="#4f8ef7",G="#e8a33d",R="#d0503c";
+function P(cs,b){const W=300,H=180,sx=x=>(x-b[0])/(b[1]-b[0])*W,sy=y=>H-(y-b[2])/(b[3]-b[2])*H;
+let s=`<svg viewBox="0 0 300 180" class="g"><path d="M0 ${sy(0)}H300M${sx(0)} 0V180" stroke="currentColor" opacity=".4" fill="none"/>`;
+cs.forEach(([f,a,z,c])=>{let d="";for(let i=0;i<=160;i++){const t=a+(z-a)*i/160,p=f(t);if(isFinite(p[0])&&isFinite(p[1])&&p[1]>b[2]-3&&p[1]<b[3]+3)d+=(d?"L":"M")+sx(p[0]).toFixed(1)+" "+sy(p[1]).toFixed(1)}s+=`<path d="${d}" fill="none" stroke="${c}" stroke-width="2"/>`});return s+"</svg>"}
+const Y=f=>t=>[t,f(t)],T=Math.PI*2;
+const TB=(h,r)=>`<div class="tb"><table><tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>${r.map(w=>`<tr>${w.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table></div>`;
+const X={
+sets:l=>TB([["العملية","Operation","运算"][l],["الرمز","Symbol","符号"][l],["المعنى","Meaning","含义"][l]],[0,1,2,3].map(i=>[[["اتحاد","تقاطع","فرق","متممة"],["Union","Intersection","Difference","Complement"],["并集","交集","差集","补集"]][l][i],["∪","∩","A∖B","A′"][i],[["عناصر A أو B","In A or B","属于A或B"],["عناصر A و B معاً","In both A and B","同时属于A和B"],["في A وليس في B","In A, not in B","属于A不属于B"],["خارج A","Not in A","不属于A"]][i][l]])),
+para:()=>P([[Y(x=>x*x-2*x-3),-3,5,B]],[-3,5,-6,8])+TB(["x","(−∞,−1)","(−1,3)","(3,+∞)"],[["y","+","−","+"]]),
+exp:()=>P([[Y(x=>Math.pow(2,x)),-3,3,B],[Y(x=>Math.pow(.5,x)),-3,3,G]],[-3,3,-1,8]),
+log:()=>P([[Y(x=>Math.log2(x)),.05,8,B],[Y(x=>Math.log(x)/Math.log(.5)),.05,8,G]],[-1,8,-4,4]),
+trig:()=>P([[Y(Math.sin),-7,7,B],[Y(Math.cos),-7,7,G]],[-7,7,-1.6,1.6])+TB(["θ","0°","30°","45°","60°","90°"],[["sin","0","1/2","√2/2","√3/2","1"],["cos","1","√3/2","√2/2","1/2","0"],["tan","0","√3/3","1","√3","—"]]),
+circ:()=>P([[t=>[2*Math.cos(t),2*Math.sin(t)],0,T,B]],[-4,4,-2.4,2.4]),
+ell:()=>P([[t=>[3*Math.cos(t),2*Math.sin(t)],0,T,B]],[-4.5,4.5,-2.7,2.7]),
+hyp:()=>P([[t=>[2*Math.cosh(t),Math.sinh(t)],-2,2,B],[t=>[-2*Math.cosh(t),Math.sinh(t)],-2,2,B]],[-6,6,-3.6,3.6]),
+par:()=>P([[t=>[t*t/4,t],-4,4,B]],[-1,6,-3.6,3.6]),
+bell:()=>P([[Y(x=>Math.exp(-x*x/2)),-4,4,B]],[-4,4,-.2,1.2])+TB(["μ±σ","μ±2σ","μ±3σ"],[["68.3%","95.4%","99.7%"]])
+};
+const U=[
+{t:["١. المجموعات والمتباينات","1. Sets and Inequalities","1. 集合与不等式"],i:[
+[["المجموعات: التعريف والتمثيل","Sets: definition and representation","集合：定义与表示"],["المجموعة تجمّع عناصر محددة بوضوح. تُمثَّل بالسرد {1,2,3} أو بالصفة {x | x>0} أو بمخطط فن.","A set is a well-defined collection of elements. Write it by listing {1,2,3}, by a rule {x | x>0}, or with a Venn diagram.","集合是由确定元素组成的整体。可用列举法 {1,2,3}、描述法 {x | x>0} 或韦恩图表示。"],"N ⊂ Z ⊂ Q ⊂ R   |   n(A∪B) = n(A)+n(B)−n(A∩B)"],
+[["العمليات على المجموعات","Set operations","集合的运算"],["العمليات الأساسية في الجدول، وتتحقق قوانين دي مورغان.","The basic operations are in the table, and De Morgan's laws hold.","基本运算见下表，德摩根律成立。"],"(A∪B)′ = A′∩B′   |   (A∩B)′ = A′∪B′","sets"],
+[["المتباينات وطرق حلها","Inequalities and how to solve them","不等式及其解法"],["عند الضرب أو القسمة على عدد سالب ينعكس اتجاه المتباينة. اكتب الحل على شكل فترة.","Multiplying or dividing by a negative number flips the inequality. Write the answer as an interval.","乘或除以负数时不等号方向改变，结果写成区间。"],"2x−6 > 0 ⟹ x ∈ (3, +∞)   |   |x| < a ⟺ −a < x < a"],
+[["المتباينات التربيعية","Quadratic inequalities","一元二次不等式"],["أوجد جذري المعادلة ثم اقرأ المنحنى: فوق المحور ‎>0‎ وتحته ‎<0‎.","Find the roots, then read the parabola: above the axis is >0, below is <0.","先求根，再看抛物线：x轴上方为>0，下方为<0。"],"x²−2x−3 < 0 ⟹ (x−3)(x+1) < 0 ⟹ −1 < x < 3","para"],
+[["المتباينات الكسرية","Rational inequalities","分式不等式"],["انقل كل الحدود لطرف واحد واستعمل جدول إشارات، ولا تضرب في المقام لأن إشارته مجهولة، واستبعد أصفاره.","Move all terms to one side and use a sign table. Don't multiply by the denominator (its sign is unknown) and exclude its zeros.","移项后用符号表判断；不要乘分母（符号未知），并排除使分母为0的值。"],"(x−1)/(x+2) ≥ 0 ⟹ x ∈ (−∞,−2) ∪ [1,+∞)"]]},
+{t:["٢. الدوال","2. Functions","2. 函数"],i:[
+[["مفهوم الدالة وخصائصها","The function concept","函数的概念与性质"],["الدالة تقابل كل عنصر من المجال بعنصر واحد فقط من المدى. اختبار الخط الرأسي يكشف ذلك بيانياً.","A function pairs each input with exactly one output. The vertical-line test checks this on a graph.","函数使每个自变量恰好对应一个函数值，可用竖直线检验图像。"],"y = f(x)   |   (f∘g)(x) = f(g(x))"],
+[["المجال والمدى","Domain and range","定义域与值域"],["المجال هو قيم x المسموحة، والمدى هو قيم y الناتجة. استبعد القسمة على صفر والجذر لعدد سالب واللوغاريتم لعدد غير موجب.","Domain is the allowed x-values; range is the resulting y-values. Exclude division by zero, roots of negatives and logs of non-positives.","定义域是x的允许取值，值域是y的取值。排除分母为0、负数开偶次方、对数真数≤0。"],"f(x)=√(x−1) ⟹ D=[1,+∞)   |   f(x)=1/x ⟹ x≠0"],
+[["التزايد والتناقص","Increasing and decreasing","单调性"],["تتزايد الدالة إذا زادت y بزيادة x، وتتناقص إذا قلّت.","f is increasing if y grows as x grows, and decreasing if y falls.","x增大时y增大为增函数，y减小为减函数。"],"x₁<x₂ ⟹ f(x₁)<f(x₂)  (increasing)"],
+[["الدوال الزوجية والفردية","Even and odd functions","奇偶性"],["الزوجية متماثلة حول محور y، والفردية متماثلة حول نقطة الأصل.","Even functions are symmetric about the y-axis; odd functions about the origin.","偶函数关于y轴对称，奇函数关于原点对称。"],"even: f(−x)=f(x)  (x²)   |   odd: f(−x)=−f(x)  (x³)"],
+[["الدوال الأسية","Exponential functions","指数函数"],["الأساس a>1 تزايد، و0<a<1 تناقص، والمنحنى يمر دائماً بالنقطة (0,1).","a>1 gives growth, 0<a<1 gives decay, and the graph always passes through (0,1).","a>1递增，0<a<1递减，图像恒过点(0,1)。"],"y = aˣ   |   aᵐ·aⁿ = aᵐ⁺ⁿ   |   (aᵐ)ⁿ = aᵐⁿ","exp"],
+[["الدوال اللوغاريتمية","Logarithmic functions","对数函数"],["اللوغاريتم هو معكوس الأسية، ومجاله x>0، ويمر بالنقطة (1,0).","The logarithm is the inverse of the exponential; domain x>0, passes through (1,0).","对数函数是指数函数的反函数，定义域x>0，过点(1,0)。"],"log_a(xy)=log_a x+log_a y   |   log_a b = ln b / ln a","log"],
+[["الدوال المثلثية","Trigonometric functions","三角函数"],["الجيب وجيب التمام دوريان بدورة 2π وقيمتهما بين −1 و1.","Sine and cosine have period 2π and values between −1 and 1.","正弦和余弦的周期为2π，值域为[−1,1]。"],"sin²θ + cos²θ = 1   |   tanθ = sinθ/cosθ","trig"],
+[["المتتاليات الحسابية والهندسية","Arithmetic and geometric sequences","等差数列与等比数列"],["الحسابية تزيد بفرق ثابت d، والهندسية تُضرب بنسبة ثابتة r.","Arithmetic sequences add a constant d; geometric sequences multiply by a constant r.","等差数列每项加常数d，等比数列每项乘常数r。"],"aₙ = aₙ₋₁ + d   |   aₙ = aₙ₋₁ · r"],
+[["الحد العام ومجموع المتتاليات","General term and sums","通项与求和"],["استعمل الحد العام لأي موضع، وصيغة المجموع بدل الجمع حداً حداً.","Use the general term for any position and the sum formula instead of adding term by term.","用通项求任意项，用求和公式代替逐项相加。"],"aₙ = a₁+(n−1)d   Sₙ = n(a₁+aₙ)/2   |   aₙ = a₁rⁿ⁻¹   Sₙ = a₁(1−rⁿ)/(1−r)"],
+[["أساسيات الاشتقاق وتطبيقاته","Derivative basics and applications","导数基础与应用"],["المشتقة هي ميل المماس. إذا كانت f′>0 فالدالة متزايدة، وإذا f′=0 فقد توجد نهاية عظمى أو صغرى.","The derivative is the tangent slope. f′>0 means increasing; f′=0 may be a maximum or minimum.","导数是切线斜率。f′>0为增，f′=0处可能有极大或极小值。"],"(xⁿ)′ = nxⁿ⁻¹   (sin x)′ = cos x   (eˣ)′ = eˣ   (ln x)′ = 1/x"]]},
+{t:["٣. الهندسة والجبر","3. Geometry and Algebra","3. 几何与代数"],i:[
+[["المستقيم","The line","直线"],["يتحدد المستقيم بميله ونقطة عليه، والمستقيمان المتعامدان حاصل ضرب ميليهما −1.","A line is fixed by its slope and a point; perpendicular lines have slopes whose product is −1.","直线由斜率和一点确定；两直线垂直时斜率之积为−1。"],"y−y₁ = m(x−x₁)   |   d = |Ax₀+By₀+C| / √(A²+B²)"],
+[["الدائرة","The circle","圆"],["مجموعة النقاط التي تبعد مسافة ثابتة r عن المركز (a,b).","All points at a fixed distance r from the center (a,b).","到圆心(a,b)距离为定值r的点的集合。"],"(x−a)² + (y−b)² = r²","circ"],
+[["القطع الناقص","The ellipse","椭圆"],["مجموع بعدي أي نقطة عن البؤرتين ثابت، والاختلاف المركزي أقل من 1.","The sum of distances to the two foci is constant; eccentricity is below 1.","到两焦点距离之和为定值，离心率小于1。"],"x²/a² + y²/b² = 1   c² = a²−b²   e = c/a < 1","ell"],
+[["القطع الزائد","The hyperbola","双曲线"],["فرق بعدي النقطة عن البؤرتين ثابت، وله خطا تقارب، واختلافه المركزي أكبر من 1.","The difference of distances to the foci is constant; it has asymptotes and eccentricity above 1.","到两焦点距离之差为定值，有渐近线，离心率大于1。"],"x²/a² − y²/b² = 1   c² = a²+b²   asymptotes: y = ±(b/a)x","hyp"],
+[["القطع المكافئ","The parabola","抛物线"],["كل نقطة فيه تبعد عن البؤرة بقدر بعدها عن الدليل.","Every point is equally far from the focus and the directrix.","抛物线上每点到焦点与准线的距离相等。"],"y² = 2px   focus (p/2, 0)   directrix x = −p/2","par"],
+[["المتجهات","Vectors","向量"],["للمتجه طول واتجاه. الضرب القياسي يساوي صفراً إذا تعامد المتجهان.","A vector has length and direction. The dot product is zero when the vectors are perpendicular.","向量有大小和方向。两向量垂直时数量积为0。"],"|a| = √(x²+y²)   a·b = x₁x₂+y₁y₂ = |a||b|cosθ"],
+[["الأعداد المركبة","Complex numbers","复数"],["نعرّف i²=−1، ويُكتب العدد z=a+bi، ومرافقه a−bi.","Define i²=−1; write z=a+bi, with conjugate a−bi.","规定i²=−1，复数记为z=a+bi，共轭复数为a−bi。"],"|z| = √(a²+b²)   (a+bi)(c+di) = (ac−bd)+(ad+bc)i"],
+[["الهندسة الفراغية","Solid geometry","立体几何"],["احفظ قوانين الحجوم والمساحات للأشكال الأساسية.","Memorize the volume and area formulas for the basic solids.","熟记基本几何体的体积与表面积公式。"],"prism V=Sh   cone V=⅓πr²h   sphere V=4πr³/3, S=4πr²"],
+[["الإحداثيات الديكارتية في الفضاء","3D Cartesian coordinates","空间直角坐标"],["تُحدد النقطة بثلاثة إحداثيات (x,y,z) وتُحسب المسافة ومنتصف القطعة بنفس طريقة المستوى.","A point has three coordinates (x,y,z); distance and midpoint work like in the plane.","空间点用(x,y,z)表示，距离与中点公式与平面类似。"],"d = √((x₂−x₁)²+(y₂−y₁)²+(z₂−z₁)²)   M = ((x₁+x₂)/2, (y₁+y₂)/2, (z₁+z₂)/2)"]]},
+{t:["٤. الاحتمالات والإحصاء","4. Probability and Statistics","4. 概率与统计"],i:[
+[["الاحتمال الكلاسيكي","Classical probability","古典概型"],["عند تساوي فرص النواتج يكون الاحتمال عدد الحالات المناسبة على عدد الحالات الكلي.","With equally likely outcomes, probability is favorable cases over total cases.","基本事件等可能时，概率等于有利事件数除以总事件数。"],"P(A) = n(A) / n(Ω)   |   0 ≤ P(A) ≤ 1"],
+[["حساب الاحتمالات","Computing probabilities","概率的计算"],["لحدثين مستقلين يُضرب احتمالاهما، وللحدث المتمم نطرح من 1.","For independent events multiply probabilities; for the complement subtract from 1.","独立事件概率相乘，对立事件用1减去。"],"P(A∪B)=P(A)+P(B)−P(A∩B)   P(A|B)=P(A∩B)/P(B)   P(A′)=1−P(A)"],
+[["المتوسط","The mean","平均数"],["المتوسط مجموع القيم على عددها، ويتأثر بالقيم الشاذة.","The mean is the sum divided by the count, and outliers affect it.","平均数是总和除以个数，易受极端值影响。"],"x̄ = (x₁+x₂+…+xₙ) / n"],
+[["التباين","Variance","方差"],["يقيس تشتت القيم حول المتوسط، والانحراف المعياري هو جذره.","It measures spread around the mean; the standard deviation is its square root.","衡量数据围绕平均数的离散程度，标准差是它的算术平方根。"],"σ² = Σ(xᵢ−x̄)² / n   σ = √σ²"],
+[["التوزيع الطبيعي","The normal distribution","正态分布"],["منحنى جرسي متماثل حول المتوسط μ، وتحدد σ عرضه.","A bell curve symmetric about the mean μ; σ sets its width.","关于平均数μ对称的钟形曲线，σ决定其宽度。"],"X ~ N(μ, σ²)   z = (x−μ)/σ","bell"]]}
+];
+let lg=0;
+function render(){const l=lg;$("#mc").innerHTML=`<h2>${MT[l]}</h2>`+U.map((u,k)=>`<h3 class="ut">${u.t[l]}</h3>`+u.i.map(it=>`<details class="card"${k+""==="0"&&it===u.i[0]?" open":""}><summary>${it[0][l]}</summary><div><p>${it[1][l]}</p><div class="fm">${it[2]}</div>${it[3]?X[it[3]](l):""}</div></details>`).join("")).join("")}
+function setL(l){lg=+l;const d=document.documentElement;d.lang=["ar","en","zh"][lg];d.dir=lg?"ltr":"rtl";
+document.querySelectorAll("nav button").forEach(b=>b.textContent=NAV[b.dataset.v][lg]);
+$(".logo").innerHTML="🌍 "+NAME[lg];$(".hero h1").textContent=NAME[lg];$(".hero p").textContent=SUB[lg];render()}
+const _show=show;
+show=function(v){if(v==="math"){clearInterval(tm);mode="math";$("#home").classList.add("hide");$("#quiz").classList.add("hide");$("#math").classList.remove("hide");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v==="math"));window.scrollTo(0,0)}else{$("#math").classList.add("hide");_show(v)}};
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>show(b.dataset.v));
+$("#lg").onchange=e=>setL(e.target.value);render();
+</script>
+<script>
+NAV.dash=["لوحتي","My dashboard","我的面板"];
+const D={
+ti:["📊 لوحتي","📊 My dashboard","📊 我的面板"],lv:["المستوى","Level","等级"],st:["أيام متتالية","Day streak","连续天数"],
+ms:["🎯 تحدي اليوم: أكمل الامتحان التجريبي","🎯 Daily challenge: finish the mock exam","🎯 每日挑战：完成模拟考试"],go:["ابدأ (+100 XP)","Start (+100 XP)","开始 (+100 XP)"],
+mp:["🗺️ خريطة معرفتي","🗺️ My knowledge map","🗺️ 知识图谱"],sj:[["الرياضيات","الفيزياء","الكيمياء"],["Mathematics","Physics","Chemistry"],["数学","物理","化学"]],
+ac:["🏆 الإنجازات","🏆 Achievements","🏆 成就"],an:[["أول خطوة","100 نقطة","3 أيام متتالية","6 إجابات صحيحة"],["First step","100 XP","3-day streak","6 correct answers"],["第一步","100经验","连续3天","答对6题"]],
+lb:["🧪 مختبر الدوال التربيعية","🧪 Quadratic lab","🧪 二次函数实验室"],rt:["الجذور","Roots","根"],vx:["الرأس","Vertex","顶点"],nr:["لا جذور حقيقية","No real roots","无实根"],
+ph:["ابحث...","Search...","搜索..."],em:["أجب عن أسئلة لتظهر نسبتك","Answer questions to see your score","答题后显示得分"]};
+let S={xp:0,streak:0,last:"",sub:{}};
+try{Object.assign(S,JSON.parse(localStorage.getItem("mep")||"{}"))}catch(e){}
+const sv=()=>{try{localStorage.setItem("mep",JSON.stringify(S))}catch(e){}};
+const dy=d=>d.toISOString().slice(0,10);
+function addXP(n,sub,ok){const t=dy(new Date()),y=dy(new Date(Date.now()-864e5));if(S.last!==t){S.streak=S.last===y?S.streak+1:1;S.last=t}S.xp+=n;if(sub){const a=S.sub[sub]=S.sub[sub]||[0,0];a[1]++;if(ok)a[0]++}sv()}
+$("#list").addEventListener("click",e=>{const b=e.target.closest(".opt");if(!b)return;const i=+b.dataset.q;if(answered[i]!==undefined)return;const ok=+b.dataset.o===Q[i][3];addXP(ok?10:0,Q[i][0],ok)},true);
+$("#fin").addEventListener("click",()=>{if($("#res").classList.contains("hide"))addXP(100)},true);
+function labUpd(){const a=+$("#la").value,b=+$("#lb").value,c=+$("#lc").value,l=lg;
+$("#lv1").textContent=a;$("#lv2").textContent=b;$("#lv3").textContent=c;
+let t="";if(a===0)t=b?`x = ${(-c/b).toFixed(2)}`:"—";else{const d=b*b-4*a*c;t=d<0?D.nr[l]:`${D.rt[l]}: x₁ = ${((-b+Math.sqrt(d))/(2*a)).toFixed(2)}, x₂ = ${((-b-Math.sqrt(d))/(2*a)).toFixed(2)}`;t+=`  |  ${D.vx[l]}: (${(-b/(2*a)).toFixed(2)}, ${(c-b*b/(4*a)).toFixed(2)})`}
+$("#lg2").innerHTML=P([[Y(x=>a*x*x+b*x+c),-6,6,B]],[-6,6,-10,10])+`<div class="fm">y = ${a}x² + ${b}x + ${c}<br>${t}</div>`}
+function renderDash(){const l=lg,lv=Math.floor(S.xp/100)+1,tot=Object.values(S.sub).reduce((r,v)=>r+v[0],0);
+const A=[S.xp>=10,S.xp>=100,S.streak>=3,tot>=6],ic=["🌱","⚡","🔥","🏅"];
+$("#dc").innerHTML=`<h2>${D.ti[l]}</h2><div class="card"><div class="kp"><div><strong>${lv}</strong>${D.lv[l]}</div><div><strong>${S.xp}</strong>XP</div><div><strong>🔥 ${S.streak}</strong>${D.st[l]}</div></div><div class="xb"><i style="width:${S.xp%100}%"></i></div></div>
+<h2>${D.ms[l].slice(0,2)} ${D.ms[l].slice(3)}</h2><div class="card"><button class="btn" id="dgo">${D.go[l]}</button></div>
+<h2>${D.mp[l]}</h2><div class="card">${D.sj[l].map((n,i)=>{const v=S.sub[D.sj[0][i]],p=v&&v[1]?Math.round(v[0]/v[1]*100):0;return`<div>${n} — ${v&&v[1]?p+"%":"·"}<div class="xb"><i style="width:${p}%"></i></div></div>`}).join("")}${tot||Object.keys(S.sub).length?"":`<small>${D.em[l]}</small>`}</div>
+<h2>${D.ac[l]}</h2><div class="bd">${A.map((u,i)=>`<div class="${u?"":"lk"}"><div style="font-size:1.8rem;border:0;padding:0">${ic[i]}</div>${D.an[l][i]}</div>`).join("")}</div>
+<h2>${D.lb[l]}</h2><div class="card"><div class="sl">a<input type="range" id="la" min="-3" max="3" step=".5" value="1"><b id="lv1"></b></div><div class="sl">b<input type="range" id="lb" min="-6" max="6" step="1" value="-2"><b id="lv2"></b></div><div class="sl">c<input type="range" id="lc" min="-8" max="8" step="1" value="-3"><b id="lv3"></b></div><div id="lg2"></div></div>`;
+["la","lb","lc"].forEach(i=>$("#"+i).oninput=labUpd);$("#dgo").onclick=()=>show("mock");labUpd()}
+const _sl=setL;setL=function(l){_sl(l);renderDash()};
+const _s2=show;show=function(v){if(v==="dash"){clearInterval(tm);mode="dash";["#home","#quiz","#math"].forEach(x=>$(x).classList.add("hide"));$("#dash").classList.remove("hide");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v==="dash"));renderDash();window.scrollTo(0,0)}else{$("#dash").classList.add("hide");_s2(v)}};
+document.querySelector('nav button[data-v="dash"]').onclick=()=>show("dash");
+const pal=document.createElement("div");pal.id="pal";pal.className="hide";pal.innerHTML='<div><input id="pi" aria-label="search"><div id="pl"></div></div>';document.body.appendChild(pal);
+function pfill(){const q=$("#pi").value.toLowerCase();$("#pl").innerHTML="";["home","dash","ex","math","bank","mock"].filter(v=>NAV[v][lg].toLowerCase().includes(q)).forEach(v=>{const b=document.createElement("button");b.textContent=NAV[v][lg];b.onclick=()=>{pal.classList.add("hide");show(v)};$("#pl").appendChild(b)})}
+function popen(){pal.classList.remove("hide");$("#pi").placeholder=D.ph[lg];$("#pi").value="";pfill();$("#pi").focus()}
+$("#pi").oninput=pfill;pal.onclick=e=>{if(e.target===pal)pal.classList.add("hide")};
+document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k"){e.preventDefault();popen()}else if(e.key==="Escape")pal.classList.add("hide");else if(e.key==="Enter"&&!pal.classList.contains("hide")){const b=$("#pl button");if(b)b.click()}});
+const kb=document.createElement("button");kb.id="kb";kb.textContent="🔍";kb.setAttribute("aria-label","search");kb.onclick=popen;document.querySelector(".bar").appendChild(kb);
+</script>
+<script>
+NAV.ex=["استكشاف","Explore","探索"];
+const E={un:["🌌 كوننا المعرفي","🌌 Knowledge universe","🌌 知识宇宙"],ph:["⚡ مختبر الفيزياء: المقذوف","⚡ Physics lab: projectile","⚡ 物理实验室：抛体运动"],
+rg:["المدى","Range","射程"],tm:["الزمن","Time","时间"],ht:["أقصى ارتفاع","Max height","最大高度"],
+ch:["🧪 مختبر الكيمياء: الرقم الهيدروجيني (حمض HCl قوي)","🧪 Chemistry lab: pH (strong acid HCl)","🧪 化学实验室：pH（强酸HCl）"],
+bs:["⚔️ معركة الزعيم: 3 قلوب، كل خطأ يخسّرك قلباً","⚔️ Boss battle: 3 hearts, each mistake costs one","⚔️ 首领战：3颗心，错一题扣一颗"],bg:["ابدأ المعركة (+150 XP)","Start battle (+150 XP)","开始战斗 (+150 XP)"],
+wn:["🏆 انتصرت! +150 XP","🏆 Victory! +150 XP","🏆 胜利！+150 XP"],ls:["💔 هُزمت، حاول مجدداً","💔 Defeated, try again","💔 失败，请重试"],
+uv:["🎓 استكشف الجامعات الصينية","🎓 Explore Chinese universities","🎓 探索中国高校"],nt:["للشروط والمنح ومواعيد التقديم راجع الموقع الرسمي لكل جامعة.","For requirements, scholarships and deadlines, check each university's official website.","录取要求、奖学金与截止日期请查看各校官网。"],
+rc:["🎯 موصى لك: ركّز على","🎯 Recommended: focus on","🎯 推荐重点："],pr:["تدرّب الآن","Practice now","立即练习"]};
+const UV=[[["جامعة تسينغهوا","Tsinghua University","清华大学"],["بكين","Beijing","北京"]],[["جامعة بكين","Peking University","北京大学"],["بكين","Beijing","北京"]],[["جامعة فودان","Fudan University","复旦大学"],["شنغهاي","Shanghai","上海"]],[["جامعة تشجيانغ","Zhejiang University","浙江大学"],["هانغتشو","Hangzhou","杭州"]],[["جامعة العلوم والتكنولوجيا الصينية","USTC","中国科学技术大学"],["خفاي","Hefei","合肥"]]];
+function uni(){const c=$("#cv");if(!c)return;const g=c.getContext("2d"),st=[...Array(50)].map(()=>[Math.random()*600,Math.random()*260,Math.random()*1.6]),cl=["#4f8ef7","#d0503c","#4cc38a"];let a=0;
+(function f(){if(mode!=="ex"||!c.isConnected)return;a+=.012;g.globalAlpha=1;g.fillStyle="#0b1424";g.fillRect(0,0,600,260);g.fillStyle="#fff";st.forEach(q=>g.fillRect(q[0],q[1],q[2],q[2]));g.fillStyle=G;g.beginPath();g.arc(300,130,16,0,7);g.fill();
+for(let i=0;i<3;i++){const t=a+i*2.09,z=Math.sin(t),v=S.sub[D.sj[0][i]],ac=v&&v[1]?v[0]/v[1]:0,r=(11+ac*10)*(1+z*.3);g.globalAlpha=.4+.6*ac;g.fillStyle=cl[i];g.beginPath();g.arc(300+Math.cos(t)*190,130+z*45,r,0,7);g.fill();g.globalAlpha=1;g.fillStyle="#fff";g.font="14px Tajawal,sans-serif";g.textAlign="center";g.fillText(D.sj[lg][i],300+Math.cos(t)*190,130+z*45+r+16)}
+requestAnimationFrame(f)})()}
+function phU(){const a=+$("#pa").value,v=+$("#pv").value,th=a*Math.PI/180,T=2*v*Math.sin(th)/9.8,R=v*v*Math.sin(2*th)/9.8,H=(v*Math.sin(th))**2/19.6;$("#pa1").textContent=a+"°";$("#pv1").textContent=v;
+$("#po").innerHTML=P([[t=>[v*Math.cos(th)*t,v*Math.sin(th)*t-4.9*t*t],0,T,B]],[0,Math.max(R*1.1,10),-1,Math.max(H*1.5,5)])+`<div class="fm">${E.rg[lg]}: ${R.toFixed(1)} m | ${E.tm[lg]}: ${T.toFixed(2)} s | ${E.ht[lg]}: ${H.toFixed(1)} m</div>`}
+function chU(){const e=+$("#pe").value,ph=-e;$("#pe1").textContent=e;$("#co").innerHTML=`<div style="height:18px;border-radius:9px;margin:10px 0;position:relative;background:linear-gradient(90deg,#d0503c,#e8c53d,#4cc38a,#4f8ef7,#7b4fd0)"><i style="position:absolute;top:-4px;left:${ph/14*100}%;width:4px;height:26px;background:#fff;border:1px solid #000"></i></div><div class="fm">[HCl] = 10^${e} mol/L → pH ≈ ${ph.toFixed(1)}</div>`}
+let bs=null;
+function bsR(msg){const b=$("#bs");if(!b)return;if(!bs){b.innerHTML=(msg?`<h3>${msg}</h3>`:"")+`<button class="btn" id="bgo">${E.bg[lg]}</button>`;$("#bgo").onclick=()=>{bs={o:Q.map((_,i)=>i).sort(()=>Math.random()-.5),i:0,h:3};bsR()};return}
+const q=Q[bs.o[bs.i]];b.innerHTML=`<div>${"❤️".repeat(bs.h)} ${bs.i+1}/${bs.o.length}</div><p><b>${q[1]}</b></p>`+q[2].map((o,j)=>`<button class="opt" data-j="${j}">${o}</button>`).join("");
+b.querySelectorAll(".opt").forEach(x=>x.onclick=()=>{if(+x.dataset.j!==q[3])bs.h--;bs.i++;if(bs.h<=0){bs=null;bsR(E.ls[lg])}else if(bs.i>=bs.o.length){bs=null;addXP(150);bsR(E.wn[lg])}else bsR()})}
+function renderEx(){const l=lg;$("#ec").innerHTML=`<h2>${E.un[l]}</h2><canvas id="cv" width="600" height="260" style="width:100%;border-radius:12px"></canvas>
+<h2>${E.ph[l]}</h2><div class="card"><div class="sl">θ<input type="range" id="pa" min="10" max="80" step="5" value="45"><b id="pa1"></b></div><div class="sl">v<input type="range" id="pv" min="5" max="40" value="20"><b id="pv1"></b></div><div id="po"></div></div>
+<h2>${E.ch[l]}</h2><div class="card"><div class="sl">10^<input type="range" id="pe" min="-6" max="0" step=".5" value="-2"><b id="pe1"></b></div><div id="co"></div></div>
+<h2>${E.bs[l]}</h2><div class="card" id="bs"></div>
+<h2>${E.uv[l]}</h2><div class="grid">${UV.map(u=>`<div class="card sub"><h3>${u[0][l]}</h3><small>📍 ${u[1][l]}</small></div>`).join("")}</div><p><small>${E.nt[l]}</small></p>`;
+["pa","pv"].forEach(i=>$("#"+i).oninput=phU);$("#pe").oninput=chU;phU();chU();bsR();uni()}
+const _rd=renderDash;renderDash=function(){_rd();let w=0,m=9;D.sj[0].forEach((n,i)=>{const v=S.sub[n]||[0,0],r=(v[0]+1)/(v[1]+2);if(r<m){m=r;w=i}});
+$("#dc").insertAdjacentHTML("beforeend",`<h2>${E.rc[lg]} ${D.sj[lg][w]}</h2><div class="card"><button class="btn" id="rgo">${E.pr[lg]}</button></div>`);$("#rgo").onclick=()=>{$("#subj").value=D.sj[0][w];show("bank")}};
+const _sl3=setL;setL=function(l){_sl3(l);renderEx()};
+const _s3=show;show=function(v){if(v==="ex"){clearInterval(tm);mode="ex";["#home","#quiz","#math","#dash"].forEach(x=>$(x).classList.add("hide"));$("#ex").classList.remove("hide");document.querySelectorAll("nav button").forEach(b=>b.classList.toggle("on",b.dataset.v==="ex"));renderEx();window.scrollTo(0,0)}else{$("#ex").classList.add("hide");_s3(v)}};
+document.querySelector('nav button[data-v="ex"]').onclick=()=>show("ex");
+if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+</script>
+<script>
+const DL=["تصميم وتطوير","Designed & developed by","设计与开发"];
+const KB=[[/newton|نيوتن|牛顿/i,["قانون نيوتن الثاني: F = ma؛ القوة = الكتلة × التسارع.","Newton's second law: F = ma; force = mass × acceleration.","牛顿第二定律：F = ma，力等于质量乘加速度。"]],
+[/\bph\b|الرقم الهيدروجيني|酸/i,["pH = −log[H⁺]؛ أقل من 7 حمضي وأكبر من 7 قاعدي.","pH = −log[H⁺]; below 7 is acidic, above 7 is basic.","pH = −log[H⁺]；小于7为酸性，大于7为碱性。"]],
+[/تربيع|quadratic|二次/i,["المعادلة التربيعية: Δ = b²−4ac؛ إذا Δ>0 فلها جذران حقيقيان.","Quadratic: Δ = b²−4ac; if Δ>0 there are two real roots.","二次方程：Δ = b²−4ac；Δ>0 时有两个实根。"]],
+[/مشتق|derivative|导数/i,["(xⁿ)′ = nxⁿ⁻¹، والمشتقة هي ميل المماس.","(xⁿ)′ = nxⁿ⁻¹, and the derivative is the tangent slope.","(xⁿ)′ = nxⁿ⁻¹，导数是切线斜率。"]]];
+const AT=[["💬 مساعد الإجابات السريعة (تجريبي: إجابات جاهزة وليس ذكاءً اصطناعياً)","💬 Quick answers (demo: canned answers, not real AI)","💬 快速问答（演示：预设答案，非真实AI）"],["اكتب كلمة: نيوتن، pH، تربيعية، مشتقة","Type: Newton, pH, quadratic, derivative","输入：牛顿、pH、二次、导数"],["اسأل","Ask","提问"],["جرّب كلمة مثل: نيوتن، pH، تربيعية، مشتقة.","Try a keyword: Newton, pH, quadratic, derivative.","试试关键词：牛顿、pH、二次、导数。"]];
+const _re=renderEx;renderEx=function(){_re();$("#ec").insertAdjacentHTML("beforeend",`<h2>${AT[0][lg]}</h2><div class="card"><div class="ai"><input id="ai" placeholder="${AT[1][lg]}"><button class="btn" id="ab">${AT[2][lg]}</button></div><div class="aa" id="aa"></div></div>`);
+$("#ab").onclick=()=>{const q=$("#ai").value.trim();if(!q)return;const k=KB.find(r=>r[0].test(q));$("#aa").textContent=k?k[1][lg]:AT[3][lg];if(k)addXP(5)}};
+const _sl4=setL;setL=function(l){_sl4(l);$("#dl").textContent=DL[lg]};
+const tb=document.createElement("button");tb.id="tb";tb.setAttribute("aria-label","theme");const th=()=>document.documentElement.dataset.theme;tb.textContent=th()==="dark"?"☀️":"🌙";
+tb.onclick=()=>{const n=th()==="dark"?"light":"dark";document.documentElement.dataset.theme=n;tb.textContent=n==="dark"?"☀️":"🌙";try{localStorage.setItem("mep-theme",n)}catch(e){}};
+document.querySelector(".bar").appendChild(tb);
+if(S.last!==dy(new Date()))addXP(20);
+</script>
+</body>
+</html>
